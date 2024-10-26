@@ -1,0 +1,889 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Grass.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/StraightRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/tesla/TeslaModel3.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadLine.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadIntersection.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/PedestrianCrossing.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/SimpleTree.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/GenericTrafficLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/CrossRoadsTrafficLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/CommercialBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/FastFoodRestaurant.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Carwash.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Museum.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Hotel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/BigGlassTower.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/BuildingUnderConstruction.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Church.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/GasStation.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/ResidentialTower.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/LargeResidentialTower.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/StreetLight.proto"
+
+WorldInfo {
+  info [
+    "Skin animation of human models."
+    "In this example BVH motions are played on FBX MakeHuman models."
+    "Author: Guillaume Michel <guillaume.michel.202@gmail.com>"
+  ]
+  title "Human Skin Animation"
+}
+Viewpoint {
+  orientation 0.13285885110145262 0.39900877378045446 -0.9072709210209596 0.7034608688416449
+  position -105.64870013259673 97.88494334766973 70.97599732417028
+}
+TexturedBackground {
+  texture "noon_cloudy_mountains"
+  luminosity 0.17
+}
+TexturedBackgroundLight {
+  texture "dawn_cloudy_empty"
+  luminosity 0
+}
+Floor {
+  translation 50 0 0
+  size 300 300
+  tileSize 2 2
+  appearance Grass {
+    type "mossy"
+  }
+}
+DEF road(1) StraightRoadSegment {
+  translation 0 0 0.02
+  name "road(1)"
+  id "1"
+  endJunction "0"
+  width 18
+  numberOfLanes 4
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "continuous"
+    }
+  ]
+  length 50
+}
+DEF road(4) StraightRoadSegment {
+  translation 70 0 0.02
+  name "road(4)"
+  id "4"
+  width 18
+  numberOfLanes 4
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "continuous"
+    }
+  ]
+  length 50
+}
+DEF road(2) StraightRoadSegment {
+  translation 60 -60 0.02
+  rotation 0 0 1 1.57
+  name "road(2)"
+  id "2"
+  width 18
+  numberOfLanes 4
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "continuous"
+    }
+  ]
+  length 50
+}
+DEF road(3) StraightRoadSegment {
+  translation 60 10 0.02
+  rotation 0 0 1 1.57
+  name "road(3)"
+  id "3"
+  width 18
+  numberOfLanes 4
+  lines [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "continuous"
+    }
+  ]
+  length 50
+}
+DEF road_intersection(1) RoadIntersection {
+  translation 60 0 0.02
+  rotation 0 0 1 0.785
+  name "road intersection(1)"
+  id "0"
+  connectedRoadIDs [
+    "4"
+    "3"
+    "2"
+    "1"
+  ]
+  roadsWidth 18
+  startRoadsLength [
+    8
+  ]
+  startRoadsNumberOfLanes 4
+  startRoadsStartLine [
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_dashed.png"
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
+    "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/textures/road_line_triangle.png"
+  ]
+  startRoadsEndLine [
+    ""
+  ]
+  startRoadsLine [
+    RoadLine {
+    }
+    RoadLine {
+      color 0.85 0.75 0.3
+      type "continuous"
+    }
+  ]
+}
+DEF pedestrian_crossing(1) PedestrianCrossing {
+  translation 47 0 -0.06
+  rotation 0 0 1 1.57
+  name "pedestrian crossing(1)"
+  enableBoundingObject FALSE
+}
+DEF pedestrian_crossing(2) PedestrianCrossing {
+  translation 73 0 -0.06
+  rotation 0 0 1 1.57
+  name "pedestrian crossing(2)"
+  enableBoundingObject FALSE
+}
+DEF pedestrian_crossing(3) PedestrianCrossing {
+  translation 60 -13 -0.06
+  name "pedestrian crossing(3)"
+  enableBoundingObject FALSE
+}
+DEF pedestrian_crossing(4) PedestrianCrossing {
+  translation 60 13 -0.06
+  name "pedestrian crossing(4)"
+  enableBoundingObject FALSE
+}
+DEF sidewalk_block(1) Floor {
+  translation 25.2 -12.3 0.17
+  name "sidewalk block(1)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(2) Floor {
+  translation 25.2 12.3 0.17
+  name "sidewalk block(2)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(3) Floor {
+  translation 94.8 -12.3 0.17
+  name "sidewalk block(3)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(4) Floor {
+  translation 94.8 12.3 0.17
+  name "sidewalk block(4)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(5) Floor {
+  translation 47.7 -35 0.17
+  rotation 0 0 1 1.57
+  name "sidewalk block(5)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(7) Floor {
+  translation 72.3 -35 0.17
+  rotation 0 0 1 1.57
+  name "sidewalk block(7)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(8) Floor {
+  translation 72.3 35 0.17
+  rotation 0 0 1 1.57
+  name "sidewalk block(8)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF sidewalk_block(6) Floor {
+  translation 47.7 35 0.17
+  rotation 0 0 1 1.57
+  name "sidewalk block(6)"
+  size 50 5
+  tileSize 1 0.5
+}
+DEF generic_traffic_light(1) GenericTrafficLight {
+  translation 44 -10 0.02
+  rotation 0 0 -1 1.5708
+  name "generic traffic light(1)"
+  state "green"
+}
+DEF generic_traffic_light(2) GenericTrafficLight {
+  translation 50 10 0.12
+  rotation 0 0 1 -1.5707953071795862
+  name "generic traffic light(2)"
+  state "green"
+}
+DEF generic_traffic_light(3) GenericTrafficLight {
+  translation 50 16 0.22
+  rotation 0 0 1 1.01503e-06
+  name "generic traffic light(3)"
+  state "green"
+}
+DEF generic_traffic_light(4) GenericTrafficLight {
+  translation 70 10 0.32
+  rotation 0 0 1 3.14159
+  name "generic traffic light(4)"
+  state "green"
+}
+DEF generic_traffic_light(5) GenericTrafficLight {
+  translation 76 10 0.42
+  rotation 0 0 1 -1.5707953071795862
+  name "generic traffic light(5)"
+  state "green"
+}
+DEF generic_traffic_light(6) GenericTrafficLight {
+  translation 70 -10 0.52
+  rotation 0 0 1 1.5708
+  name "generic traffic light(6)"
+  state "green"
+}
+DEF generic_traffic_light(7) GenericTrafficLight {
+  translation 49 -10 0.62
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "generic traffic light(7)"
+  state "green"
+}
+DEF generic_traffic_light(8) GenericTrafficLight {
+  translation 69 -16 0.72
+  rotation 0 0 1 3.14159
+  name "generic traffic light(8)"
+  state "green"
+}
+CrossRoadsTrafficLight {
+  translation 60 0 0
+  rotation 0 0 1 1.5708
+}
+StreetLight {
+  translation 7 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(1)"
+}
+StreetLight {
+  translation 17 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(2)"
+}
+StreetLight {
+  translation 27 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(3)"
+}
+StreetLight {
+  translation 37 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(4)"
+}
+StreetLight {
+  translation 76 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(5)"
+}
+StreetLight {
+  translation 83 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(6)"
+}
+StreetLight {
+  translation 93 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(7)"
+}
+StreetLight {
+  translation 103 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(8)"
+}
+StreetLight {
+  translation 113 -10 0
+  rotation 0 0 1 1.5708
+  name "street light(9)"
+}
+StreetLight {
+  translation 7 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(10)"
+}
+StreetLight {
+  translation 17 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(11)"
+}
+StreetLight {
+  translation 27 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(12)"
+}
+StreetLight {
+  translation 37 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(13)"
+}
+StreetLight {
+  translation 44 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(14)"
+}
+StreetLight {
+  translation 83 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(15)"
+}
+StreetLight {
+  translation 93 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(16)"
+}
+StreetLight {
+  translation 103 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(17)"
+}
+StreetLight {
+  translation 113 10 0
+  rotation 0 0 1 -1.5707953071795862
+  name "street light(18)"
+}
+StreetLight {
+  translation 50 53 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(20)"
+}
+StreetLight {
+  translation 50 43 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(19)"
+}
+StreetLight {
+  translation 50 33 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(21)"
+}
+StreetLight {
+  translation 50 23 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(22)"
+}
+StreetLight {
+  translation 50 -16 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(23)"
+}
+StreetLight {
+  translation 50 -23 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(24)"
+}
+StreetLight {
+  translation 50 -33 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(25)"
+}
+StreetLight {
+  translation 50 -43 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(26)"
+}
+StreetLight {
+  translation 50 -53 0
+  rotation 0 0 1 1.01503e-06
+  name "street light(27)"
+}
+StreetLight {
+  translation 70 53 0
+  rotation 0 0 1 3.14159
+  name "street light(28)"
+}
+StreetLight {
+  translation 70 43 0
+  rotation 0 0 1 3.14159
+  name "street light(29)"
+}
+StreetLight {
+  translation 70 33 0
+  rotation 0 0 1 3.14159
+  name "street light(30)"
+}
+StreetLight {
+  translation 70 23 0
+  rotation 0 0 1 3.14159
+  name "street light(31)"
+}
+StreetLight {
+  translation 70 16 0
+  rotation 0 0 1 3.14159
+  name "street light(32)"
+}
+StreetLight {
+  translation 70 -23 0
+  rotation 0 0 1 3.14159
+  name "street light(33)"
+}
+StreetLight {
+  translation 70 -33 0
+  rotation 0 0 1 3.14159
+  name "street light(34)"
+}
+StreetLight {
+  translation 70 -43 0
+  rotation 0 0 1 3.14159
+  name "street light(35)"
+}
+StreetLight {
+  translation 70 -53 0
+  rotation 0 0 1 3.14159
+  name "street light(36)"
+}
+DEF tree(1) SimpleTree {
+  translation 2 -10 0.07
+  name "tree(1)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(2) SimpleTree {
+  translation 12 -10 0.07
+  name "tree(2)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(3) SimpleTree {
+  translation 22 -10 0.07
+  name "tree(3)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(4) SimpleTree {
+  translation 32 -10 0.07
+  name "tree(4)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(5) SimpleTree {
+  translation 42 -10 0.07
+  name "tree(5)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(6) SimpleTree {
+  translation 2 10 0.07
+  name "tree(6)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(7) SimpleTree {
+  translation 12 10 0.07
+  name "tree(7)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(8) SimpleTree {
+  translation 22 10 0.07
+  name "tree(8)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(9) SimpleTree {
+  translation 32 10 0.07
+  name "tree(9)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(10) SimpleTree {
+  translation 42 10 0.07
+  name "tree(10)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(11) SimpleTree {
+  translation 78 -10 0.07
+  name "tree(11)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(12) SimpleTree {
+  translation 88 -10 0.07
+  name "tree(12)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(13) SimpleTree {
+  translation 98 -10 0.07
+  name "tree(13)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(14) SimpleTree {
+  translation 108 -10 0.07
+  name "tree(14)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(15) SimpleTree {
+  translation 118 -10 0.07
+  name "tree(15)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(16) SimpleTree {
+  translation 78 10 0.07
+  name "tree(16)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(17) SimpleTree {
+  translation 88 10 0.07
+  name "tree(17)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(18) SimpleTree {
+  translation 98 10 0.07
+  name "tree(18)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(19) SimpleTree {
+  translation 108 10 0.07
+  name "tree(19)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(20) SimpleTree {
+  translation 118 10 0.07
+  name "tree(20)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(21) SimpleTree {
+  translation 50 -18 0.07
+  name "tree(21)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(22) SimpleTree {
+  translation 50 -28 0.07
+  name "tree(22)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(23) SimpleTree {
+  translation 50 -38 0.07
+  name "tree(23)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(24) SimpleTree {
+  translation 50 -48 0.07
+  name "tree(24)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(25) SimpleTree {
+  translation 50 -58 0.07
+  name "tree(25)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(26) SimpleTree {
+  translation 50 18 0.07
+  name "tree(26)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(27) SimpleTree {
+  translation 50 28 0.07
+  name "tree(27)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(28) SimpleTree {
+  translation 50 38 0.07
+  name "tree(28)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(29) SimpleTree {
+  translation 50 48 0.07
+  name "tree(29)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(30) SimpleTree {
+  translation 50 58 0.07
+  name "tree(30)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(31) SimpleTree {
+  translation 70 -18 0.07
+  name "tree(31)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(32) SimpleTree {
+  translation 70 -28 0.07
+  name "tree(32)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(33) SimpleTree {
+  translation 70 -38 0.07
+  name "tree(33)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(34) SimpleTree {
+  translation 70 -48 0.07
+  name "tree(34)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(35) SimpleTree {
+  translation 70 -58 0.07
+  name "tree(35)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(36) SimpleTree {
+  translation 70 18 0.07
+  name "tree(36)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(37) SimpleTree {
+  translation 70 28 0.07
+  name "tree(37)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(38) SimpleTree {
+  translation 70 38 0.07
+  name "tree(38)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(39) SimpleTree {
+  translation 70 48 0.07
+  name "tree(39)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF tree(40) SimpleTree {
+  translation 70 58 0.07
+  name "tree(40)"
+  type "hackberry tree"
+  radius 1.5
+}
+DEF commercial_building CommercialBuilding {
+  translation 85.9 -26 0
+}
+FastFoodRestaurant {
+  translation 40.11 -20 0
+  rotation 0 0 1 1.5708
+  height 5
+}
+Carwash {
+  translation 101.88 -22 0.45
+  rotation 0 0 1 -1.5707953071795862
+}
+Museum {
+  translation 81 30 0
+  rotation 0 -1 0 -5.307179586466759e-06
+}
+Hotel {
+  translation 105 22 0
+}
+BigGlassTower {
+  translation 39 -52 0
+  rotation 0 0 1 -2.094395307179586
+}
+BuildingUnderConstruction {
+  translation 83 -52 0
+}
+Church {
+  translation 29 -22 0
+  rotation 0 0 1 1.5708
+}
+GasStation {
+  translation 32 27 0
+  rotation 0 0 1 -1.5707953071795862
+}
+ResidentialTower {
+  translation 41 -35 0
+  rotation 0 0 1 4.692820414042842e-06
+}
+LargeResidentialTower {
+  translation 11 -21 0
+  rotation 0 0 1 1.5708
+  name "residential tower(1)"
+}
+DEF TeslaModel3 TeslaModel3 {
+  hidden translation_1 0 0 0
+  hidden rotation_1 -0.21883777916654232 -0.6899750237668356 0.6899597763546874 3.572566112378685
+  hidden translation_2 0 0 0
+  hidden rotation_2 -0.2193723188992705 0.6898901630588946 -0.6898748789565601 3.5735861886769795
+  hidden translation_3 0 0 0
+  hidden rotation_3 -0.1311688312485965 -0.7009975245609581 0.7009972954785819 3.4024412140758575
+  hidden translation_4 0 0 0
+  hidden rotation_4 -0.13114119476567987 0.7010001099180028 -0.7009998808347817 3.4023868757998974
+  translation 10.413528030461103 -1.9972116484138116 0.392568089443292
+  rotation 0.000134128642682221 -0.9996428606443628 0.026723270238914507 0.010639788154409795
+  engineSound "sounds/engine.wav"
+  name "TeslaModel3"
+  controller "autonomous_vehicle"
+  supervisor TRUE
+}
+DEF ROBERT Robot {
+  translation 73.0000003684099 -10.000000000013323 0.21607628675994095
+  rotation -5.509659439821092e-17 1.090139302433015e-16 0.9999999999999999 1.570805307241476
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert"
+  boundingObject Box {
+    size 0.4 0.8 0.1
+  }
+  physics Physics {
+    density -1
+    mass 80
+  }
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF ROBERT2 Robot {
+  translation 19.999223169365195 -11.53510163816735 0.21607628675994095
+  rotation 2.7561817181073678e-17 -3.024002303640277e-18 1 -3.1200508081344336
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(1)"
+  boundingObject Box {
+    size 0.4 0.8 0.1
+  }
+  physics Physics {
+    density -1
+    mass 80
+  }
+  controller "sumo_supervisor"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF SANDRA Robot {
+  translation 73.08 10 0.21754786489221706
+  rotation -8.494130396575069e-18 -2.3605750180945815e-17 -0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra"
+  boundingObject Box {
+    size 0.4 0.8 0.1
+  }
+  physics Physics {
+    density -1
+    mass 50
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF SOPHIA Robot {
+  translation 48 -10 0.21803829434129707
+  rotation -2.249283132013191e-18 -7.705940753871393e-18 1 1.5708053071795867
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia"
+  boundingObject Box {
+    size 0.3 0.6 0.1
+  }
+  physics Physics {
+    density -1
+    mass 40
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+    "-f"
+    "../../motions/jump.bvh"
+    "-s"
+    "100"
+  ]
+  supervisor TRUE
+}
+DEF ANTHONY Robot {
+  translation 47 10 0.21754786489221706
+  rotation 1.6087527800993334e-17 -2.4000221575895972e-17 -0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony"
+  boundingObject Box {
+    size 0.3 0.5 0.1
+  }
+  physics Physics {
+    density -1
+    mass 50
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}

@@ -1,0 +1,34 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/tesla/TeslaModel3.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.6053747418339099 0.11667906544819791 -0.7873419953461532 2.9852203213616546
+  position 15.80811323172189 -0.9171578012476935 40.04901263863495
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 100 100
+}
+TeslaModel3 {
+  hidden position_0_0 -2.150198705147734e-06
+  hidden position2_0_0 0.002939246812918146
+  hidden position_0_1 2.1502071453909707e-06
+  hidden position2_0_1 0.0029392537829578957
+  hidden position_0_2 0.0002590353955088947
+  hidden position_0_3 0.0002590363084722713
+  hidden rotation_1 0.9999978402090756 -0.0014685466713197726 0.001470696385464065 1.570798162953241
+  hidden rotation_2 0.9999978401988323 0.0014685501521056108 -0.0014706998746889688 1.5707981629635048
+  hidden rotation_3 0.9999999832251606 -0.0001295177386317505 0.0001295176963060214 1.5707960167748394
+  hidden rotation_4 0.9999999832250426 0.00012951819511357267 -0.0001295181527876944 1.5707960167749577
+  translation -0.003495929749127935 -3.6609895696484935e-08 -0.023823969735350642
+  rotation 9.23586143453919e-06 -0.9999999999573483 4.5675680943008367e-08 0.01587602760557782
+}
