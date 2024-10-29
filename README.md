@@ -70,3 +70,9 @@ develop 브랜치으로 merge \
 그리고 완성 되면 main으로 merge \
 회의를 통해 그냥 바로 main으로 가는 방식으로 채택해도 됨
 
+(Mac User)
+/Applications/Webots.app/Contents/lib/controller/python
+
+
+(Windows User)
+C:\Program Files\Webots\lib\controller\python
