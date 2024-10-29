@@ -19,8 +19,19 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Hotel.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Church.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/ResidentialTower.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/LargeResidentialTower.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/StreetLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Building.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/ResidentialBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/OldResidentialBuilding.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/bmw/BmwX5.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/citroen/CitroenCZero.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/generic/TruckSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/generic/MotorbikeSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/lincoln/LincolnMKZSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/range_rover/RangeRoverSportSVRSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/toyota/ToyotaPriusSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/generic/BusSimple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/RandomBuilding.proto"
 
 WorldInfo {
   info [
@@ -34,8 +45,8 @@ WorldInfo {
   lineScale 1
 }
 Viewpoint {
-  orientation 0.2307410389616798 0.7834564475085076 -0.5770221553772727 0.9438649655222098
-  position -102.4271104450566 104.28467980150477 212.79270643963616
+  orientation 0.1604424841422299 0.7264717700025166 -0.6682042926169219 0.7210047927272683
+  position -52.74471868619581 55.50497169495297 76.77004908215498
 }
 TexturedBackground {
   texture "empty_office"
@@ -154,24 +165,24 @@ DEF road_intersection(1) RoadIntersection {
     }
   ]
 }
-DEF pedestrian_crossing(1) PedestrianCrossing {
+PedestrianCrossing {
   translation 47 0 -0.06
   rotation 0 0 1 1.57
   name "pedestrian crossing(1)"
   enableBoundingObject FALSE
 }
-DEF pedestrian_crossing(2) PedestrianCrossing {
+PedestrianCrossing {
   translation 73 0 -0.06
   rotation 0 0 1 1.57
   name "pedestrian crossing(2)"
   enableBoundingObject FALSE
 }
-DEF pedestrian_crossing(3) PedestrianCrossing {
+PedestrianCrossing {
   translation 60 -13 -0.06
   name "pedestrian crossing(3)"
   enableBoundingObject FALSE
 }
-DEF pedestrian_crossing(4) PedestrianCrossing {
+PedestrianCrossing {
   translation 60 13 -0.06
   name "pedestrian crossing(4)"
   enableBoundingObject FALSE
@@ -235,48 +246,48 @@ DEF generic_traffic_light(1) GenericTrafficLight {
   state "green"
 }
 DEF generic_traffic_light(2) GenericTrafficLight {
-  translation 50 10 0.12
+  translation 50 10 0.02
   rotation 0 0 1 -1.5707953071795862
   name "generic traffic light(2)"
   state "green"
 }
 DEF generic_traffic_light(3) GenericTrafficLight {
-  translation 50 16 0.22
+  translation 50 16 0.02
   rotation 0 0 1 1.01503e-06
   name "generic traffic light(3)"
   state "green"
 }
 DEF generic_traffic_light(4) GenericTrafficLight {
-  translation 70 10 0.32
+  translation 70 10 0.02
   rotation 0 0 1 3.14159
   name "generic traffic light(4)"
   state "green"
 }
 DEF generic_traffic_light(5) GenericTrafficLight {
-  translation 76 10 0.42
+  translation 76 10 0.02
   rotation 0 0 1 -1.5707953071795862
   name "generic traffic light(5)"
   state "green"
 }
 DEF generic_traffic_light(6) GenericTrafficLight {
-  translation 70 -10 0.52
+  translation 70 -10 0.02
   rotation 0 0 1 1.5708
   name "generic traffic light(6)"
   state "green"
 }
 DEF generic_traffic_light(7) GenericTrafficLight {
-  translation 49 -10 0.62
+  translation 49 -10 0.02
   rotation 0 0 -1 -5.307179586466759e-06
   name "generic traffic light(7)"
   state "green"
 }
 DEF generic_traffic_light(8) GenericTrafficLight {
-  translation 69 -16 0.72
+  translation 69 -16 0.02
   rotation 0 0 1 3.14159
   name "generic traffic light(8)"
   state "green"
 }
-CrossRoadsTrafficLight {
+DEF crossroad_light CrossRoadsTrafficLight {
   translation 60 0 0
   rotation 0 0 1 1.5708
 }
@@ -700,59 +711,174 @@ DEF tree(40) SimpleTree {
   type "hackberry tree"
   radius 1.5
 }
-DEF commercial_building CommercialBuilding {
+DEF building_commercial(1) CommercialBuilding {
   translation 85.9 -26 0
 }
-GenericTrafficLight {
-  translation 97 -37 0
-  state "green"
-}
-DEF fast_food_restaurant FastFoodRestaurant {
+DEF building_fast_food FastFoodRestaurant {
   translation 40.11 -20 0
   rotation 0 0 1 1.5708
   height 5
 }
-DEF museum Museum {
-  translation 81 30 0
+DEF building_museum Museum {
+  translation 39 30.5 0.000222424
   rotation 0 -1 0 -5.307179586466759e-06
 }
-DEF hotel Hotel {
+DEF building_hotel Hotel {
   translation 105 22 0
 }
-DEF church Church {
-  translation 29 -22 0
+DEF building_church Church {
+  translation 28 -22 0
   rotation 0 0 1 1.5708
 }
-DEF residential_tower ResidentialTower {
-  translation 41 -35 0
-  rotation 0 0 1 4.692820414042842e-06
-}
-DEF residential_tower(1) LargeResidentialTower {
-  translation 11 -21 0
+DEF building_residential(2) ResidentialTower {
+  translation 15.17 -19.4 0
   rotation 0 0 1 1.5708
-  name "residential tower(1)"
+}
+DEF building_residential(1) ResidentialBuilding {
+  translation 82 43.5 0
+  rotation 0 0 1 3.14159
+}
+DEF building(1) Building {
+  translation 20 24.7 0
+}
+DEF building_commercial(2) CommercialBuilding {
+  translation 109 -26 0
+  name "commercial building(1)"
+}
+DEF building_residential(3) OldResidentialBuilding {
+  translation 39.5 -39 0
+  rotation 0 0 1 -1.5707953071795862
+  name "residential building(1)"
+}
+DEF building(2) RandomBuilding {
+  translation 85 -48 0
+  name "building(2)"
+}
+DEF car(1) BmwX5 {
+  hidden position_0_0 -1.3076580830105452e-11
+  hidden position2_0_0 -6.4069816523783296e-06
+  hidden position_0_1 9.430603007920783e-12
+  hidden position2_0_1 -6.407003508059682e-06
+  hidden position_0_2 -0.00048273372219544006
+  hidden position_0_3 -0.0004827339754669424
+  hidden linearVelocity_0 0.0018644584246329022 2.1345728213889283e-07 -0.011394528319208622
+  hidden angularVelocity_0 4.7823193231314146e-08 -0.00040748120045578143 -7.87888035031355e-10
+  hidden translation_1 0 0 0
+  hidden rotation_1 -1.0345059714053031e-11 0.999999999999731 7.334358125922857e-07 6.588268313508822e-06
+  hidden linearVelocity_1 -0.0004955931930884478 -5.415610837555333e-08 0.7407208700512722
+  hidden angularVelocity_1 1.1198184958464788e-07 -0.001041043016364303 -8.740979443350375e-10
+  hidden translation_2 0 0 0
+  hidden rotation_2 -8.023422095474112e-12 -0.9999999999999408 -3.440242000464422e-07 6.588268313508822e-06
+  hidden linearVelocity_2 -0.0004955933997917186 -5.96320586257717e-08 0.7407208599095789
+  hidden angularVelocity_2 1.2756595570891016e-07 -0.0010410433974949859 -3.9560527567489747e-10
+  hidden translation_3 0 0 0
+  hidden rotation_3 0 -1 0 0.018135729795474165
+  hidden linearVelocity_3 -0.003317673471061388 -3.6939960528539124e-07 0.9705042933925071
+  hidden angularVelocity_3 9.855968270728842e-07 -0.008862400624253256 -1.3378464882732007e-09
+  hidden translation_4 0 0 0
+  hidden rotation_4 0 1 0 0.017569760498372864
+  hidden linearVelocity_4 -0.0033176746559229844 -3.803839428747586e-07 0.9705042832731282
+  hidden angularVelocity_4 1.016857380349299e-06 -0.008862403789121455 -4.4431228954839015e-11
+  translation 38.075171658212135 -6.560177317753896 0.4699862244471023
+  rotation 5.693971357560237e-05 -0.9998042829869499 0.01978364169762891 0.0057649220551097774
+  controller "<none>"
+  supervisor TRUE
+}
+DEF car(2) CitroenCZero {
+  hidden position_0_0 -2.127271293806029e-08
+  hidden position2_0_0 0.0005376160902179432
+  hidden position_0_1 -2.0602786463422373e-08
+  hidden position2_0_1 0.0004893883629858922
+  hidden position_0_2 -9.899588659114171e-06
+  hidden position_0_3 -1.2493143544725467e-05
+  hidden linearVelocity_0 -0.005321248919768457 -0.0002660377549400002 0.15933090058772675
+  hidden angularVelocity_0 -0.0006504088456807102 2.147075260767515e-05 -1.9579321249895324e-05
+  hidden translation_1 0 0 0
+  hidden rotation_1 -7.660752024192518e-11 -0.999999906381778 0.00043270825645341446 3.9100328959399246e-05
+  hidden linearVelocity_1 0.0021894564804203756 0.0001932253444245632 1.4888610787947227
+  hidden angularVelocity_1 -0.0006672289467490665 0.007687745115798037 -2.196333089343923e-05
+  hidden translation_2 0 0 0
+  hidden rotation_2 2.6693359659811623e-09 0.9999998053186683 0.0006239892832499144 2.69922679234941e-05
+  hidden linearVelocity_2 0.0022736922005717496 0.0001938273041169254 1.4984451435199846
+  hidden angularVelocity_2 -0.0006684665381475009 0.00798351878917791 -2.2113415050209628e-05
+  hidden translation_3 0 0 0
+  hidden rotation_3 0 1 0 8.871085655050283e-06
+  hidden linearVelocity_3 0.00046009305190526813 0.00020135176435293536 1.734260756342179
+  hidden angularVelocity_3 -0.0006799948559948697 0.0009207624166407676 -1.7899857922734078e-05
+  hidden translation_4 0 0 0
+  hidden rotation_4 0 -1 0 9.076898960921849e-06
+  hidden linearVelocity_4 0.00047045573429133585 0.00020193286691101356 1.7435079099435502
+  hidden angularVelocity_4 -0.0006811819340573422 0.0009412920535249758 -1.7909701111535806e-05
+  translation 81.38985733846656 2.199985197553156 0.3417861690191326
+  rotation 0.00299759096970875 0.00025783368086395816 0.9999954739748435 3.1415842492727126
+  name "vehicle(1)"
+  controller "<none>"
+  supervisor TRUE
+}
+DEF car(3) TruckSimple {
+  translation 90.59 2.28999 0.5
+  rotation 0 0 1 3.14159
+  name "vehicle(2)"
+}
+DEF car(4) MotorbikeSimple {
+  translation 14.99 2.20001 0.25
+  rotation 0 0 1 3.14159
+  name "vehicle(3)"
+}
+DEF car(5) LincolnMKZSimple {
+  translation 23.56 2.2 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(4)"
+}
+DEF car(6) RangeRoverSportSVRSimple {
+  translation 56.8601 -0.890161 0.4
+  rotation 0 0 1 2.618
+  name "vehicle(5)"
+}
+DEF car(7) ToyotaPriusSimple {
+  translation 62.15 -21.24 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(6)"
+}
+DEF car(8) BusSimple {
+  translation 87.94 -7.47 0.55
+  name "vehicle(7)"
 }
 DEF TeslaModel3 TeslaModel3 {
-  hidden position_0_0 0.1889031081364123
-  hidden position2_0_0 40.17675035473043
-  hidden position_0_1 0.21204306628205113
-  hidden position2_0_1 33.891264081191125
-  hidden position_0_2 181.9397286907322
-  hidden position_0_3 162.58016712129208
-  hidden rotation_1 0.4714794451610327 0.6503997587205007 -0.5955562833578024 2.386658238913596
-  hidden rotation_2 0.36352555459499947 -0.6234283828481955 0.6922327806566818 2.3038221503307668
-  hidden rotation_3 -0.7209888329731314 -0.48998737720823743 0.48998721708288895 4.390940926025625
-  hidden rotation_4 -0.9989438301327215 -0.032490190286499514 0.032490179668872944 4.711332579368374
-  translation 0.4680051915092036 0.7208423060094942 0.42815191236262246
-  rotation 0.014267124901088935 -0.09124513397096647 -0.9957262548881981 0.08524116485696304
+  hidden position_0_0 -1.261949994300752e-05
+  hidden position2_0_0 4.8844785783721445
+  hidden position_0_1 1.2631658624304763e-05
+  hidden position2_0_1 4.884479383081144
+  hidden position_0_2 6.075199732708704
+  hidden position_0_3 6.075199739224562
+  hidden linearVelocity_0 0.04471835111808887 -6.406602118359062e-08 0.12126865998915531
+  hidden angularVelocity_0 2.301742744825586e-08 0.0039542450546274505 6.076611733448086e-09
+  hidden translation_1 0 0 0
+  hidden rotation_1 0.9999977864175901 -0.001487562106101178 0.0014880587690293662 1.5707982250097485
+  hidden linearVelocity_1 0.03316684502268615 0.0007734369061769214 0.7214548165275981
+  hidden angularVelocity_1 -0.002284115462836682 0.0920989312212614 -0.00012802862630674876
+  hidden translation_2 0 0 0
+  hidden rotation_2 0.999997786418811 0.0014875622322844907 -0.0014880578225161271 1.570798225018601
+  hidden linearVelocity_2 0.03316686364334091 -0.0007735214530126086 0.7214539788233599
+  hidden angularVelocity_2 0.002284353379631857 0.09209898263204193 0.00012814521350342506
+  hidden translation_3 0 0 0
+  hidden rotation_3 0.9999989238013283 -0.0010373998477937545 0.0010373995087768879 1.57079707619925
+  hidden linearVelocity_3 0.06266284115137044 0.0016634927349567566 1.423102657684972
+  hidden angularVelocity_3 -0.004912622177893496 0.18143735622762738 0.001380297687299673
+  hidden translation_4 0 0 0
+  hidden rotation_4 0.9999989238014432 0.001037399792415005 -0.0010373994533980598 1.570797076199136
+  hidden linearVelocity_4 0.06266284133404135 -0.0016636478599184907 1.423101821369499
+  hidden angularVelocity_4 0.004913070992243653 0.18143735239479084 -0.0013802922073975544
+  translation 1.755866047943315 -2.2500026722680193 0.41195687735105085
+  rotation -1.945960578593325e-06 -0.9999999999613752 8.57104375318484e-06 0.02052937295979304
   engineSound "sounds/engine.wav"
   name "TeslaModel3"
-  controller "TeslaModel3_controller_1029(box)"
+  controller "TeslaModel3_controller_1030(box)"
   supervisor TRUE
 }
 DEF ROBERT Robot {
   translation 73.0000003684099 -10.000000000013323 0.21877375000000007
-  rotation -1.9037176099573535e-17 3.101106027925311e-17 0.9999999999999999 1.570805307241476
+  rotation -2.6728903947722965e-17 2.70813592385569e-17 0.9999999999999999 1.570805307241476
   children [
     CharacterSkin {
       name "Robert"
@@ -775,12 +901,12 @@ DEF ROBERT Robot {
     "-l"
   ]
   supervisor TRUE
-  linearVelocity -1.531825300815605e-17 7.107748234099215e-18 -1.1937117960441212e-15
-  angularVelocity -1.0972395350208637e-16 -3.0744710372627562e-16 -1.1917555958799527e-18
+  linearVelocity -1.2498327415300016e-20 -2.9654327737468867e-18 -8.668621376273222e-16
+  angularVelocity 8.620555249517221e-17 5.716906035967699e-22 3.205415861798532e-20
 }
 DEF ROBERT2 Robot {
   translation 19.999223169365195 -11.53510163816735 0.21877375000000007
-  rotation -5.957290498627125e-18 -5.07077207849115e-19 1 -3.1200508081344305
+  rotation 1.3926241022606152e-18 1.3549126221659569e-19 1 -3.1200508081344287
   children [
     CharacterSkin {
       name "Robert"
@@ -804,12 +930,12 @@ DEF ROBERT2 Robot {
     "-l"
   ]
   supervisor TRUE
-  linearVelocity 9.096138793633716e-18 1.2278257144254499e-17 -9.379164114029303e-16
-  angularVelocity -2.5187952208137257e-16 1.0921493237526685e-16 1.4275069291779667e-19
+  linearVelocity 2.3962424876716426e-17 -2.438674894158853e-18 -6.679101716144942e-16
+  angularVelocity 6.578291326876483e-17 5.04735269021012e-16 -2.8986063812287855e-20
 }
 DEF SANDRA Robot {
   translation 73.08 10 0.21923359375000007
-  rotation 2.3546301772080522e-18 2.5054851243138474e-18 -0.9999999999999999 1.5707953071795862
+  rotation -5.004040923256179e-19 -1.6613227257362941e-18 -0.9999999999999999 1.5707953071795862
   children [
     CharacterSkin {
       name "Sandra"
@@ -827,12 +953,12 @@ DEF SANDRA Robot {
     "Sandra"
   ]
   supervisor TRUE
-  linearVelocity 4.348562173910398e-19 -8.512338792125445e-18 -7.617018127285437e-16
-  angularVelocity 1.5673737762344548e-16 3.279546026092774e-18 2.1997691337366405e-20
+  linearVelocity 1.991266243658858e-18 2.174856805666085e-18 -6.707523425575346e-16
+  angularVelocity 1.1329428739048743e-22 3.935313613452107e-17 4.6470811801661115e-19
 }
 DEF SOPHIA Robot {
-  translation 48 -10 0.2193868750000001
-  rotation -6.859945909657574e-19 -9.976954318503938e-19 1 1.5708053071795867
+  translation 48.000338564956465 -10.288239550428829 0.21938687500000006
+  rotation 1.3059783668521848e-17 -2.6296304339817965e-17 1 1.59127827212215
   children [
     CharacterSkin {
       name "Sophia"
@@ -856,12 +982,12 @@ DEF SOPHIA Robot {
     "100"
   ]
   supervisor TRUE
-  linearVelocity 1.4264717752776312e-18 -2.9301937724400332e-18 -1.2789769244816532e-15
-  angularVelocity 1.9984800203975313e-17 3.2406640875350524e-17 -1.5293366350188324e-19
+  linearVelocity 9.449851974779759e-19 3.1321418611899416e-18 -8.242295734817163e-16
+  angularVelocity -5.426973775440705e-17 -1.882028134707412e-17 -2.7843675592559046e-20
 }
 DEF ANTHONY Robot {
-  translation 47 10 0.21923359375000007
-  rotation 1.8049945605430188e-18 -1.4809939437875477e-18 -0.9999999999999999 1.5707953071795862
+  translation 46.99939328073155 10.256653627839235 0.21923359375000007
+  rotation -7.406519809899057e-19 -1.1186230488579216e-19 -1 1.5494861131281783
   children [
     CharacterSkin {
       name "Anthony"
@@ -884,6 +1010,6 @@ DEF ANTHONY Robot {
     "-l"
   ]
   supervisor TRUE
-  linearVelocity -9.355908501282148e-17 -1.0058922677152364e-18 -7.958078641233335e-16
-  angularVelocity -4.263554008753753e-17 -1.8241818579833316e-15 -4.700897472339275e-19
+  linearVelocity 2.3304896875751826e-19 -4.716954998678536e-18 -1.1368683772161603e-15
+  angularVelocity 8.538103187475806e-17 5.220089597111192e-18 -1.9131587248835496e-19
 }
