@@ -10,7 +10,7 @@ import json
 # Convert dictionary to json
 def convert_json(input : dict):         
     with open("data.json", "w") as f:   # 파일 저장소: TeslaModel3_controller_1029(box).py와 같은 위치
-        json.dump(input, f)
+        json.dump(input, f, ensure_ascii=False, indent=4)
 
 # Supervisor 객체 생성 
 supervisor = Supervisor()
@@ -30,7 +30,7 @@ tree_names = []
 car_names = []
 # human_names = []
 # road_names = []
-# sidewalk_names = []
+sidewalk_names = []
 
 for i in range(children_field.getCount()):
     node = children_field.getMFNode(i)
@@ -49,8 +49,8 @@ for i in range(children_field.getCount()):
                 car_names.append(def_name)
             # # elif "road" in def_name:
             # #      road_names.append(def_name)
-            # # elif "sidewalk_block" in def_name:
-            # #      sidewalk_names.append(def_name)
+            elif "sidewalk_block" in def_name:
+                sidewalk_names.append(def_name)
             else:
                 continue
         else:
@@ -76,15 +76,26 @@ for i in range(children_field.getCount()):
 
 tesla_array = np.array([])
 
+
+
 fixed_dict = {
     'building_dict' : {},
     'trafficlight_dict' : {},
     'streetlight_dict' : {},
     'tree_dict' : {},
+    'sidewalk_dict' : {},
     'person_dict' :{},
     'car_dict' : {} # Telsa 제외 다른 차량 (주차되어있는 차량, 빨간 불 멈춤)
 }
 
+#     'building_dict' : [],
+#     'trafficlight_dict' : [],
+#     'streetlight_dict' : [],
+#     'tree_dict' : [],
+#     'sidewalk_dict' : [],
+#     'person_dict' :[],
+#     'car_dict' : [],
+# }
 #########################################
 ##             building                ##
 #########################################
@@ -92,6 +103,20 @@ print("Building names:", building_names)
 # building_dict = {}     # 노드를 저장할 리스트
 # building_nodes = []     # 노드를 저장할 리스트
 # building_position = []  # 위치를 저장할 리스트
+building_sizes = [
+    [22, 41.5, 22],     # comm(1)
+    [5, 3.5, 5],        # fast
+    [31.7, 17.3, 12.2], # museum
+    [13.7, 24.8, 13.7], # hotel
+    [15.5, 21, 10],     # church
+    [5.4, 21, 7.2],     # residen(2)
+    [57.4, 20.2, 14.4], # residen(1)
+    [20, 13, 20],       # building(1)
+    [22, 41.5, 22],     # comm(2)
+    [12.2, 11, 29.1],   # residen(3)
+    [20, 13, 20]        # building(2)
+]
+idx = 0
 for name in building_names:
     node = driver.getFromDef(name)
     
@@ -101,11 +126,18 @@ for name in building_names:
         proto_content = file.read()
     proto_dict = parse_proto(proto_content)
 
+    # fixed_dict['building_dict'].append({
+    #     'pos' : node.getPosition(),
+    #     'ori' : node.getOrientation(),
+    #     'size' : building_sizes[idx]   #get_value(proto_dict, 'size'),
+    # })
+
     fixed_dict['building_dict'][name] = {
         'pos' : node.getPosition(),
         'ori' : node.getOrientation(),
-        'size' : get_value(proto_dict, 'size'),
-    }   
+        'size' : building_sizes[idx]   #get_value(proto_dict, 'size'),
+    } 
+    idx += 1
     # building_nodes.append(node)  # 노드 저장
     # building_position.append(position)
 
@@ -114,22 +146,22 @@ if node is not None:
 else:
     print("not found")
 
-# #########################################
-# ##            traffic light            ##
-# #########################################
-# print("trafficlight names:", trafficlight_names)
-# # trafficlight_dict = {}
-# for name in trafficlight_names:
-#     node = driver.getFromDef(name)
+#########################################
+##            traffic light            ##
+#########################################
+print("trafficlight names:", trafficlight_names)
+# trafficlight_dict = {}
+for name in trafficlight_names:
+    node = driver.getFromDef(name)
 
-#     fixed_dict['trafficlight_dict'][name] = {
-#         'pos' : node.getPosition(),
-#         'radius' : node.getField("radius").getSFFloat()    # TODO : 값을 못찾음
-#     }   
-# if node is not None:
-#     print("bounding box :", fixed_dict['trafficlight_dict'])
-# else:
-#     print("not found")
+    fixed_dict['trafficlight_dict'][name] = {
+        'pos' : node.getPosition(),
+        'radius' : 0.1         # node.getField("radius").getSFFloat()    # TODO : 값을 못찾음
+    }   
+if node is not None:
+    print("bounding box :", fixed_dict['trafficlight_dict'])
+else:
+    print("not found")
 
 #########################################
 ##            streetlight              ##
@@ -170,6 +202,17 @@ else:
 #########################################
 print("car names:", car_names)
 car_dict = {}
+car_sizes = [    # TODO
+    [1.73, 1.44, 5.55],   # car(1)
+    [1.6, 0.9, 3.7],      # car(2)
+    [3.2, 4.5, 14],       # car(3)
+    [1.2, 1.5, 3.5],      # car(4)
+    [2, 0.8, 5.2],        # car(5)
+    [2, 2.1, 5],          # car(6)
+    [1.8, 1.4, 4.2],      # car(7)
+    [2.64, 2.9, 9.73]     # car(8)
+]
+idx = 0
 for name in car_names:
     node = driver.getFromDef(name)
     
@@ -182,12 +225,40 @@ for name in car_names:
     fixed_dict['car_dict'][name] = {
         'pos' : node.getPosition(),
         'ori' : node.getOrientation(),
-        'size' : get_value(proto_dict, 'size'),
-    }   
+        'size' : car_sizes[idx],          # get_value(proto_dict, 'size'),
+    }
+    idx += 1
 if node is not None:
     print("bounding box:", fixed_dict['car_dict'])
 else:
     print("not found")
+
+#########################################
+##               sidewalk              ##
+#########################################
+print("sidewalk names:", sidewalk_names)
+sidewalk_dict = {}
+for name in sidewalk_names:
+    node = driver.getFromDef(name)
+
+    # file_name = '../../protos/' + name + '.proto'
+    # print(file_name)
+    # with open(file_name, "r") as file:
+    #     proto_content = file.read()
+    # proto_dict = parse_proto(proto_content)
+
+    fixed_dict['sidewalk_dict'][name] = {
+        'pos' : node.getPosition(),
+        'ori' : node.getOrientation(),
+        'size' : node.getField("size").getSFVec3f()
+    }
+if node is not None:
+    print("bounding box:", fixed_dict['sidewalk_dict'])
+else:
+    print("not found")
+
+
+
 
 #########################################
 ##    Convert dictionary to json       ##
@@ -219,7 +290,7 @@ while driver.step() != -1:
 
     print('-------- END --------')
 
-D
+
 
 
 
