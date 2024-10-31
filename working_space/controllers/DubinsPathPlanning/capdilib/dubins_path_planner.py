@@ -11,7 +11,7 @@ from capdilib.convention import Waypoint
 
 class DubinsPathPlanner:
     def __init__(self, start: Waypoint, end: Waypoint, 
-                 curvature: float = 1.0 , step_size: float = 0.1):
+                 curvature: float = 0.09 , step_size: float = 0.1):
         if len(start) != 3 or len(end) != 3:
             raise ValueError("start and end should be 3D points")
         self.start = start
@@ -29,7 +29,6 @@ class DubinsPathPlanner:
         }
         """ origin """
         self.alpha, self.beta, self.d = self.__find_from_origin()
-
         """ trigonometry """
         self.sin_a, self.sin_b, = sin(self.alpha), sin(self.beta)
         self.cos_a, self.cos_b  = cos(self.alpha), cos(self.beta)
@@ -60,6 +59,8 @@ class DubinsPathPlanner:
         return [local_goal_x, local_goal_y, local_goal_yaw]
 
     def calculate(self, selected_types: List[str] = None):
+        self.local_goal = self.__find_local_goal()
+        self.alpha, self.beta, self.d = self.__find_from_origin()
         planning_funcs = {
             key: val for key, val in self.__PATH_TYPE_MAP.items() 
             if selected_types is None or key in selected_types
