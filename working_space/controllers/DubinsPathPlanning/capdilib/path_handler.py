@@ -1,7 +1,10 @@
 from capdilib.convention import Waypoint, X, Y, YAW
 from typing import List, Type
 import matplotlib.pyplot as plt
+import numpy as np
 from utils.plot import plot_arrow
+import math
+import time 
 
 
 class PathHanlder:
@@ -13,9 +16,9 @@ class PathHanlder:
         self.path = path
         if len(path) < 2:
             raise ValueError("path should have more 2 waypoints")
-        self.path_planner = PathPlanner(path[0], path[1])
-        self.start_x, self.start_y, self.start_yaw = path[0]
-        self.end_x, self.end_y, self.end_yaw = path[-1]
+        self.PathPlanner = PathPlanner
+
+
 
     def print_path(self):
         for i, wp in enumerate(self.path):
@@ -24,20 +27,31 @@ class PathHanlder:
         print(self.path_planner.start)
 
     def calculate_path(self, selected_types: List[str] = None):
-        self.path_x, self.path_y, self.path_yaw, \
-        self.mode, self.lengths = self.path_planner.calculate(selected_types)
-        print(f"mode: {self.mode}, lengths: {self.lengths}")
+        self.path_x_list, self.path_y_list, self.path_yaw_list = [], [], []
+        self.path_x, self.path_y, self.path_yaw = np.empty((0,)), np.empty((0,)), np.empty((0,))   # 크기가 0인 객체 배열, [], []
+        for i in range(len(self.path) - 1):
+            print(f"i: {i}")
+            import time
+            start = time.time()
+            path_planner = self.PathPlanner(self.path[i], self.path[i + 1])
+            cur_path_x, cur_path_y, cur_path_yaw, \
+                cur_mode, cur_lengths = path_planner.calculate(selected_types)
+            end = time.time()
+            print(f"{end - start:.5f} sec")
+             # NaN을 구분자로 삽입
+            if i > 0:
+                self.path_x = np.concatenate((self.path_x, [np.nan]))
+                self.path_y = np.concatenate((self.path_y, [np.nan]))
+                self.path_yaw = np.concatenate((self.path_yaw, [np.nan]))
+            self.path_x = np.concatenate((self.path_x, cur_path_x), axis=0)
+            self.path_y = np.concatenate((self.path_y, cur_path_y), axis=0)
+            self.path_yaw = np.concatenate((self.path_yaw, cur_path_yaw), axis=0)
 
-    def plot_path(self, show_animation):
-        if show_animation == False:
-            return
-        plt.plot(self.path_x, self.path_y, label="".join(self.mode))
-        plot_arrow(self.start_x, self.start_y, self.start_yaw)
-        plot_arrow(self.end_x, self.end_y, self.end_yaw)
-        plt.legend()
-        plt.grid(True)
-        plt.axis("equal")
-        plt.show()
+        # print(f'path_x: {self.path_x}, path_y: {self.path_y}, path_yaw: {self.path_yaw}')
+
+        return self.path_x, self.path_y, self.path_yaw
+            # print(f'path_x: {self.path_x}, path_y: {self.path_y}, path_yaw: {self.path_yaw}')
+            # print(f"mode: {self.mode}, lengths: {self.lengths}")
 
 
 
