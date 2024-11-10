@@ -10,7 +10,7 @@ from capdilib.convention import Waypoint
 from capdilib.state_states import State, State_list
 from capdilib.path_handler import PathHanlder
 from capdilib.target_course import TargetCourse
-from utils.plot import plot_arow
+from utils.plot import plot_arrow
 from capdilib.convention import X, Y, YAW
 
 # Parameters
@@ -42,27 +42,69 @@ def calculate_error(state, trajectory, pind):
 def main():
     ##################################################
     # LLM
-    path: list[Waypoint] = [ np.array([0.0, 0.0, np.deg2rad(0.)]), # LSL
-                             np.array([61.4, 5.2, np.deg2rad(45.)]), # RSR
-                             np.array([112.1, 7.2, np.deg2rad(0.)]) ]
-    SPEED = 100.0 # [km/h]
+    # path: list[Waypoint] = [ np.array([0.0, 0.0, np.deg2rad(0.)]), # LSL
+    #                          np.array([61.4, 5.2, np.deg2rad(45.)]), # RSR
+    #                          np.array([112.1, 7.2, np.deg2rad(0.)]) ]
+    path = [
+        np.array([0.0, 0.0, np.deg2rad(0)]),
+        np.array([30.0, 5.0, np.deg2rad(15)]),
+        np.array([60.0, -3.0, np.deg2rad(-15)]),
+        np.array([90.0, 8.0, np.deg2rad(20)]),
+        np.array([120.0, -10.0, np.deg2rad(-20)]),
+        np.array([150.0, 12.0, np.deg2rad(25)]),
+        np.array([180.0, -15.0, np.deg2rad(-30)]),
+        np.array([210.0, 10.0, np.deg2rad(10)]),
+        np.array([240.0, -5.0, np.deg2rad(-10)]),
+        np.array([270.0, 3.0, np.deg2rad(5)]),
+        np.array([300.0, -8.0, np.deg2rad(-5)]),
+        np.array([330.0, 15.0, np.deg2rad(30)]),
+        np.array([360.0, -20.0, np.deg2rad(-25)]),
+        np.array([390.0, 18.0, np.deg2rad(20)]),
+        np.array([420.0, -12.0, np.deg2rad(-20)]),
+        np.array([450.0, 10.0, np.deg2rad(15)]),
+        np.array([480.0, -7.0, np.deg2rad(-10)]),
+        np.array([510.0, 5.0, np.deg2rad(5)]),
+        np.array([540.0, -3.0, np.deg2rad(-5)]),
+        np.array([570.0, 2.0, np.deg2rad(3)]),
+        np.array([600.0, 0.0, np.deg2rad(0)])
+    ]
+    #
+    
+    OFFSET = 150 # [m]
     END_TIME = 100.0  # max simulation time
-    # K_P, K_I, K_D = 0.01, 0.0, 0.0            # Case 1
+
+    # SPEED = 10.0 # [km/h]
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0            # Case 1
     # K_P, K_I, K_D = 0.025, 0.0, 0.0           # Case 2
-    # K_P, K_I, K_D = 0.05, 0.0, 0.0            # Case 3
+    # K_P, K_I, K_D = 0.050, 0.0, 0.0            # Case 3
     # K_P, K_I, K_D = 0.075, 0.0, 0.0           # Case 4
-    # K_P, K_I, K_D = 0.10, 0.0, 0.0            # Case 5
-    # K_P, K_I, K_D = 0.15, 0.0, 0.0              # Case 6
+    # K_P, K_I, K_D = 0.100, 0.0, 0.0            # Case 5
+    # K_P, K_I, K_D = 0.150, 0.0, 0.0              # Case 6
 
-    K_P, K_I, K_D = 0.50, 0.0, 0.0              # Case 6
-
-
-    # K_P, K_I, K_D = 0.05, 0.00, 0.1          # Case 7
-    # K_P, K_I, K_D = 0.05, 0.00, 0.12          # Case 7
-    # K_P, K_I, K_D = 0.05, 0.00, 0.15          # Case 7
+    # K_P, K_I, K_D = 0.05, 0.00, 0.100          # Case 7
+    # K_P, K_I, K_D = 0.05, 0.00, 0.120          # Case 7 <<<<<<<<<<<<
+    # K_P, K_I, K_D = 0.05, 0.00, 0.150          # Case 7
     # K_P, K_I, K_D = 0.05, 0.00, 0.156          # Case 7
     # K_P, K_I, K_D = 0.05, 0.00, 0.157          # Case 7
-    # K_P, K_I, K_D = 0.05, 0.00, 0.2          # Case 7
+    # K_P, K_I, K_D = 0.05, 0.00, 0.200          # Case 7
+
+    SPEED = 108.0 # [km/h]
+    # K_P, K_I, K_D = 0.005, 0.0, 0.0              # Case 6
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0              # Case 6
+    # K_P, K_I, K_D = 0.020, 0.0, 0.0              # Case 6
+    # K_P, K_I, K_D = 0.030, 0.0, 0.0              # Case 6
+    # K_P, K_I, K_D = 0.040, 0.0, 0.0              # Case 6
+    # K_P, K_I, K_D = 0.050, 0.0, 0.0              # Case 6
+
+    # K_P, K_I, K_D = 0.010, 0.0, 0.010             # Case 6
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0150             # Case 6
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0160             # Case 6
+    K_P, K_I, K_D = 0.010, 0.0, 0.0170             # Case 6
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0180             # Case 6
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0200              # Case 6
+    # K_P, K_I, K_D = 0.010, 0.0, 0.0250             # Case 6
+
+
     ##################################################
 
     dt = 0.1
@@ -127,6 +169,8 @@ def main():
             plt.plot(state_list.x, state_list.y, "-b", label="trajectory")
             plt.plot(target_path_x[target_index], target_path_y[target_index], "xg", label="target")
             plt.axis("equal")
+            plt.xlim(state.x - OFFSET, state.x + OFFSET)
+            plt.ylim(state.y - OFFSET, state.y + OFFSET)
             plt.grid(True)
             plt.title("Speed[km/h]:" + str(state.v * 3.6)[:4])
             plt.pause(0.001)
