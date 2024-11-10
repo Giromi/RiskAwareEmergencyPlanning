@@ -41,7 +41,7 @@ TARGET_SPEED = 108 / 3.6  # [m/s] target speed # <<
 
 N_IND_SEARCH = 10  # Search index number
 
-DT = 0.2  # [s] time tick
+DT = 0.1  # [s] time tick
 
 # Vehicle parameters
 LENGTH = 4.5  # [m]
@@ -170,7 +170,7 @@ def update_state(state, a, delta):
     state.x = state.x + state.v * math.cos(state.yaw) * DT
     state.y = state.y + state.v * math.sin(state.yaw) * DT
     state.yaw = state.yaw + state.v / WB * math.tan(delta) * DT
-    state.v = state.v + a * DT
+    state.v = state.v #+ a * DT
 
     if state.v > MAX_SPEED:
         state.v = MAX_SPEED
@@ -348,14 +348,17 @@ def check_goal(state, goal, tind, nind):
     dy = state.y - goal[1]
     d = math.hypot(dx, dy)
 
+    print('d :', d, 'vs', GOAL_DIS)
+
     isgoal = (d <= GOAL_DIS)
 
     if abs(tind - nind) >= 5:
         isgoal = False
 
-    isstop = (abs(state.v) <= STOP_SPEED)
+    # TODO : 최종적으로는 10km/h 이하로 속도가 떨어지면 종료
+    # isstop = (abs(state.v) <= STOP_SPEED)
 
-    if isgoal and isstop:
+    if isgoal: #and isstop:
         return True
 
     return False
@@ -564,16 +567,13 @@ def get_switch_back_course(dl):
     cy.extend(cy2)
     cyaw.extend(cyaw2)
     ck.extend(ck2)
-
     return cx, cy, cyaw, ck
 
 def get_my_dubins_course(path, dl):
     # 시작 및 종료 위치와 방향 설정 (각 좌표는 x, y, yaw)
     path_handler = PathHanlder(path, DubinsPathPlanner)
-    all_x, all_y, all_yaw = path_handler.calculate_path()
-
     # path_handler = PathHanlder(path, RRTPathPlanner)
-    # all_x, all_y, _ = path_handler.calculate_path()
+    all_x, all_y, all_yaw = path_handler.calculate_path()
 
     # 곡률 계산 (ck)
     all_ck = []
