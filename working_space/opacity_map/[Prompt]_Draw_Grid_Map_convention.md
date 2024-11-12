@@ -1,4 +1,4 @@
-(input 03_height_C_H.txt file)
+(input Map file)
 # Issues
 
 ### Initial Condition
