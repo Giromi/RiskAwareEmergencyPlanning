@@ -6,8 +6,17 @@
 ##### Character
 - 0 : empty
 - n(positive integer) : height of obstacle
-- C : Current Car
+    - Tall Building :  n == 9
+    - Middle Building : n == 8
+    - Low Building : 5 <= n < 8
+    - Sidewalk : n == 1
+- M : My Vehicle
+- C : Other Vehicle
+- T : Street Tree
+- G : Guardrail
 - H : Human
+
+
   
 # Instructions
 ### Objective
@@ -19,31 +28,25 @@
 - Draw the map using **matplotlib**, displaying pixels based on the height of obstacles.
 - Use 'open' function to read the input file that contains the grid map data.
 
-#### Grayscale Representation 
-- **0** (empty) should be represented as **RGB(255, 255, 255)**.
-- Heights up to **9** should become progressively darker, ending at **RGB(0, 0, 0)**.
-
 #### Character Colors 
-- The car (C) is displayed in **orange (RGB(255, 165, 0))**.
-- The human (H) is shown in **brown (RGB(65, 41, 35))**
+- The empty(0) : **white RGB(255, 255, 255)**
+- Sidewalk(1) : **light silver RGB(211, 211, 211)**
+- Buildings (5 to 9): Progressively darker shades, ending with **light gray RGB(192, 192, 192)** for height **9**
+- My Vehicle(M): **blue RGB(0, 0, 255)**
+- The other Vehicle(C) : **orange RGB(255, 165, 0)**.
+- Street Tree (T): **green RGB(34, 139, 34)**
+- Guardrail (G) : **dim silver RGB(192, 192, 192)**
+- The human (H) : **brown RGB(65, 41, 35)**
 
 #### Configuration of plot
+- **My Vehicle(M)** is positioned at the origin **(0, 0)**.
 - Set up the plot so that:
     - The **y+ axis** points upward.
     - The **x+ axis** points to the right.
 - This orientation should be represented in the plot layout, not specific to any object’s orientation (such as the car).
 - <!> Use `origin='lower'` in `imshow` for `matplotlib` to ensure the **y-axis points upward** in the plot display.
 - <!> The axis of grid map is true.
-
-#### Object Direction
-- <!> The **car** is set to move along the **positive x-axis direction** like below.
-```
-  y
-  ▲
-  │
-  │
- Car ────▶ x
-```
+- <!> Add the label which obejects
 
 #### Immediate Visualization
 - <!> Display the visualization immediately.
