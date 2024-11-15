@@ -1,0 +1,46 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/tesla/TeslaModel3.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+  info [
+    "Skin animation of human models."
+    "In this example BVH motions are played on FBX MakeHuman models."
+    "Author: Guillaume Michel <guillaume.michel.202@gmail.com>"
+  ]
+  title "Human Skin Animation"
+  basicTimeStep 8
+}
+Viewpoint {
+  orientation 0.2928427581834519 0.2986234380107703 -0.9083320765282573 1.6473192067573104
+  position 1.564118213339896 6.39373938287579 6.186623579169435
+}
+TexturedBackground {
+  texture "noon_cloudy_countryside"
+}
+TexturedBackgroundLight {
+  texture "noon_cloudy_countryside"
+}
+DEF Base Floor {
+  translation 0 0 0.008
+  size 700 700
+  appearance Parquetry {
+    colorOverride 0 0 0
+  }
+}
+DEF Checkboard Floor {
+  translation 0 0 0.01
+  name "floor(1)"
+  size 700 700
+  tileSize 2 2
+}
+DEF TeslaModel3 TeslaModel3 {
+  translation -0.030818810640600214 -1.599033146636804e-05 0.11279202429047762
+  rotation 0.00024955525284971154 -0.998566307030681 0.053528199906993465 0.008649522560898997
+  controller "TeslaModel3_controller_just_pathtracker"
+  supervisor TRUE
+}
