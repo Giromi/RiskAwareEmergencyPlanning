@@ -4,9 +4,11 @@ import numpy as np
 GRID_RESOLUTION = 1  # 1 meter per cell
 GRID_X_MIN, GRID_X_MAX = -50, 50
 GRID_Y_MIN, GRID_Y_MAX = -80, 80
+X, Y, = 0, 1
+W, H = 0, 2
 
 def mark_occupied(name, file, pos, size, ori):
-    dx, dy, dz = size
+    dx, dy, dz = size #TODO: Check if dz is the height
     x, y, z = pos
 
     # Extract orientation matrix and calculate angle (assuming 2D rotation on xy plane)
@@ -53,7 +55,8 @@ def simplify_grid_map(json_file):
 
     output = open('output.txt', 'w')
     output.write(f'Map size: {grid_width}, {grid_height}\n\n')
-    output.write('#min_x, min_y, max_x, max_y\n')
+    # output.write('# min_x, min_y, max_x, max_y\n')
+    output.write('# x, y, w, h\n')
 
     for obj_dict in [data["building_dict"], data["car_dict"], data["tree_dict"]]:
 
@@ -68,7 +71,8 @@ def simplify_grid_map(json_file):
                     pos = value["pos"]
                     size = [value["radius"] * 2, 0, value['radius'] * 2]
                     ori = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
-            mark_occupied(key, output, pos, size, ori)
+            output.write(f'{key} : ({pos[X]}, {pos[Y]}, {size[W]}, {size[H]})\n')
+            # mark_occupied(key, output, pos, size, ori)
     output.close()
 
 
