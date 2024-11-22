@@ -29,7 +29,7 @@ class RRTStar:
         max_iter=10000,
         min_turn_radius=TESLA_MIN_RADIUS,
     ):
-        alpha =  3.6 // 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        alpha =  3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
@@ -179,9 +179,9 @@ class RRTStar:
 #     grid_map = generate_grid_map("data.json")
 
 #     start_point = (0, len(grid_map[0]) // 2)
-#     goal_point = (len(grid_map[0]) - 10, len(grid_map[0]) // 2)
+#     goal_point = (0, 10)
 
-#     rrt_star = RRTStar(grid_map, start_point, goal_point, velocity=108)
+#     rrt_star = RRTStar(grid_map, start_point, goal_point, velocity=30)
 #     path = rrt_star.plan()
 #     print(path)
 #     rrt_star.visualize(path)
