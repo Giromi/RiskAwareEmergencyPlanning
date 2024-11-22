@@ -86,7 +86,7 @@ def smooth_yaw(yaw):
 
 ################################ About Rotation ################################
 
-def rot_mat_to_2d_mat(angle):
+def rot_mat_to_2d(angle):
     """
     Create 2D rotation matrix from an angle
 
@@ -104,26 +104,31 @@ def rot_mat_to_2d_mat(angle):
     """
     return Rot.from_euler('z', angle).as_matrix()[0:2, 0:2]
 
-
-
-def rot_mat_to_yaw(rotation_matrix: np.ndarray) -> float:
+def webots_orientation_to_yaw(orientation: list) -> float:
     """
-    Extract the yaw (rotation around the z-axis) from a 3D rotation matrix.
+    Convert Webots orientation data (1D array of 9 elements) to yaw.
 
     Parameters
     ----------
-    rotation_matrix : np.ndarray
-        3x3 rotation matrix
+    orientation : list or np.ndarray
+        A 1D array of length 9 representing a 3x3 rotation matrix in row-major order.
 
     Returns
     -------
-    yaw : float
-        Yaw angle in radians
+    float
+        Yaw angle (rotation around the z-axis) in radians.
+
+    Raises
+    ------
+    ValueError
+        If the input orientation is not a valid 9-element array.
     """
-    # Create a Rotation object from the rotation matrix
-    rotation = Rot.from_matrix(rotation_matrix)
+    if len(orientation) != 9:
+        raise ValueError("Orientation must be a list or array of 9 elements.")
     
-    # Extract yaw, pitch, roll from the rotation
-    yaw, pitch, roll = rotation.as_euler('zyx', degrees=False)
+    # Convert the 1D list to a 3x3 matrix
+    rotation_matrix = np.array(orientation).reshape(3, 3)
     
+    # Extract yaw angle from the rotation matrix
+    yaw = np.arctan2(rotation_matrix[1, 0], rotation_matrix[0, 0])
     return yaw

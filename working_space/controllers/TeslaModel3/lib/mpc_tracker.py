@@ -7,14 +7,8 @@ import matplotlib.pyplot as plt
 import cvxpy
 import math
 import numpy as np
-import sys
-sys.path.append("../")
-from utils.operation import angle_mod
-from utils.plot import plot_arrow
-from capdilib.path_handler import PathHanlder
-from capdilib.dubins_path_planner import DubinsPathPlanner
+from utils.operator import angle_mod
 from lib.tesla_state import IdealState
-from CubicSpline import cubic_spline_planner
 
 
 class MPCTracker:
@@ -40,8 +34,8 @@ class MPCTracker:
     def __init__(self, dt):
         self.dt = dt
 
-    def calculate_ref_trajectory(self, state, cx, cy, cyaw, ck, sp, dl, pind):
-        xref = np.zeros((MPCTracker.NX, MPCTracker.T + 1))
+    def calculate_ref_trajectory(self, state, cx, cy, cyaw, sp, dl, pind):
+        x_ref = np.zeros((MPCTracker.NX, MPCTracker.T + 1))
         dref = np.zeros((1, MPCTracker.T + 1))
         ncourse = len(cx)
         ind, _ = self.calculate_nearest_index(state, cx, cy, cyaw, pind)
@@ -49,32 +43,33 @@ class MPCTracker:
         if pind >= ind:
             ind = pind
 
-        xref[0, 0] = cx[ind]
-        xref[1, 0] = cy[ind]
-        xref[2, 0] = sp[ind]
-        xref[3, 0] = cyaw[ind]
+        x_ref[0, 0] = cx[ind]
+        x_ref[1, 0] = cy[ind]
+        x_ref[2, 0] = sp[ind]
+        x_ref[3, 0] = cyaw[ind]
         dref[0, 0] = 0.0  # steer operational point should be 0
 
         travel = 0.0
 
         for i in range(MPCTracker.T + 1):
-            travel += abs(state.v) * MPCTracker.dt
+            travel += abs(state.v) * self.dt
             dind = int(round(travel / dl))
 
             if (ind + dind) < ncourse:
-                xref[0, i] = cx[ind + dind]
-                xref[1, i] = cy[ind + dind]
-                xref[2, i] = sp[ind + dind]
-                xref[3, i] = cyaw[ind + dind]
+                x_ref[0, i] = cx[ind + dind]
+                x_ref[1, i] = cy[ind + dind]
+                x_ref[2, i] = sp[ind + dind]
+                x_ref[3, i] = cyaw[ind + dind]
                 dref[0, i] = 0.0
             else:
-                xref[0, i] = cx[ncourse - 1]
-                xref[1, i] = cy[ncourse - 1]
-                xref[2, i] = sp[ncourse - 1]
-                xref[3, i] = cyaw[ncourse - 1]
+                x_ref[0, i] = cx[ncourse - 1]
+                x_ref[1, i] = cy[ncourse - 1]
+                x_ref[2, i] = sp[ncourse - 1]
+                x_ref[3, i] = cyaw[ncourse - 1]
                 dref[0, i] = 0.0
+        print("x_ref : ", x_ref)
 
-        return xref, ind, dref
+        return x_ref, ind, dref
 
 
 
@@ -104,7 +99,7 @@ class MPCTracker:
         
         return speed_profile
 
-    def linear_mpc_control(self, xref, xbar, x0, dref):
+    def linear_control(self, xref, xbar, x0, dref):
         """
         linear mpc control
 
@@ -114,8 +109,14 @@ class MPCTracker:
         dref: reference steer angle
         """
 
+        # print('xref :', xref.shape, xref)
+        # print('xbar :', xbar.shape, xbar)
+        # print('x0 :', x0)
+        # print('dref :', dref.shape, dref)
+
         x = cvxpy.Variable((MPCTracker.NX, MPCTracker.T + 1))
         u = cvxpy.Variable((MPCTracker.NU, MPCTracker.T))
+
 
         cost = 0.0
         constraints = []
@@ -132,8 +133,7 @@ class MPCTracker:
 
             if t < (MPCTracker.T - 1):
                 cost += cvxpy.quad_form(u[:, t + 1] - u[:, t], MPCTracker.Rd)
-                constraints += [cvxpy.abs(u[1, t + 1] - u[1, t]) <=
-                                IdealState.MAX_DSTEER * self.dt]
+                constraints += [cvxpy.abs(u[1, t + 1] - u[1, t]) <= IdealState.MAX_DSTEER * self.dt]
 
         cost += cvxpy.quad_form(xref[:, MPCTracker.T] - x[:, MPCTracker.T], MPCTracker.Qf)
 
@@ -171,25 +171,25 @@ class MPCTracker:
         A[0, 3] = - self.dt * v * math.sin(phi)
         A[1, 2] = self.dt * math.sin(phi)
         A[1, 3] = self.dt * v * math.cos(phi)
-        A[3, 2] = self.dt * math.tan(delta) / MPCTracker.WB
+        A[3, 2] = self.dt * math.tan(delta) / IdealState.WB
 
         B = np.zeros((MPCTracker.NX, MPCTracker.NU))
         B[2, 0] = self.dt
-        B[3, 1] = self.dt * v / (MPCTracker.WB * math.cos(delta) ** 2)
+        B[3, 1] = self.dt * v / (IdealState.WB * math.cos(delta) ** 2)
 
         C = np.zeros(MPCTracker.NX)
         C[0] = self.dt * v * math.sin(phi) * phi
         C[1] = - self.dt * v * math.cos(phi) * phi
-        C[3] = - self.dt * v * delta / (MPCTracker.WB * math.cos(delta) ** 2)
+        C[3] = - self.dt * v * delta / (IdealState.WB * math.cos(delta) ** 2)
 
         return A, B, C
 
-    def predict_motion(self, x0, oa, od, xref):
-        xbar = xref * 0.0
-        for i, _ in enumerate(x0):
-            xbar[i, 0] = x0[i]
+    def predict_motion(self, x_cur, oa, od, x_ref):
+        xbar = x_ref * 0.0
+        for i, _ in enumerate(x_cur):
+            xbar[i, 0] = x_cur[i]
 
-        state = IdealState(x=x0[0], y=x0[1], yaw=x0[3], v=x0[2])
+        state = IdealState(self.dt, x=x_cur[0], y=x_cur[1], yaw=x_cur[3], v=x_cur[2])
         for (ai, di, i) in zip(oa, od, range(1, MPCTracker.T + 1)):
             state.update(ai, di)
             xbar[0, i] = state.x
@@ -200,20 +200,21 @@ class MPCTracker:
         return xbar
 
 
-    def iterative_linear_mpc_control(self, xref, x0, dref, oa, od):
-        """
-        MPC control with updating operational point iteratively
-        """
+    def iterative_linear_control(self, x_ref, x_cur, dref, oa, od):
         ox, oy, oyaw, ov = None, None, None, None
 
         if oa is None or od is None:
-            oa = [0.0] * MPCTracker.T
-            od = [0.0] * MPCTracker.T
+            oa = np.zeros(MPCTracker.T)  # 크기 T의 0 배열
+            od = np.zeros(MPCTracker.T)
+
 
         for i in range(MPCTracker.MAX_ITER):
-            xbar = self.predict_motion(x0, oa, od, xref)
+            xbar = self.predict_motion(x_cur, oa, od, x_ref)
             poa, pod = oa[:], od[:]
-            oa, od, ox, oy, oyaw, ov = self.linear_mpc_control(xref, xbar, x0, dref)
+            oa, od, ox, oy, oyaw, ov = self.linear_control(x_ref, xbar, x_cur, dref)
+
+            # print(f"Updated oa: {oa}, od: {od}")
+
             du = sum(abs(oa - poa)) + sum(abs(od - pod))  # calc u change value
             if du <= MPCTracker.DU_TH:
                 break

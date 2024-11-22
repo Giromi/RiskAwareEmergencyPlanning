@@ -6,7 +6,8 @@ from typing import Type
 import numpy as np
 import math
 import time 
-from lib. import 
+from lib.dubins_planner import DubinsPlanner
+from lib.convention import X, Y, YAW
 
 
 class PathHanlder:
@@ -47,24 +48,8 @@ class PathHanlder:
 
 def get_my_dubins_course(path):
     # 시작 및 종료 위치와 방향 설정 (각 좌표는 x, y, yaw)
-    path_handler = PathHanlder(path, DubinsPathPlanner)
+    path_handler = PathHanlder(path, DubinsPlanner)
     # path_handler = PathHanlder(path, RRTPathPlanner)
     all_x, all_y, all_yaw = path_handler.calculate_path()
 
-    # 곡률 계산 (ck)
-    all_ck = []
-    for i in range(1, len(all_x) - 1):
-        dx1 = all_x[i] - all_x[i - 1]
-        dy1 = all_y[i] - all_y[i - 1]
-        dx2 = all_x[i + 1] - all_x[i]
-        dy2 = all_y[i + 1] - all_y[i]
-        angle1 = math.atan2(dy1, dx1)
-        angle2 = math.atan2(dy2, dx2)
-        dtheta = angle2 - angle1
-        ds = math.hypot(dx1, dy1)
-        curvature = dtheta / ds if ds != 0 else 0
-        all_ck.append(curvature)
-
-    all_ck = [0] + all_ck + [0]  # 시작과 끝의 곡률은 0으로 설정
-
-    return all_x, all_y, all_yaw, all_ck
+    return all_x, all_y, all_yaw

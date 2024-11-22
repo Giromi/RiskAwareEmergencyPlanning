@@ -12,7 +12,7 @@ from vehicle import Car
 
 car = Car()
 # supervisor = Supervisor()
-car_node = car.getFromDef("car")
+car_node = car.getFromDef("TeslaModel3")
 # car_node = supervisor.getFromDef("car")
 if car_node is None:
     print("Node not found")
