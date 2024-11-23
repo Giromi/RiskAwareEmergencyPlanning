@@ -8,7 +8,7 @@ def generate_grid_map(map_file):
         data = json.load(f)
 
     # Set grid dimensions and resolution
-    GRID_RESOLUTION = 1  # 1 meter per cell
+    GRID_RESOLUTION = 0.1  # 0.1 meter per cell
     GRID_X_MIN, GRID_X_MAX = -20, 140
     GRID_Y_MIN, GRID_Y_MAX = -80, 80
 

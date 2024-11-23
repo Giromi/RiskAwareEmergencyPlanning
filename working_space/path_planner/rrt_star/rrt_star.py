@@ -5,7 +5,9 @@ import math
 import time
 from map_maker import generate_grid_map
 
-TESLA_MIN_RADIUS = 11.70432
+TESLA_MIN_RADIUS = 11.70432 # meters
+CAR_LENGTH = 5  # meters
+CAR_WIDTH = 2  # meters
 
 
 class Node:
@@ -22,15 +24,16 @@ class RRTStar:
         grid,
         start,
         goal,
-        step_size=5,
+        velocity=30, # unit [m/s]
         goal_radius=10,
         max_iter=10000,
         min_turn_radius=TESLA_MIN_RADIUS,
     ):
+        alpha =  3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
-        self.step_size = step_size
+        self.step_size = velocity * alpha
         self.goal_radius = goal_radius
         self.max_iter = max_iter
         self.min_turn_radius = min_turn_radius
@@ -57,8 +60,26 @@ class RRTStar:
             np.linspace(y1, y2, num=20).astype(int),
         )
         for x, y in points:
-            if self.grid[y][x] == 1:
+            if not self.is_within_bounds(x, y) or self.grid[y][x] == 1:
                 return False
+
+        # Check vehicle size constraints at the new node position
+        if not self.is_car_collision_free(node2):
+            return False
+
+        return True
+
+    def is_within_bounds(self, x, y):
+        return 0 <= x < self.grid_width and 0 <= y < self.grid_height
+
+    def is_car_collision_free(self, node):
+        # Consider the car's rectangular dimensions
+        for dx in range(-CAR_LENGTH // 2, CAR_LENGTH // 2 + 1):
+            for dy in range(-CAR_WIDTH // 2, CAR_WIDTH // 2 + 1):
+                x = int(node.x + dx * math.cos(node.theta) - dy * math.sin(node.theta))
+                y = int(node.y + dx * math.sin(node.theta) + dy * math.cos(node.theta))
+                if not self.is_within_bounds(x, y) or self.grid[y][x] == 1:
+                    return False
         return True
 
     def get_new_node(self, nearest_node, random_node):
@@ -107,7 +128,7 @@ class RRTStar:
             if new_node is None:
                 continue
 
-            if 0 <= new_node.x < self.grid_width and 0 <= new_node.y < self.grid_height:
+            if self.is_within_bounds(new_node.x, new_node.y):
                 if self.is_collision_free(nearest_node, new_node):
                     self.nodes.append(new_node)
                     self.rewire(new_node)
@@ -129,7 +150,7 @@ class RRTStar:
         path = []
         node = self.goal
         while node is not None:
-            path.append((node.x, node.y))
+            path.append((node.x, node.y, node.theta))
             node = node.parent
         return path[::-1]
 
@@ -152,12 +173,15 @@ class RRTStar:
         plt.legend()
         plt.show()
 
-# here, update map_data path.
-grid_map = generate_grid_map("map_data.json")
 
-start_point = (0, len(grid_map[0]) // 2)
-goal_point = (len(grid_map[0]) - 10, len(grid_map[0]) // 2)
+# if __name__ == "__main__":
+#     # here, update map_data path.
+#     grid_map = generate_grid_map("data.json")
 
-rrt_star = RRTStar(grid_map, start_point, goal_point)
-path = rrt_star.plan()
-rrt_star.visualize(path)
+#     start_point = (0, len(grid_map[0]) // 2)
+#     goal_point = (0, 10)
+
+#     rrt_star = RRTStar(grid_map, start_point, goal_point, velocity=30)
+#     path = rrt_star.plan()
+#     print(path)
+#     rrt_star.visualize(path)
