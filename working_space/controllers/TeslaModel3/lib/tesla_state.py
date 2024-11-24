@@ -118,3 +118,5 @@ class TeslaState(IdealState):
     def get_time(self):
         return self.driver.getTime()
 
+    def is_simulation_pending(self):
+        return self.driver.step() != -1 and MAX_TIME > self.get_time()

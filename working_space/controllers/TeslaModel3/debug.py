@@ -1,6 +1,11 @@
 # 2024.11.17 Capdi
 
 
+""" Webots """
+from controller import Supervisor   # 차후에 webots on/off할 때 필요
+from vehicle import Driver
+from lib.tesla_state import IdealState, TeslaState, History
+
 from numpy.typing import NDArray
 from typing import Type
 import numpy as np
@@ -15,12 +20,6 @@ import matplotlib.pyplot as plt
 #
 #     return all_x, all_y, all_yaw
 
-def check_time(driver):
-    old_at = driver.getTime()
-    while driver.step() != -1:  
-        now = driver.getTime()
-        print(now, '>', now - old_at) # 0.008             0.00
-        old_at = driver.getTime()
 def dprint(val):
     print(f'{val = }')
 
@@ -76,18 +75,7 @@ def webots_sim_only_from(driver):    # <Main 문>
         ######
 
 
-def test_01():
-    while driver.step() != -1:
-    # while True:
-        # print(driver.step())
-        tesla_state.update()
-        print("tesla_state: ", tesla_state)
-        if (tesla_state.x >= 5):
-            break
 
-
-import numpy as np
-import matplotlib.pyplot as plt
 
 color_map = {
     '0': (255/255, 255/255, 255/255),  # White for empty space
@@ -126,5 +114,3 @@ def grid_plot(image):
     plt.ylabel("Y-axis (grid)")
     plt.title("Grid Map Visualization")
     plt.show()
-
-

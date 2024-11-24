@@ -4,7 +4,7 @@ Path tracking simulation with iterative linear model predictive control for spee
 author: Atsushi Sakai (@Atsushi_twi)
 """
 
-from debug.debug import dprint
+from debug import *
 import matplotlib.pyplot as plt
 import cvxpy
 import math
@@ -49,18 +49,18 @@ class MPCTracker:
         self.dt = dt
         
 
-    def track(self, state):
+    def track(self, tesla_state):
         goal = np.array([self.points_path[-1, X], self.points_path[-1, Y]])
 
         # initial yaw compensation
-        if state.yaw - self.points_path[0, YAW] >= math.pi:
-            state.yaw -= math.pi * 2.0
-        elif state.yaw - self.points_path[0, YAW] <= -math.pi:
-            state.yaw += math.pi * 2.0
+        if tesla_state.yaw - self.points_path[0, YAW] >= math.pi:
+            tesla_state.yaw -= math.pi * 2.0
+        elif tesla_state.yaw - self.points_path[0, YAW] <= -math.pi:
+            tesla_state.yaw += math.pi * 2.0
 
     
         print('here')
-        target_index, _ = self.calculate_nearest_index(state, self.points_path[:, X], self.points_path[:, Y], self.points_path[:, YAW], 0)
+        target_index, _ = self.calculate_nearest_index(tesla_state, self.points_path[:, X], self.points_path[:, Y], self.points_path[:, YAW], 0)
         print('target_index :', target_index)
 
         odelta, oaccer = None, None
@@ -71,11 +71,11 @@ class MPCTracker:
         sp = self.calculate_speed_profile(cx, cy, cyaw, TARGET_SPEED)
         dl = 1.0       # course tick
 
-        print(f'{MAX_TIME} vs {state.get_time()}')
-        while MAX_TIME >= state.get_time(): # 얘때문에 시간이 갇혀서 , 출력 0 -> 0.008 -> 0.016
-            x_ref, target_index, d_ref = self.calculate_ref_trajectory(state, cx, cy, cyaw, sp, dl, target_index)
+        while tesla_state.is_simulation_pending():
+            print('state :', tesla_state)
+            x_ref, target_index, d_ref = self.calculate_ref_trajectory(tesla_state, cx, cy, cyaw, sp, dl, target_index)
             print('x_ref :', x_ref)
-            x_cur = [state.x, state.y , state.v, state.yaw]
+            x_cur = [tesla_state.x, tesla_state.y , tesla_state.v, tesla_state.yaw]
 
             oaccer, odelta, ox, oy, oyaw, ov = self.iterative_linear_control(
                 x_ref, x_cur, d_ref, oaccer, odelta)
@@ -83,11 +83,12 @@ class MPCTracker:
             cur_delta, cur_accer = 0.0, 0.0
             if odelta is not None:
                 cur_delta, cur_accer = odelta[0], oaccer[0]
-                state.update(cur_delta)
+                tesla_state.update(cur_delta)
 
-            if self.check_goal(state, goal, target_index, len(cx)):
+            if self.check_goal(tesla_state, goal, target_index, len(cx)):
                 print("Goal")
                 return True
+        tesla_state.set_speed(0)
         return False
     
 
