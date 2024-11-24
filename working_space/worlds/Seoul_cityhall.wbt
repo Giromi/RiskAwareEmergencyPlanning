@@ -52,8 +52,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation -0.5672507705561523 0.5616065357428575 0.6023492859748056 2.066126349829931
-  position 148.74234669705754 -89.40396891973968 694.6243810778092
+  orientation -0.5865715867853727 0.5637698792891002 0.5814613459056788 2.122359971141174
+  position 154.20575893598112 -39.04046982059786 748.7003955858256
   near 1
   follow "hotel"
   followSmoothness 0
@@ -3357,6 +3357,1246 @@ DEF human_ROBERT Robot {
   ]
   supervisor TRUE
 }
+DEF human_ROBERT Robot {
+  translation 42.2641 18.5105 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(21)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 17.0315 8.0317 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(22)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 56.5261 37.1962 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(23)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 61.6217 8.4311 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(24)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 77.3853 44.8537 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(25)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 91.5538 52.0278 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(26)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 118.191 9.2374 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(27)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 100.79 23.4689 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(28)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 104.009 46.7069 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(29)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 115.346 37.1245 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(30)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 156.819 8.7363 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(31)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 189.26 23.3689 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(32)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 193.199 55.9453 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(33)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 134.997 54.126 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(34)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 232.51 64.1513 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(35)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 234.137 13.7102 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(36)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 3.58397 -40.2246 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(37)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 96.569 -44.5138 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(38)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 194.661 -8.16922 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(39)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 151.423 -50.5666 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(40)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 137.323 -58.2388 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(41)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 137.169 -10.6179 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(42)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 231.847 -29.7487 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(43)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 268.705 -31.5714 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(44)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 263.595 -57.9744 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(45)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 248.618 -45.5251 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(46)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 297.08 -60.5617 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(47)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 317.469 -18.5947 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(48)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 183.888 -87.7848 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(49)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 192.266 -78.5735 0.13
+  rotation 1.55955e-18 3.31972e-17 1 1.56961
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(50)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 227.692 -81.3743 0.13
+  rotation 1.55955e-18 3.31972e-17 1 1.56961
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(51)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 252.869 -69.8333 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(52)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 84.8626 -133.833 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(53)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 138.349 -128.265 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(54)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation 52.0139 -132.371 0.13
+  rotation 1.73681e-17 1.58094e-17 1 3.1404
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(55)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation -29.5039 -139.323 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(56)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation -28.9853 -123.671 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(57)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation -29.6609 -10.54 0.13
+  rotation 1.55955e-18 3.31972e-17 1 1.56961
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(58)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation -28.6002 23.66 0.13
+  rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(59)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ROBERT Robot {
+  translation -63.8041 11.953 0.13
+  rotation -2.65932e-14 2.92149e-14 -1 0.00118899
+  children [
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert(60)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 80
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "../../motions/walk.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
 DEF sidewalk_block(12) Floor {
   translation 165 -17 0.13
   name "floor(12)"
@@ -5026,7 +6266,7 @@ DEF car_bus(21) BusSimple {
   name "vehicle(23)"
 }
 DEF car_rangerover(1) RangeRoverSportSVRSimple {
-  translation 10.94 -1.58002 0.4
+  translation 15.01 -4.90002 0.4
   rotation 0 0 1 3.14159
   name "vehicle(20)"
 }
@@ -5070,31 +6310,1267 @@ DEF car_rangerover(9) RangeRoverSportSVRSimple {
   rotation 0 0 1 1.5708
   name "vehicle(29)"
 }
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -18.1702 38.2493 0.4
+  rotation 0 0 -1 1.5708
+  name "vehicle(194)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -22.6401 42.9294 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(195)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -6.04029 27.4793 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(196)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -6.36008 -27.8607 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(197)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -2.82 -54.0009 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(198)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -18.82 -85.641 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(199)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -15.35 -28.6408 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(200)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 45.47 -99.5406 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(201)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 84.87 -102.67 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(202)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation -6.35966 -146.261 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(203)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 172.82 -110.87 0.4
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "vehicle(204)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 159.63 -118.66 0.4
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "vehicle(205)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 223.88 -133.64 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(206)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 212.64 -147.89 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(207)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 314.49 -2.86941 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(208)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 250.51 0.62013 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(209)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 273.33 -60.7299 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(210)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 204.88 -37.6601 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(211)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 224.04 -29.17 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(212)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 220.76 -24.6601 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(213)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 205.64 21.4599 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(214)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 146.42 4.49954 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(215)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 48.4496 67.8295 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(216)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 75.44 43.4493 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(217)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 142.96 -54.0003 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(218)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 128.34 -16.3504 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(219)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 168.35 -68.0701 0.4
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "vehicle(220)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 132.44 27.5897 0.4
+  rotation 0 0 1 1.5708
+  name "vehicle(221)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 113.94 43.3596 0.4
+  rotation 0 0 1 -3.1415853071795863
+  name "vehicle(222)"
+}
+DEF car_rangerover(9) RangeRoverSportSVRSimple {
+  translation 180.23 41.9499 0.4
+  rotation 0 0 -1 -5.307179586466759e-06
+  name "vehicle(223)"
+}
 DEF car_bmw(1) BmwX5Simple {
-  translation -16.35 7.64004 0.4
-  rotation 0 0 1 3.14159
+  translation -2.8801 -15.5799 0.4
+  rotation 0 0 -1 -1.5707953071795862
   color 0.5 0.26 0
   name "vehicle(33)"
 }
-DEF car_CitroenCZero(1) CitroenCZeroSimple {
-  translation -17.01 3.98999 0.4
+DEF car_bmw(1) BmwX5Simple {
+  translation -14.61 23.88 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(34)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -22.7 36.8 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(35)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -14.59 53.66 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(36)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -6.75 -21.56 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(37)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -38.44 -1.22992 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(38)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -22.5799 -80.88 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(39)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -18.3103 -34.86 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(40)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 44.8998 -92.3 0.4
   rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(41)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 73.1198 -93.0401 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(42)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 7.70969 -99.95 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(43)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -6.54038 -135.45 0.4
+  rotation 0 0 1 1.57079
+  color 0.5 0.26 0
+  name "vehicle(44)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation -9.89037 -163.48 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(45)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 168.79 -118.581 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(46)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 154.94 -107.131 0.4
+  rotation 0 0 -1 5.92017e-06
+  color 0.5 0.26 0
+  name "vehicle(47)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 21.3097 -115.29 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(48)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 220.27 -140.76 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(49)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 205.35 -136.87 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(50)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 216.67 -174.51 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(51)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 286.26 -15.6509 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(52)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 253.15 -3.0706 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(53)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 269.95 5.07935 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(54)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 216.76 -22.3305 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(55)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 220.37 -77.3805 0.4
+  rotation 0 0 1 1.57079
+  color 0.5 0.26 0
+  name "vehicle(56)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 223.88 -35.8306 0.4
+  rotation 0 0 1 1.57079
+  color 0.5 0.26 0
+  name "vehicle(57)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 205.23 -73.9905 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(58)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 197.96 -84.5205 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(59)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 308.53 -66.0209 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(60)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 257.9 -66.5106 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(61)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 205.54 36.4495 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(62)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 208.98 65.8496 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(63)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 147.38 -1.68029 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(64)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 170.25 7.63964 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(65)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 38.2 -68.3697 0.4
+  rotation 0 0 -1 5.92017e-06
+  color 0.5 0.26 0
+  name "vehicle(66)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 148.23 -68.3603 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(67)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 131.94 -25.5003 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(68)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 47.1901 47.23 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.5 0.26 0
+  name "vehicle(69)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 68.6001 42.3599 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(70)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 155.74 43.6396 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.5 0.26 0
+  name "vehicle(71)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 22.65 4.89004 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(72)"
+}
+DEF car_bmw(1) BmwX5Simple {
+  translation 83.34 -1.7101 0.4
+  rotation 0 0 1 3.14159
+  color 0.5 0.26 0
+  name "vehicle(73)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -6.39 -14.8499 0.4
+  rotation 0 0 -1 -1.5707953071795862
   name "vehicle(31)"
 }
-DEF car_lincolnMKZ(1) LincolnMKZSimple {
-  translation -17.45 -1.33213e-05 0.4
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -22.89 23.97 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(74)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -15.01 29.6 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(75)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -14.01 42.08 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(76)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -43.82 4.73005 0.4
+  rotation 0 0 -1 5.61305e-06
+  name "vehicle(77)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -2.83001 -39.07 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(78)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -19.1101 -52.29 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(79)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -22.8301 -86.68 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(80)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 10.4597 -103.13 0.4
   rotation 0 0 1 3.14159
+  name "vehicle(81)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 141.85 -99.12 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(82)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 103.83 -95.4202 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(83)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -2.27034 -151.8 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(84)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation -10.7303 -143.79 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(85)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 154.11 -110.381 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(86)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 172.79 -114.49 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(87)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 130.15 -110.55 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(88)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 212.92 -141.57 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(89)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 224.16 -147.03 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(90)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 216.4 -151.931 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(91)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 260.64 4.45929 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(92)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 316.66 -7.8408 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(93)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 326.49 5.30913 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(94)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 212.3 -38.1306 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(95)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 213.31 -84.8806 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(96)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 216.78 -16.6405 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(97)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 201.39 -85.3205 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(98)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 205.61 -63.3205 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(99)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 268.81 -38.9907 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(100)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 273.2 -66.4708 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(101)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 202.16 20.8395 0.4
+  rotation 0 0 -1 1.5708
+  name "vehicle(102)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 216.48 35.5495 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(103)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 168.17 3.9896 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(104)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 147.11 1.17963 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(105)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 111.55 -65.1702 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(106)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 118.33 -68.2903 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(107)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 128.38 -23.4403 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(108)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 48.0002 62.0599 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(109)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 95.8401 72.9598 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(110)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 126.98 40.7697 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(111)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 13.42 3.99001 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(112)"
+}
+DEF car_CitroenCZero(1) CitroenCZeroSimple {
+  translation 31.51 -5.15003 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(113)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -18.09 31.96 0.4
+  rotation 0 0 1 -1.5707953071795862
   name "vehicle(32)"
 }
-DEF car_bsnzs(1) MercedesBenzSprinterSimple {
-  translation -18.16 -3.41 0.4
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -18.71 50.37 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(114)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -14.45 47.61 0.4
+  rotation 0 0 -1 1.5708
+  name "vehicle(115)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -51.11 1.79008 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(116)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -6.46 -68.93 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(117)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -10.24 -22.7399 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(118)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -22.6201 -59.11 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(119)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -14.6101 -70.86 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(120)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 15.8997 -94.7601 0.4
   rotation 0 0 1 3.14159
+  name "vehicle(121)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 112.61 -100.05 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(122)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 5.24975 -91.93 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(123)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -6.45036 -158.92 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(124)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation -10.1303 -135.5 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(125)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 47.12 -107.601 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(126)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 150.29 -114.861 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(127)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 164.09 -110.781 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(128)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 220.51 -148.37 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(129)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 213.09 -134.58 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(130)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 223.86 -140.33 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(131)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 241.97 0.899349 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(132)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 262.99 1.03929 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(133)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 250.81 4.87933 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(134)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 224.15 -22.1506 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(135)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 213.17 -19.1706 0.4
+  rotation 0 0 1 1.57079
+  name "vehicle(136)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 219.94 -32.0306 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(137)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 208.98 -83.62 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(138)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 197.67 -20.2905 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(139)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 298.83 -67.0209 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(140)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 376.49 -67.2914 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(141)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 197.8 42.7695 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(142)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 208.79 30.4495 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(143)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 141.12 1.36963 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(144)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 154.72 -1.49038 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(145)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 132.29 -18.6603 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(146)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 99.28 -64.9002 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(147)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 185.9 -64.6306 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(148)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 47.2901 14.1699 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(149)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 91.1701 42.6898 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(150)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 128.54 21.3997 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(151)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 7.33 4.83003 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(152)"
+}
+DEF car_lincolnMKZ(1) LincolnMKZSimple {
+  translation 36.64 5.51995 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(153)"
+}
+DEF car_bsnzs(1) MercedesBenzSprinterSimple {
+  translation -19 25.61 0.4
+  rotation 0 0 1 -1.5707953071795862
   color 0.09 0 0
 }
-DEF car_toyota(1) ToyotaPriusSimple {
-  translation -17.15 -7.77 0.4
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -10.38 39.99 0.4
+  rotation 0 0 1 1.5708
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(1)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -22.87 52.09 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(2)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -39.34 -4.75994 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(3)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -9.93001 -48.98 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(4)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -2.03 -23.2999 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(5)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -18.5201 -73.74 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(6)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -14.5101 -77.62 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(7)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 8.0999 -96.07 0.4
   rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(8)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 132.65 -100.33 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(9)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 21.4098 -92.46 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(10)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -7.16032 -168.5 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(11)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation -1.92033 -143.71 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(12)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 164.65 -114.73 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(13)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 170.99 -107.661 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(14)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 70.9297 -114.98 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(15)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 213.01 -155.68 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(16)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 216.62 -135.63 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(17)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 201.31 -175.36 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(18)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 243.16 -3.21062 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(19)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 279.3 -11.7507 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(20)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 350.72 -3.41094 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(21)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 224.41 -57.6706 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(22)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 219.83 -42.0305 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(23)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 213.01 -27.6605 0.4
+  rotation 0 0 1 1.57079
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(24)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 205.49 -83.07 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(25)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 197.93 -74.6405 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(26)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 273.64 -51.1507 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(27)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 330.18 -65.8411 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(28)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 197.99 24.5794 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(29)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 205.51 29.0594 0.4
+  rotation 0 0 1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(30)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 141.37 -2.06033 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(31)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 155.13 4.69962 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(32)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 59.44 -65.0101 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(33)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 182.93 -68.1006 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(34)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 143.49 -40.7203 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(35)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 58.9301 43.0899 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(36)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 96.7901 19.3098 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(37)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 129.27 63.5397 0.4
+  rotation 0 0 1 1.57079
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(38)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 189.57 42.2295 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(39)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 106.45 -4.16021 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(40)"
+}
+DEF car_bsnzs(2) MercedesBenzSprinterSimple {
+  translation 44.85 -3.41003 0.4
+  rotation 0 0 1 3.14159
+  color 0.09 0 0
+  name "Mercedes-Benz Sprinter(41)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -18.52 44.19 0.4
+  rotation 0 0 1 -1.5707953071795862
   name "vehicle(30)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -22.79 30.51 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(154)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -14.6 35.57 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(155)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -2.17 -30.1999 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(156)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -10.34 -13.89 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(157)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -58.6 -1.43987 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(158)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -22.6001 -65.33 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(159)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -14.2701 -84.97 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(160)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 5.72975 -103.23 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(161)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 175.07 -91.7004 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(162)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 11.6598 -92.04 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(163)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -6.1503 -141.26 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(164)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation -6.49032 -152.73 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(165)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 157.12 -114.76 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(166)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 163.02 -107.021 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(167)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 112.18 -110.72 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(168)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 220.41 -134.54 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(169)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 220.51 -154.771 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(170)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 216.5 -145.33 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(171)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 277.02 1.01929 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(172)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 242.73 4.83936 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(173)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 264.23 -3.2507 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(174)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 216.39 -36.4605 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(175)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 216.68 -29.4406 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(176)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 220.05 -17.3006 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(177)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 201.45 -44.2905 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(178)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 208.67 -75.1405 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(179)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 234.91 -39.6207 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(180)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 352 -67.3409 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(181)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 198.38 33.0995 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(182)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 208.99 21.6395 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(183)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 139.32 4.26965 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(184)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 152.79 1.68964 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(185)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 117.46 -65.4002 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(186)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 177.63 -65.1405 0.4
+  rotation 0 0 1 -5.307179586466759e-06
+  name "vehicle(187)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 132.71 -44.1303 0.4
+  rotation 0 0 1 1.57079
+  name "vehicle(188)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 96.2201 56.5198 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(189)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 49.3101 30.7599 0.4
+  rotation 0 0 1 -1.5707953071795862
+  name "vehicle(190)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 132.73 52.2097 0.4
+  rotation 0 0 -1 -1.5707953071795862
+  name "vehicle(191)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 21.85 -5.06 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(192)"
+}
+DEF car_toyota(1) ToyotaPriusSimple {
+  translation 7.91 -5.34997 0.4
+  rotation 0 0 1 3.14159
+  name "vehicle(193)"
 }
 DEF buliding_hotel Hotel {
   translation -50 -36 0
@@ -5909,7 +8385,7 @@ DEF human_SANDRA Robot {
   supervisor TRUE
 }
 DEF human_SANDRA Robot {
-  translation -31.5301 11.7097 0.13
+  translation 12.8899 9.3999 0.13
   rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
   children [
     CharacterSkin {
@@ -5917,6 +8393,1006 @@ DEF human_SANDRA Robot {
     }
   ]
   name "sandra(18)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 41.34 14.8501 0.13
+  rotation 4.31287e-17 -3.43188e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(20)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 75.83 9.7403 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(21)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 54.15 9.5401 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(22)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 84.5598 47.4301 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(23)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 63.2898 46.1304 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(24)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 122.03 8.9804 0.13
+  rotation -3.43189e-19 -4.31289e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(25)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 112.14 37.6702 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(26)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 125.4 68.9798 0.13
+  rotation -3.43189e-19 -4.31289e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(27)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 100.48 45.6598 0.13
+  rotation -3.43189e-19 -4.31289e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(28)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 176.49 46.0106 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(29)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 185.68 45.4409 0.13
+  rotation 4.31287e-17 -3.43188e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(30)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 259.51 12.9214 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(31)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 236.7 10.2416 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(32)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 193.13 12.9909 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(33)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 144.09 10.2006 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(34)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 108.49 -26.3897 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(35)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 5.3403 -45.6402 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(36)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 120.48 -55.3696 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(37)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 190.25 -16.2594 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(38)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 140.49 -21.4696 0.13
+  rotation 4.31287e-17 -3.43188e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(39)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 173.42 -57.8589 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(40)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 246.12 -19.3783 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(41)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 230.53 -27.229 0.13
+  rotation 4.31287e-17 -3.43188e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(42)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 184.02 -83.8192 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(43)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 7.5604 -75.6803 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(44)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 263.09 -62.4189 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(45)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 243.42 -44.579 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(46)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 383.3 -59.6481 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(47)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 282.42 -19.239 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(48)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 230.161 -124.319 0.13
+  rotation -3.43189e-19 -4.31289e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(49)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 231.89 -76.0992 0.13
+  rotation 4.31287e-17 -3.43188e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(50)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 187.291 -121.969 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(51)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 63.9209 -153.53 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(52)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 183.151 -168.669 0.13
+  rotation 4.31287e-17 -3.43188e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(53)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation 86.9508 -135.519 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(54)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation -39.8494 -121.83 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(55)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation -30.2896 -62.8704 0.13
+  rotation 4.31287e-17 -3.43196e-19 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(56)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation -32.2898 -11.4404 0.13
+  rotation 2.13928e-17 -2.1736e-17 1 -3.1415853071795863
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(57)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation -53.9201 26.2294 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(58)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 50
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "Sandra"
+  ]
+  supervisor TRUE
+}
+DEF human_SANDRA Robot {
+  translation -28.92 15.5696 0.13
+  rotation -8.19117e-12 -8.06184e-12 -1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Sandra"
+    }
+  ]
+  name "sandra(59)"
   boundingObject Cylinder {
     height 0.1
     radius 0.3
@@ -6454,6 +9930,1086 @@ DEF human_SOPHIA Robot {
     }
   ]
   name "sophia(18)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 42.1265 10.7513 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(20)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 25.8065 8.0712 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(21)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 90.776 31.7213 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(22)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 64.5665 8.5113 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(23)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 51.9765 55.2912 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(24)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 91.9565 64.7812 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(25)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 100.666 31.7213 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(26)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 116.166 8.9314 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(27)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 121.536 44.8714 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(28)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 106.836 44.8513 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(29)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 192.876 51.6615 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(30)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 139.096 45.3013 0.13
+  rotation -9.04008e-19 1.49563e-17 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(31)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 267.166 13.0915 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(32)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 230.276 13.5414 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(33)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 95.2664 -8.8887 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(34)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 44.736 -8.6486 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(35)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 188.376 -9.28856 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(36)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 140.936 -23.6187 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(37)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 150.396 -41.9987 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(38)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 189.916 -34.4786 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(39)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 170.266 8.0214 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(40)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 146.556 9.4013 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(41)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 261.486 -31.5987 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(42)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 294.746 -55.5786 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(43)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 44.6266 -88.1187 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(44)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 153.716 -88.2986 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(45)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 231.346 -51.5786 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(46)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 240.146 -61.8986 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(47)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 66.6966 -124.949 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(48)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 110.087 -134.769 0.13
+  rotation -9.04008e-19 1.49563e-17 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(49)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 73.2067 -164.529 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(50)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation -31.3733 -86.3588 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(51)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation -27.3234 -59.3688 0.13
+  rotation -9.04008e-19 1.49563e-17 1 1.5708
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(52)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation -47.5233 -114.469 0.13
+  rotation -1.56287e-11 1.38471e-11 1 1.01503e-06
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(53)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 230.456 -99.908 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(54)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 228.897 -126.209 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(55)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 306.946 -61.0984 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(56)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation 326.926 -19.0385 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(57)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation -52.5135 31.7212 0.13
+  rotation 1.49563e-17 9.04009e-19 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(58)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.3
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 1
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Sophia"
+  ]
+  supervisor TRUE
+}
+DEF human_SOPHIA Robot {
+  translation -34.3635 39.3112 0.13
+  rotation 7.02614e-18 7.93015e-18 1 3.14159
+  children [
+    CharacterSkin {
+      name "Sophia"
+      model "Sophia"
+    }
+  ]
+  name "sophia(59)"
   boundingObject Cylinder {
     height 0.1
     radius 0.3
@@ -7048,6 +11604,1206 @@ DEF human_ANTHONY Robot {
     }
   ]
   name "anthony(18)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 43.86 28.58 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(20)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 1.21996 11.6301 0.13
+  rotation -2.24649e-17 2.18712e-17 1 3.14159
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(21)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 51.95 16.9401 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(22)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 91.77 10.3901 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(23)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 80.79 45.3598 0.13
+  rotation -2.24649e-17 2.18712e-17 1 3.14159
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(24)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 90.19 57.67 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(25)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 99.13 54.6 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(26)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 101.55 44.67 0.13
+  rotation 4.23041e-11 4.34524e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(27)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 123.04 28.58 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(28)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 100.71 28.58 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(29)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 134.94 28.5799 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(30)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 192.81 18.2798 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(31)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 190.45 54.0698 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(32)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 164.63 45.5989 0.13
+  rotation 4.23041e-11 4.34524e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(33)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 230.25 19.1598 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(35)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 340.87 9.26807 0.13
+  rotation 4.23041e-11 4.34524e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(34)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 4.09 -30.5299 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(36)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 117.11 -10.2907 0.13
+  rotation 4.23041e-11 4.34524e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(37)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 137.01 -61.77 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(38)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 190.81 -26.9999 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(39)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 153.74 -60.7909 0.13
+  rotation 1.06714e-11 1.0961e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(40)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 189.56 -58.0401 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(41)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 258.42 -27.2302 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(42)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 354.99 -19.2002 0.13
+  rotation 4.23041e-11 4.34524e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(43)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 337.18 -58.4902 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(44)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 284.61 -45.5607 0.13
+  rotation -2.24649e-17 2.18712e-17 1 3.14159
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(45)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 258.39 -45.9802 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(46)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 231.73 -51.7901 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(47)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 121.99 -88.0401 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(48)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 29.4899 -87.5299 0.13
+  rotation -2.24649e-17 2.18712e-17 1 3.14159
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(49)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 230.31 -105.33 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(50)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 229.52 -186.85 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(51)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 109.11 -158.371 0.13
+  rotation 4.23041e-11 4.34524e-11 1 -5.307179586466759e-06
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(52)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 187.97 -139.74 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(53)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation 6.4898 -159.7 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(54)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation -28.0601 -96.8999 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(55)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation -29.1102 -192.17 0.13
+  rotation -4.433613635748091e-17 -5.936958106028239e-19 0.9999999999999999 1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(56)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation -45.32 28.5801 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(57)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation -36.9001 -130.32 0.13
+  rotation -2.24649e-17 2.18712e-17 1 3.14159
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(58)"
+  boundingObject Cylinder {
+    height 0.1
+    radius 0.2
+  }
+  physics Physics {
+    density -1
+    mass 30
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controllerArgs [
+    "-d"
+    "Anthony"
+    "-f"
+    "../../motions/run.bvh"
+    "-l"
+  ]
+  supervisor TRUE
+}
+DEF human_ANTHONY Robot {
+  translation -29.22 28.5801 0.13
+  rotation -5.93695e-19 4.43361e-17 1 -1.5707953071795862
+  children [
+    CharacterSkin {
+      name "Anthony"
+      model "Anthony"
+    }
+  ]
+  name "anthony(59)"
   boundingObject Cylinder {
     height 0.1
     radius 0.2
