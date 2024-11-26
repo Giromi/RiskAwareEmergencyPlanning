@@ -2,8 +2,6 @@
 
 
 """ Webots """
-from controller import Supervisor   # 차후에 webots on/off할 때 필요
-from vehicle import Driver
 from lib.tesla_state import IdealState, TeslaState, History
 
 from numpy.typing import NDArray
@@ -11,14 +9,6 @@ from typing import Type
 import numpy as np
 from lib.dubins_planner import DubinsPlanner
 import matplotlib.pyplot as plt
-
-# def get_my_dubins_course(path):
-#     # 시작 및 종료 위치와 방향 설정 (각 좌표는 x, y, yaw)
-#     path_handler = PathHanlder(path, DubinsPlanner)
-#     # path_handler = PathHanlder(path, RRTPathPlanner)
-#     all_x, all_y, all_yaw = path_handler.calculate_path()
-#
-#     return all_x, all_y, all_yaw
 
 def dprint(val):
     print(f'{val = }')

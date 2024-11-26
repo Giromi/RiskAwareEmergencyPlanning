@@ -32,27 +32,6 @@ class DubinsPlanner:
         self.cos_a, self.cos_b  = cos(self.alpha), cos(self.beta)
         self.cos_ab = cos(self.alpha - self.beta)
 
-    def __find_from_origin(self):
-        dx = self.local_goal[X] - 0
-        dy = self.local_goal[Y] - 0
-        d = hypot(dx, dy) * self.curvature
-        theta = mod2pi(atan2(dy, dx))
-        alpha = mod2pi(-theta)
-        beta = mod2pi(self.local_goal[YAW] - theta)
-        # print(f"dx: {dx}, dy: {dy}, d: {d}")
-        # print(f"theta: {theta}, alpha: {alpha}, beta: {beta}")
-        return alpha, beta, d
-
-    def __find_local_goal(self) -> list:
-        l_rot = rot_mat_to_2d(self.start[YAW])
-        le_xy = np.stack([self.end[X] - self.start[X], 
-                          self.end[Y] - self.start[Y]]).T @ l_rot
-        local_goal_x = le_xy[X]
-        local_goal_y = le_xy[Y]
-        local_goal_yaw = self.end[YAW] - self.start[YAW]
-
-        return [local_goal_x, local_goal_y, local_goal_yaw]
-
     def plan(self, selected_types: List[str] = None):
         self.local_goal = self.__find_local_goal()
         self.alpha, self.beta, self.d = self.__find_from_origin()
@@ -77,6 +56,26 @@ class DubinsPlanner:
         return x_list, y_list, yaw_list, modes, lengths
 
 
+    def __find_from_origin(self):
+        dx = self.local_goal[X] - 0
+        dy = self.local_goal[Y] - 0
+        d = hypot(dx, dy) * self.curvature
+        theta = mod2pi(atan2(dy, dx))
+        alpha = mod2pi(-theta)
+        beta = mod2pi(self.local_goal[YAW] - theta)
+        # print(f"dx: {dx}, dy: {dy}, d: {d}")
+        # print(f"theta: {theta}, alpha: {alpha}, beta: {beta}")
+        return alpha, beta, d
+
+    def __find_local_goal(self) -> list:
+        l_rot = rot_mat_to_2d(self.start[YAW])
+        le_xy = np.stack([self.end[X] - self.start[X], 
+                          self.end[Y] - self.start[Y]]).T @ l_rot
+        local_goal_x = le_xy[X]
+        local_goal_y = le_xy[Y]
+        local_goal_yaw = self.end[YAW] - self.start[YAW]
+
+        return [local_goal_x, local_goal_y, local_goal_yaw]
 
     def __path_planning_from_origin(self, planning_funcs):
 

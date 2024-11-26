@@ -12,22 +12,65 @@ import numpy as np
 from util.operator import angle_mod
 from lib.tesla_state import IdealState, TeslaState
 from lib.convention import *
+from util.plot import plot_interval
 
 class MPCTracker:
 
     def __init__(self, points_path, dt):
         self.points_path = points_path
         self.dt = dt
-        
 
-    def track(self, tesla_state):
+    def do_simulation(self, ideal_state): # NOT webots
         goal = np.array([self.points_path[-1, X], self.points_path[-1, Y]])
+        # ideal_state.update()
 
         # initial yaw compensation
-        if tesla_state.yaw - self.points_path[0, YAW] >= math.pi:
-            tesla_state.yaw -= math.pi * 2.0
-        elif tesla_state.yaw - self.points_path[0, YAW] <= -math.pi:
-            tesla_state.yaw += math.pi * 2.0
+        if ideal_state.yaw - self.points_path[0, YAW] >= math.pi:
+            ideal_state.yaw -= math.pi * 2.0
+        elif ideal_state.yaw - self.points_path[0, YAW] <= -math.pi:
+            ideal_state.yaw += math.pi * 2.0
+
+        target_index, _ = self.calculate_nearest_index(ideal_state, self.points_path[:, X], self.points_path[:, Y], self.points_path[:, YAW], 0)
+        odelta, oaccer = None, None
+
+        cx = self.points_path[:, X]
+        cy = self.points_path[:, Y]
+        cyaw = self.smooth_yaw(self.points_path[:, YAW])
+        sp = self.calculate_speed_profile(cx, cy, cyaw, TARGET_SPEED)
+        dl = 1.0       # course tick
+
+        while ideal_state.is_simulation_pending():
+            print(ideal_state)
+            x_ref, target_index, d_ref = self.calculate_ref_trajectory(ideal_state, cx, cy, cyaw, sp, dl, target_index)
+            x_cur = [ideal_state.x, ideal_state.y , ideal_state.v, ideal_state.yaw]
+
+            oaccer, odelta, ox, oy, oyaw, ov = self.iterative_linear_control(
+                x_ref, x_cur, d_ref, oaccer, odelta)
+
+            cur_delta, cur_accer = 0.0, 0.0
+            if odelta is not None:
+                cur_delta, cur_accer = odelta[0], oaccer[0]
+                ideal_state.update(cur_accer, cur_delta) 
+            ideal_state.t += self.dt
+
+            if self.check_goal(ideal_state, goal, target_index, len(cx)):
+                print("Goal")
+                break
+            plot_interval(ideal_state.x, ideal_state.y, ideal_state.yaw, cur_delta)
+    ###### Do simulation END ######
+    
+
+    def track(self, tesla_state):
+        print('Traking Start')
+        goal = np.array([self.points_path[-1, X], self.points_path[-1, Y]])
+        # tesla_state.update()  # 밖에서 함
+
+        # initial yaw compensation
+        # if tesla_state.yaw - self.points_path[0, YAW] >= math.pi:
+        #     tesla_state.yaw -= math.pi * 2.0
+        # elif tesla_state.yaw - self.points_path[0, YAW] <= -math.pi:
+        #     tesla_state.yaw += math.pi * 2.0
+
         target_index, _ = self.calculate_nearest_index(tesla_state, self.points_path[:, X], self.points_path[:, Y], self.points_path[:, YAW], 0)
         odelta, oaccer = None, None
 
@@ -36,8 +79,8 @@ class MPCTracker:
         cyaw = self.smooth_yaw(self.points_path[:, YAW])
         sp = self.calculate_speed_profile(cx, cy, cyaw, TARGET_SPEED)
         dl = 1.0       # course tick
-        tesla_state.update()
 
+        plot_t = 0
         while tesla_state.is_simulation_pending():
 
             x_ref, target_index, d_ref = self.calculate_ref_trajectory(tesla_state, cx, cy, cyaw, sp, dl, target_index)
@@ -45,28 +88,22 @@ class MPCTracker:
 
             oaccer, odelta, ox, oy, oyaw, ov = self.iterative_linear_control(
                 x_ref, x_cur, d_ref, oaccer, odelta)
-            print(tesla_state.x)
-
             cur_delta, cur_accer = 0.0, 0.0
-
             if odelta is not None:
                 cur_delta, cur_accer = odelta[0], oaccer[0]
-                tesla_state.update() 
+                tesla_state.update(cur_delta) 
                 # tesla_state.update(cur_delta)
 
             if self.check_goal(tesla_state, goal, target_index, len(cx)):
                 print("Goal")
-                # break
-            # plt.cla()                                     # 
-            plt.plot(tesla_state.x, tesla_state.y, ".r")
-            plt.legend(loc="upper right", fontsize=10)      # 여기있어야 라벨 뜸
-            plt.pause(0.0001)                               # 이게 없으면 그래프가 멈춤
-        tesla_state.set_speed(0)
+                break
+            plot_t = plot_interval(tesla_state, cur_delta, plot_t)
+
     
 
     def calculate_ref_trajectory(self, state, cx, cy, cyaw, sp, dl, pind):
-        x_ref = np.zeros((NX, T + 1))
-        dref = np.zeros((1, T + 1))
+        x_ref = np.zeros((NX, HORIZON_T + 1))
+        dref = np.zeros((1, HORIZON_T + 1))
         ncourse = len(cx)
         ind, _ = self.calculate_nearest_index(state, cx, cy, cyaw, pind)
 
@@ -83,7 +120,7 @@ class MPCTracker:
         # print('dl:', dl)
         # print('travel:', travel)
 
-        for i in range(T + 1):
+        for i in range(HORIZON_T + 1):
             travel += abs(state.v) * self.dt
             dind = int(round(travel / dl))
 
@@ -145,14 +182,14 @@ class MPCTracker:
         # print('x0 :', x0)
         # print('dref :', dref.shape, dref)
 
-        x = cvxpy.Variable((NX, T + 1))
-        u = cvxpy.Variable((NU, T))
+        x = cvxpy.Variable((NX, HORIZON_T + 1))
+        u = cvxpy.Variable((NU, HORIZON_T))
 
 
         cost = 0.0
         constraints = []
 
-        for t in range(T):
+        for t in range(HORIZON_T):
             cost += cvxpy.quad_form(u[:, t], R)
 
             if t != 0:
@@ -162,11 +199,11 @@ class MPCTracker:
                 xbar[2, t], xbar[3, t], dref[0, t])
             constraints += [x[:, t + 1] == A @ x[:, t] + B @ u[:, t] + C]
 
-            if t < (T - 1):
+            if t < (HORIZON_T - 1):
                 cost += cvxpy.quad_form(u[:, t + 1] - u[:, t], Rd)
                 constraints += [cvxpy.abs(u[1, t + 1] - u[1, t]) <= MAX_DSTEER * self.dt]
 
-        cost += cvxpy.quad_form(xref[:, T] - x[:, T], Qf)
+        cost += cvxpy.quad_form(xref[:, HORIZON_T] - x[:, HORIZON_T], Qf)
 
         constraints += [x[:, 0] == x0]
         constraints += [x[2, :] <= MAX_SPEED]
@@ -221,8 +258,8 @@ class MPCTracker:
             xbar[i, 0] = x_cur[i]
 
         state = IdealState(self.dt, x=x_cur[X], y=x_cur[Y], yaw=x_cur[3], v=x_cur[2])
-        for (ai, di, i) in zip(oa, od, range(1, T + 1)):
-            state.update(None, ai, di)
+        for (ai, di, i) in zip(oa, od, range(1, HORIZON_T + 1)):
+            state.update(ai, di)
             xbar[0, i] = state.x
             xbar[1, i] = state.y
             xbar[2, i] = state.v
@@ -235,8 +272,8 @@ class MPCTracker:
         ox, oy, oyaw, ov = None, None, None, None
 
         if oa is None or od is None:
-            oa = np.zeros(T)  # 크기 T의 0 배열
-            od = np.zeros(T)
+            oa = np.zeros(HORIZON_T)  # 크기 T의 0 배열
+            od = np.zeros(HORIZON_T)
 
 
         for i in range(MAX_ITER):

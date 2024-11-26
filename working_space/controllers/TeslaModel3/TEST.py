@@ -22,6 +22,7 @@ from util.operator import angle_mod, smooth_yaw
 from util.map_maker import generate_grid_map
 from util.llm import request_to_LLM
 from lib.convention import *
+from lib.spline2d_planner import Spline2dPlanner
 
 
 ###############################################################################
@@ -167,25 +168,24 @@ is_simulation_end 함수를 만들어서, 가독성을 올릴 수 있고,
 is_simulation_pending 은  TeslaState에 넣는 것이 효율적일 것 같다.
 '''
 
-
-def TEST_06():
+def TEST_05():
     driver = Driver()
-    timestep = int(driver.getBasicTimeStep())
-
-    camera = driver.getCamera('camera')
-    camera.enable(timestep)
-    width = camera.getWidth()
-    height = camera.getHeight()
-    display = driver.getDisplay('display');
-
-    while driver.step(32) != -1:
-        data = camera.getImage()
-        if data:
-            ir = display.imageNew(data, Display.BGRA, width, height)
-            display.imagePaste(ir, 0, 0, False)
-            display.imageDelete(ir)
-
-
+    dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
+    tesla_state = TeslaState(driver, dt)
+    tesla_state.update()
+    init_x, init_y = tesla_state.x, tesla_state.y
+    points_collision = request_to_LLM()
+    for cur_collision in points_collision:
+        while is_simulation_pending(driver, tesla_state):
+            tesla_state.update()
+            print(f'current speed(m/s): {tesla_state.get_speed()}')
+            print(f'current speed(km/h): {tesla_state.get_speed_km_h()}')
+            if (tesla_state.v >= 100 / 3.6): # == check_goal
+                print('speed limit')
+                distance = np.linalg.norm([tesla_state.x - init_x, tesla_state.y - init_y])
+                driver.simulationSetMode(driver.SIMULATION_MODE_PAUSE)
+                print(f'need offset: {distance}')
+                break
 
     # driver.getWidth
     #
@@ -193,3 +193,33 @@ def TEST_06():
     # height = wb_display_get_height(display);
     # wb_display_fill_rectangle(display,0,0,width,height);
     # wb_display_set_color(display,LIGHT_GREY);
+
+
+def TEST_06(): # Spline Test
+    # point_waypoints = request_to_LLM()
+
+    x = [-2.5, 0.0, 2.5, 5.0, 7.5, 3.0, -1.0]
+    y = [0.7, -6, -5, -3.5, 0.0, 5.0, -2.0]
+    yaw = np.deg2rad([0, 0, 0, 0, 0, 0, 0])
+
+    point_waypoints = np.array([x, y, yaw]).T
+    ds = 0.1  # [m] distance of each interpolated points
+
+    print(f'{point_waypoints = }')
+    plt.subplots(1)
+    plt.plot(x, y, "xb", label="Data points")
+
+    for (kind, label) in [("linear", "C0 (Linear spline)"),
+                          ("quadratic", "C0 & C1 (Quadratic spline)"),
+                          ("cubic", "C0 & C1 & C2 (Cubic spline)")]:
+        spline2d_planner = Spline2dPlanner(point_waypoints, kind=kind)
+        path = spline2d_planner.calculate()
+        plt.plot(path[:, X], path[:, Y], label=label)
+
+    plt.grid(True)
+    plt.axis("equal")
+    plt.xlabel("x[m]")
+    plt.ylabel("y[m]")
+    plt.legend()
+    plt.show()
+

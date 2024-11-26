@@ -5,6 +5,7 @@ import random
 import math
 import time
 from util.map_maker import generate_grid_map
+from lib.convention import *
 
 TESLA_MIN_RADIUS = 11.70432 # meters
 CAR_LENGTH = 5  # meters
@@ -25,13 +26,13 @@ class RRTStarPlanner:
         grid,
         start,
         goal,
-        velocity=30, # unit [m/s]
-        goal_radius=10,
-        max_iter=10000,
+        velocity=TARGET_SPEED, # unit [m/s]
+        goal_radius=GOAL_DIS,
+        max_iter=RRT_MAX_ITER,
         min_turn_radius=TESLA_MIN_RADIUS,
     ):
-        # alpha =  3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
-        alpha =  3.6 / 2  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        alpha =  3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        # alpha =  3.6 / 2  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
@@ -145,6 +146,8 @@ class RRTStarPlanner:
                         return self.get_waypoint()
         end_time = time.time()
         print(f"No path found in {end_time - start_time:.2f} seconds")
+        print(MSG_HEADER, "exit")
+        exit(0)
         return None
 
     def get_waypoint(self):

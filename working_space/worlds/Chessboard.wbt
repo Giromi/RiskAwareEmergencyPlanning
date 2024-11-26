@@ -4,7 +4,6 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "../protos/TeslaModel3.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
 
 WorldInfo {
   info [
@@ -13,11 +12,11 @@ WorldInfo {
     "Author: Guillaume Michel <guillaume.michel.202@gmail.com>"
   ]
   title "Human Skin Animation"
-  basicTimeStep 4
+  basicTimeStep 10
 }
 Viewpoint {
-  orientation -0.349162899188837 0.248299437263603 0.9035666324542005 1.4691768794470594
-  position 2.216348555453707 -8.115825980986347 6.916909449594058
+  orientation -0.4244278327438854 0.28462418594472794 0.8595638938250196 1.6964571289472306
+  position 11.968154816377531 -77.03311369789935 67.24953247225449
 }
 TexturedBackground {
   texture "noon_cloudy_countryside"
@@ -25,42 +24,14 @@ TexturedBackground {
 TexturedBackgroundLight {
   texture "noon_cloudy_countryside"
 }
-DEF Base Floor {
-  translation 0 0 0.008
-  size 700 700
-  appearance Parquetry {
-    colorOverride 0 0 0
-  }
-}
 DEF Checkboard Floor {
-  translation 0 0 0.01
+  translation 750 0 0.01
   name "floor(1)"
-  size 100 100
+  size 1500 70
   tileSize 2 2
 }
 DEF TeslaModel3 TeslaModel3 {
-  hidden position_0_0 -4.710583194063301e-05
-  hidden position2_0_0 35.27655297973346
-  hidden position_0_1 4.710963607896123e-05
-  hidden position2_0_1 35.071520798644634
-  hidden position_0_2 51.26675144715967
-  hidden position_0_3 51.267187185730556
-  hidden linearVelocity_0 8.34197179781077 -3.843229526024269e-06 0.008120997291744255
-  hidden angularVelocity_0 2.0509641139378756e-07 0.03514493416154519 -1.7849718730552271e-09
-  hidden rotation_1 0.2568357949756209 0.6833930847470349 -0.6833807621956977 2.638728232332981
-  hidden linearVelocity_1 8.344466881387323 1.6558116685393217e-05 -0.008684917262850339
-  hidden angularVelocity_1 -0.0010502734966756206 23.17773652736262 -0.0005472097513656468
-  hidden rotation_2 0.18269258858377527 -0.6952106521540035 0.6952018176099403 2.780129561991238
-  hidden linearVelocity_2 8.3444669065172 -2.4291403669795007e-05 -0.008684956855660432
-  hidden angularVelocity_2 0.0010717524232660691 23.177736596371076 0.0005478353740619331
-  hidden rotation_3 0.7908919419922141 -0.4327181868567485 0.4327180454466767 1.8032672930846776
-  hidden linearVelocity_3 8.345102164285818 -8.348352516678544e-06 0.009049994644571333
-  hidden angularVelocity_3 -0.0002812499479188464 23.18199845395228 -0.0006496201702078917
-  hidden rotation_4 0.7907386820463818 0.4328582095653069 -0.43285806810947636 1.8034558755974055
-  hidden linearVelocity_4 8.345102154094493 6.424471438742451e-07 0.009049933520864332
-  hidden angularVelocity_4 0.0003026540616139359 23.18199844400251 0.0006501817197528554
-  translation 12.168134075577962 -1.0021950340697835e-05 0.2597488952036566
-  rotation 8.548253030062903e-07 -0.999999992767926 0.00012026394979241483 0.007262987588058382
+  translation -75 0 0
   controller "TeslaModel3"
   supervisor TRUE
 }

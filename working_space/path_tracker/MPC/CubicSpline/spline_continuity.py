@@ -23,6 +23,7 @@ class Spline2D:
         return x, y
 
 
+
 def main():
     x = [-2.5, 0.0, 2.5, 5.0, 7.5, 3.0, -1.0]
     y = [0.7, -6, -5, -3.5, 0.0, 5.0, -2.0]
@@ -37,8 +38,10 @@ def main():
         rx, ry = [], []
         sp = Spline2D(x, y, kind=kind)
         s = np.arange(0, sp.s[-1], ds)
+        print(f'{s = }')
         for i_s in s:
             ix, iy = sp.calc_position(i_s)
+            print(ix, iy)
             rx.append(ix)
             ry.append(iy)
         plt.plot(rx, ry, "-", label=label)
