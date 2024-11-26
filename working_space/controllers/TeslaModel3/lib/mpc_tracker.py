@@ -40,7 +40,6 @@ class MPCTracker:
         dl = 1.0       # course tick
 
         while ideal_state.is_simulation_pending():
-            print(ideal_state)
             x_ref, target_index, d_ref = self.calculate_ref_trajectory(ideal_state, cx, cy, cyaw, sp, dl, target_index)
             x_cur = [ideal_state.x, ideal_state.y , ideal_state.v, ideal_state.yaw]
 
@@ -56,7 +55,7 @@ class MPCTracker:
             if self.check_goal(ideal_state, goal, target_index, len(cx)):
                 print("Goal")
                 break
-            plot_interval(ideal_state.x, ideal_state.y, ideal_state.yaw, cur_delta)
+            plot_interval(ideal_state, cur_delta)
     ###### Do simulation END ######
     
 
@@ -80,7 +79,6 @@ class MPCTracker:
         sp = self.calculate_speed_profile(cx, cy, cyaw, TARGET_SPEED)
         dl = 1.0       # course tick
 
-        plot_t = 0
         while tesla_state.is_simulation_pending():
 
             x_ref, target_index, d_ref = self.calculate_ref_trajectory(tesla_state, cx, cy, cyaw, sp, dl, target_index)
@@ -97,7 +95,7 @@ class MPCTracker:
             if self.check_goal(tesla_state, goal, target_index, len(cx)):
                 print("Goal")
                 break
-            plot_t = plot_interval(tesla_state, cur_delta, plot_t)
+            plot_interval(tesla_state, cur_delta)
 
     
 

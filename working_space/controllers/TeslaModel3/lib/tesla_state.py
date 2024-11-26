@@ -33,6 +33,9 @@ class IdealState:
     def is_simulation_pending(self):
         return MAX_TIME > self.t
 
+    def get_time(self):
+        return self.t
+
     # def cal_distance(self, point_x, point_y):
     #     dx = self.x - point_x
     #     dy = self.y - point_y

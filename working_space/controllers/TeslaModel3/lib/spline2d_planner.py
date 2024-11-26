@@ -24,7 +24,6 @@ class Spline2dPlanner:
             if i < len(self.points_waypoint) and int(cur_x) == self.points_waypoint[i, X] \
                                              and int(cur_y) == self.points_waypoint[i, Y]:
                 i += 1
-            print(cur_x, cur_y)
         return path
 
     def __calculate_s(self):

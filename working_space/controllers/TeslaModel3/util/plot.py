@@ -7,7 +7,7 @@ def plot_init():
     ###################################################
     plt.close("all")
     plt.figure(figsize=(5, 3))
-    plt.title(f'Path Planning and Tracking {TARGET_SPEED}[km/h]', fontsize=16)
+    plt.title(f'Path Planning and Tracking {TARGET_SPEED * 3.6}[km/h]', fontsize=16)
     plt.xlabel("X [m]", fontsize=12)
     plt.ylabel("Y [m]", fontsize=12)
     plt.grid(True)
@@ -68,19 +68,17 @@ def plot_car(x, y, yaw, steer=0.0, cabcolor="-r", truckcolor="-k"):  # pragma: n
     plt.plot(np.array(rl_wheel[0, :]).flatten(),
              np.array(rl_wheel[1, :]).flatten(), truckcolor)
 
-def plot_interval(tesla_state, steer, plot_t):
-    cur_t = tesla_state.get_time()
-    print(f'cur_t: {cur_t}, plot_t: {plot_t}')
-    if plot_t < cur_t :
-        plot_t = cur_t + PLOT_CAR_TICK
-        plot_car(tesla_state.x, tesla_state.y, tesla_state.yaw, steer)
-    plt.plot(tesla_state.x, tesla_state.y, "*")
+def plot_interval(state, steer):
+    cur_t = state.get_time()
+    if state.plot_time < cur_t :
+        state.plot_time = cur_t + PLOT_CAR_TICK
+        plot_car(state.x, state.y, state.yaw, steer)
+    plt.plot(state.x, state.y, "*")
     plt.legend(loc="upper right", fontsize=10)      # 여기있어야 라벨 뜸
-    plt.xlim(tesla_state.x - OFFSET, tesla_state.x + OFFSET)
-    plt.ylim(tesla_state.y - OFFSET, tesla_state.y + OFFSET)
+    # plt.xlim(tesla_state.x - OFFSET, tesla_state.x + OFFSET)
+    # plt.ylim(tesla_state.y - OFFSET, tesla_state.y + OFFSET)
     plt.pause(0.0001)                               # 이게 없으면 그래프가 멈춤
     # plt.pause(1.0)                               # 이게 없으면 그래프가 멈춤
-    return plot_t
 
 def plot_arrow(x, y, yaw, length=1.0, width=0.5, fc="r", ec="k"):
     """

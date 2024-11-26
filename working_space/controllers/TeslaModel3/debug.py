@@ -36,6 +36,36 @@ def dprint(val):
 #
 
 
+def webots_sim_dubins(driver, tesla_state):    # <Main 문>
+    tesla_state.update()
+    dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
+
+    points_collision = request_to_LLM()
+    for cur_collision in points_collision:
+        start = np.array([tesla_state.x, tesla_state.y])
+        goal = np.array([cur_collision[X], cur_collision[Y]])
+        plt.plot(start[X], start[Y], "bo", markersize=10, label="Start")
+        plt.plot(goal[X], goal[Y], "yo", markersize=10, label="LLM(Collision)")
+
+        """ Connect """
+        start_point = np.concatenate((start, np.deg2rad([tesla_state.yaw], None)))
+        points_waypoint = np.vstack((start_point, np.array(points_collision)))
+        plt.plot(points_waypoint[1:-2, X], points_waypoint[1:-2, Y], "ro", markersize=10, label="RRT*(Waypoint)")
+
+        """ Dubins Path Planning """
+        path_handler = PathHanlder(points_waypoint, DubinsPlanner)
+        # path_handler = PathHanlder(points_waypoint, DubinsPlanner)
+        # points_path = path_handler.calculate()
+        # plt.plot(points_path[1:, X], points_path[1:, Y], "cx", markersize=10, label="Dubins(Path)")
+
+        """ MPC Tracking """
+        mpc = MPCTracker(points_path, dt)
+        mpc.track(tesla_state)
+
+    mpc = MPCTracker(points_path, dt)
+    mpc.do_simulation(tesla_state)
+
+
 def webots_sim_only_from(driver):    # <Main 문>
     dt = driver.getBasicTimeStep() / 1000 # [s]
     grid_map = np.zeros((700, 700))
