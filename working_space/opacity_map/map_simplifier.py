@@ -2,8 +2,8 @@ import json
 import numpy as np
 
 GRID_RESOLUTION = 1  # 1 meter per cell
-GRID_X_MIN, GRID_X_MAX = -50, 50
-GRID_Y_MIN, GRID_Y_MAX = -80, 80
+GRID_X_MIN, GRID_X_MAX = -50, 400
+GRID_Y_MIN, GRID_Y_MAX = -200, 100
 X, Y, = 0, 1
 W, H = 0, 2
 
@@ -56,27 +56,32 @@ def simplify_grid_map(json_file):
     output.write('# min_x, min_y, max_x, max_y\n')
     # output.write('# x, y, w, h\n')
 
+    dict_list = ["building_dict", "car_dict", "tree_dict", "human_dict"]
 
-    for obj_dict in [data["building_dict"], data["car_dict"], data["tree_dict"]]:
-        count = 0
-        for key, value in obj_dict.items():
+    for key_name in dict_list:
+        print(key_name)
+        count = len(data[key_name])
+        output.write(f'\n\n{key_name} Total Count : {count}\n')
+        output.write('-------------------------\n')
+        for key, value in data[key_name].items():
             pos, size, ori = [], [], []
             try:
                 pos = value["pos"]
                 size = value["size"]
+                if len(size) == 1:
+                    raise Exception('Size is Not list')
                 ori = value["ori"]
             except:
+                pos = value["pos"]
+                ori = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
                 if "radius" in value:  # For trees
-                    pos = value["pos"]
                     size = [value["radius"] * 2, 0, value['radius'] * 2]
-                    ori = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+                elif 'size' in value:
+                    size = [value["size"] * 2, 0, value['size'] * 2]
+                    
             # output.write(f'{key} : ({pos[X]}, {pos[Y]}, {size[W]}, {size[H]})\n')
             mark_occupied(key, output, pos, size, ori)
-            count += 1
-        output.write('-------------------------\n')
-        output.write(f'Total Count : {count}\n\n')
     output.close()
-
 
 if __name__ == "__main__":
     simplify_grid_map('data.json')
