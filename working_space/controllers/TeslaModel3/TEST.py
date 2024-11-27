@@ -1,4 +1,4 @@
-from debug import *
+from util.debug import *
 
 
 """ Webots """
@@ -156,7 +156,7 @@ def TEST_05():
     for cur_collision in points_collision:
         print(f'TARGET(x, y, yaw) ⇒ {cur_collision}')
         while is_simulation_pending(driver, tesla_state):
-            tesla_state.update(np.deg2rad(10))
+            tesla_state.update(delta=np.deg2rad(10))
             if (tesla_state.x >= cur_collision[X]): # == check_goal
                 break
     tesla_state.set_speed(0)
@@ -225,27 +225,15 @@ def TEST_06(): # Spline Test
 
 
 def TEST_07():
+    driver = Driver()
+    dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
+    tesla_state = TeslaState(driver, dt)
+    tesla_state.set_speed(0)
+    while driver.step() != -1:
+        # tesla_state.update()
+        print(tesla_state.get_yaw())
+        print(tesla_state.get_time())
+        if (tesla_state.x >= 5):
+            break
 
-    def generate_smooth_path(start_x, start_y, total_distance, num_points):
-        # X 방향으로 일정한 간격으로 이동
-        x = np.linspace(start_x, start_x + total_distance, num_points)
-        
-        # Y 방향으로 부드럽게 변화 (사인 곡선을 이용)
-        y = 5 * np.sin(0.02 * x)  # 5m 진폭, 부드러운 변화
-        
-        # Yaw 계산 (경사각)
-        yaw = np.arctan2(np.gradient(y), np.gradient(x))
-        
-        return np.vstack((x, y, yaw)).T
 
-# 매끄러운 경로 생성
-    smooth_path = generate_smooth_path(0, 0, 300, 100)  # 300m 거리, 100개 경로점
-
-# np 형태로 출력
-    np.set_printoptions(precision=2, suppress=True)
-    print("Smooth Path as numpy array:")
-    print("smooth_path = np.array([")
-    for wp in smooth_path:
-        print(f"    [{wp[0]:.2f}, {wp[1]:.2f}, {wp[2]:.2f}],")
-    print("])")
-    

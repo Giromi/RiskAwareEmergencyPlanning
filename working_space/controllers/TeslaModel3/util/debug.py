@@ -35,7 +35,6 @@ def dprint(val):
 #     plt.show()
 #
 
-
 def webots_sim_dubins(driver, tesla_state):    # <Main 문>
     tesla_state.update()
     dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
@@ -52,6 +51,10 @@ def webots_sim_dubins(driver, tesla_state):    # <Main 문>
         points_waypoint = np.vstack((start_point, np.array(points_collision)))
         plt.plot(points_waypoint[1:-2, X], points_waypoint[1:-2, Y], "ro", markersize=10, label="RRT*(Waypoint)")
 
+# RRT 안될 때 쓰는 용도 
+# points_waypoint = np.vstack((start, np.array(points_collision)))
+# points_waypoint = np.hstack((points_waypoint, np.zeros((points_waypoint.shape[0], 1))))
+# plt.plot(points_waypoint[:, X], points_waypoint[:, Y], "ro", markersize=10, label="RRT*(Waypoint)")
         """ Dubins Path Planning """
         path_handler = PathHanlder(points_waypoint, DubinsPlanner)
         # path_handler = PathHanlder(points_waypoint, DubinsPlanner)

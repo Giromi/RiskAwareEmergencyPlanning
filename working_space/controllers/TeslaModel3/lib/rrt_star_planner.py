@@ -1,4 +1,3 @@
-import numpy as n
 import numpy as np
 import matplotlib.pyplot as plt
 import random
@@ -7,7 +6,7 @@ import time
 from util.map_maker import generate_grid_map
 from lib.convention import *
 
-TESLA_MIN_RADIUS = 11.70432 # meters
+TESLA_MIN_RADIUS = 11.70432  # meters
 CAR_LENGTH = 5  # meters
 CAR_WIDTH = 2  # meters
 
@@ -19,20 +18,18 @@ class Node:
         self.theta = theta
         self.parent = None
 
-
 class RRTStarPlanner:
     def __init__(
         self,
         grid,
         start,
         goal,
-        velocity=TARGET_SPEED, # unit [m/s]
-        goal_radius=GOAL_DIS,
-        max_iter=RRT_MAX_ITER,
+        velocity=30,  # unit [m/s]
+        goal_radius=10,
+        max_iter=10000,
         min_turn_radius=TESLA_MIN_RADIUS,
     ):
-        alpha =  3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
-        # alpha =  3.6 / 2  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        alpha = 3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
@@ -143,20 +140,20 @@ class RRTStarPlanner:
                         self.nodes.append(self.goal)
                         end_time = time.time()
                         print(f"Path found in {end_time - start_time:.2f} seconds")
-                        return self.get_waypoint()
+                        return self.get_path()
         end_time = time.time()
         print(f"No path found in {end_time - start_time:.2f} seconds")
         print(MSG_HEADER, "exit")
         exit(0)
         return None
 
-    def get_waypoint(self):
-        waypoint = []
+    def get_path(self):
+        path = []
         node = self.goal
         while node is not None:
-            waypoint.append([node.x, node.y, node.theta])
+            path.append([node.x, node.y, node.theta])
             node = node.parent
-        return np.array(waypoint[::-1])
+        return np.array(path[::-1])
 
     def visualize(self, path=None):
         plt.imshow(self.grid, cmap="gray")
@@ -170,12 +167,10 @@ class RRTStarPlanner:
                     [node.x, node.parent.x], [node.y, node.parent.y], "y-", alpha=0.5
                 )
 
-        if path:
+        if path is not None:
             path = np.array(path)
             plt.plot(path[:, 0], path[:, 1], "b-", linewidth=2, label="Path")
 
         plt.legend()
         plt.show()
-
-
 

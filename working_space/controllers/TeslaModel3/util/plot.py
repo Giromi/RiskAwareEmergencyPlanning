@@ -68,8 +68,9 @@ def plot_car(x, y, yaw, steer=0.0, cabcolor="-r", truckcolor="-k"):  # pragma: n
     plt.plot(np.array(rl_wheel[0, :]).flatten(),
              np.array(rl_wheel[1, :]).flatten(), truckcolor)
 
-def plot_interval(state, steer):
+def plot_interval(state, steer, cx, cy, target_index):
     cur_t = state.get_time()
+    plt.plot(cx[target_index], cy[target_index], "xg", markersize=10)
     if state.plot_time < cur_t :
         state.plot_time = cur_t + PLOT_CAR_TICK
         plot_car(state.x, state.y, state.yaw, steer)

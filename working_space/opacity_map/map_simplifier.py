@@ -58,12 +58,19 @@ def simplify_grid_map(json_file):
 
     dict_list = ["building_dict", "car_dict", "tree_dict", "human_dict"]
 
+<<<<<<< Updated upstream
     for key_name in dict_list:
         print(key_name)
         count = len(data[key_name])
         output.write(f'\n\n{key_name} Total Count : {count}\n')
         output.write('-------------------------\n')
         for key, value in data[key_name].items():
+=======
+    for obj_dict in [data["building_dict"], data["car_dict"], data["tree_dict"]]:
+        count = 0
+        len = len(obj_dict)
+        for key, value in obj_dict.items():
+>>>>>>> Stashed changes
             pos, size, ori = [], [], []
             try:
                 pos = value["pos"]

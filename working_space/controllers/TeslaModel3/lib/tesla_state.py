@@ -30,11 +30,14 @@ class IdealState:
         self.yaw = self.yaw + self.v / WB * math.tan(delta) * self.dt
         self.v += acceletation * self.dt
 
-    def is_simulation_pending(self):
-        return MAX_TIME > self.t
+    def is_simulation_pending(self, driver):
+        return driver.step() != -1 and MAX_TIME > self.get_time()
 
     def get_time(self):
         return self.t
+
+    def add_time(self, dt):
+        self.t += dt
 
     # def cal_distance(self, point_x, point_y):
     #     dx = self.x - point_x
@@ -47,7 +50,6 @@ class IdealState:
     #     dy = self.y - point_y
     #     direction_error = angle_mod(math.atan2(dy, dx) - self.yaw) # -pi ~ pi
     #     return direction_error  # [rad] -pi ~ pi
-
 
 class History:  # Singleton Pattern
     def __init__(self):
@@ -84,17 +86,19 @@ class TeslaState(IdealState):
         pos, ori, speed = self.get_all()
         self.set_state(pos, ori, speed)
 
-    def update(self, delta=0): # Different Parameter for blocking Parent's Method
+    def update(self, accel=None, delta=0): # Different Parameter for blocking Parent's Method
         # self.history.append(self.get_time(), self)
-
-        self.x, self.y, _ = self.get_position()
+        self.x, self.y, self.z = self.get_position()
         self.yaw = self.get_yaw()
         self.v = self.get_speed()
-
-        self.set_speed(TARGET_SPEED * 3.6) # [km/h]
+        if accel is None:
+            self.set_speed(TARGET_SPEED * 3.6)
+        else: # 잘 안됨. 멈춰버림
+            self.v += accel * self.dt
+            self.set_speed(self.v)  
         self.set_steering_angle(-delta)
 
-    def set_speed(self, speed):
+    def set_speed(self, speed): # [km/h]
         self.car_node.setCruisingSpeed(speed)
 
     def get_position(self):

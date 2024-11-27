@@ -4,7 +4,7 @@ Path tracking simulation with iterative linear model predictive control for spee
 author: Atsushi Sakai (@Atsushi_twi)
 """
 
-from debug import *
+from util.debug import *
 import matplotlib.pyplot as plt
 import cvxpy
 import math
@@ -15,12 +15,11 @@ from lib.convention import *
 from util.plot import plot_interval
 
 class MPCTracker:
-
     def __init__(self, points_path, dt):
         self.points_path = points_path
         self.dt = dt
 
-    def do_simulation(self, ideal_state): # NOT webots
+    def do_simulation(self, driver, ideal_state): # NOT webots
         goal = np.array([self.points_path[-1, X], self.points_path[-1, Y]])
         # ideal_state.update()
 
@@ -39,7 +38,7 @@ class MPCTracker:
         sp = self.calculate_speed_profile(cx, cy, cyaw, TARGET_SPEED)
         dl = 1.0       # course tick
 
-        while ideal_state.is_simulation_pending():
+        while ideal_state.is_simulation_pending(driver):
             x_ref, target_index, d_ref = self.calculate_ref_trajectory(ideal_state, cx, cy, cyaw, sp, dl, target_index)
             x_cur = [ideal_state.x, ideal_state.y , ideal_state.v, ideal_state.yaw]
 
@@ -50,19 +49,20 @@ class MPCTracker:
             if odelta is not None:
                 cur_delta, cur_accer = odelta[0], oaccer[0]
                 ideal_state.update(cur_accer, cur_delta) 
-            ideal_state.t += self.dt
+            ideal_state.add_time(self.dt)
+
+            print(f"ideal_state : {ideal_state.yaw}")
 
             if self.check_goal(ideal_state, goal, target_index, len(cx)):
                 print("Goal")
                 break
-            plot_interval(ideal_state, cur_delta)
+            plot_interval(ideal_state, cur_delta, cx, cy, target_index)
     ###### Do simulation END ######
     
 
     def track(self, tesla_state):
         print('Traking Start')
         goal = np.array([self.points_path[-1, X], self.points_path[-1, Y]])
-        # tesla_state.update()  # 밖에서 함
 
         # initial yaw compensation
         # if tesla_state.yaw - self.points_path[0, YAW] >= math.pi:
@@ -71,7 +71,7 @@ class MPCTracker:
         #     tesla_state.yaw += math.pi * 2.0
 
         target_index, _ = self.calculate_nearest_index(tesla_state, self.points_path[:, X], self.points_path[:, Y], self.points_path[:, YAW], 0)
-        odelta, oaccer = None, None
+        odelta, oaccel = None, None
 
         cx = self.points_path[:, X]
         cy = self.points_path[:, Y]
@@ -80,22 +80,21 @@ class MPCTracker:
         dl = 1.0       # course tick
 
         while tesla_state.is_simulation_pending():
-
-            x_ref, target_index, d_ref = self.calculate_ref_trajectory(tesla_state, cx, cy, cyaw, sp, dl, target_index)
+            x_ref, target_index, d_ref = self.calculate_ref_trajectory(
+                                tesla_state, cx, cy, cyaw, sp, dl, target_index)
             x_cur = [tesla_state.x, tesla_state.y , tesla_state.v, tesla_state.yaw]
-
-            oaccer, odelta, ox, oy, oyaw, ov = self.iterative_linear_control(
-                x_ref, x_cur, d_ref, oaccer, odelta)
-            cur_delta, cur_accer = 0.0, 0.0
+            oaccel, odelta, ox, oy, oyaw, ov = self.iterative_linear_control(
+                x_ref, x_cur, d_ref, oaccel, odelta)
+            cur_delta, cur_accel = 0.0, 0.0
             if odelta is not None:
-                cur_delta, cur_accer = odelta[0], oaccer[0]
-                tesla_state.update(cur_delta) 
-                # tesla_state.update(cur_delta)
+                cur_delta, cur_accel = odelta[0], oaccel[0]
+                tesla_state.update(delta=cur_delta) 
+            print(f"Tesla State : {tesla_state.yaw}")
 
             if self.check_goal(tesla_state, goal, target_index, len(cx)):
                 print("Goal")
                 break
-            plot_interval(tesla_state, cur_delta)
+            plot_interval(tesla_state, cur_delta, cx, cy, target_index)
 
     
 
@@ -164,6 +163,30 @@ class MPCTracker:
         speed_profile[-1] = 0.0
         
         return speed_profile
+
+    def iterative_linear_control(self, x_ref, x_cur, dref, oa, od):
+        ox, oy, oyaw, ov = None, None, None, None
+
+        if oa is None or od is None:
+            oa = np.zeros(HORIZON_T)  # 크기 T의 0 배열
+            od = np.zeros(HORIZON_T)
+
+
+        for i in range(MAX_ITER):
+            xbar = self.predict_motion(x_cur, oa, od, x_ref)
+            poa, pod = oa[:], od[:]
+            oa, od, ox, oy, oyaw, ov = self.linear_control(x_ref, xbar, x_cur, dref)
+
+            # print(f"Updated oa: {oa}, od: {od}")
+
+            du = sum(abs(oa - poa)) + sum(abs(od - pod))  # calc u change value
+            if du <= DU_TH:
+                break
+        else:
+            print("Iterative is max iter")
+
+        return oa, od, ox, oy, oyaw, ov
+
 
     def linear_control(self, xref, xbar, x0, dref):
         """
@@ -265,29 +288,6 @@ class MPCTracker:
 
         return xbar
 
-
-    def iterative_linear_control(self, x_ref, x_cur, dref, oa, od):
-        ox, oy, oyaw, ov = None, None, None, None
-
-        if oa is None or od is None:
-            oa = np.zeros(HORIZON_T)  # 크기 T의 0 배열
-            od = np.zeros(HORIZON_T)
-
-
-        for i in range(MAX_ITER):
-            xbar = self.predict_motion(x_cur, oa, od, x_ref)
-            poa, pod = oa[:], od[:]
-            oa, od, ox, oy, oyaw, ov = self.linear_control(x_ref, xbar, x_cur, dref)
-
-            # print(f"Updated oa: {oa}, od: {od}")
-
-            du = sum(abs(oa - poa)) + sum(abs(od - pod))  # calc u change value
-            if du <= DU_TH:
-                break
-        else:
-            print("Iterative is max iter")
-
-        return oa, od, ox, oy, oyaw, ov
 
     def check_goal(self, state, goal, tind, nind):
 
