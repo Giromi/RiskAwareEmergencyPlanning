@@ -18,6 +18,7 @@ class Node:
         self.theta = theta
         self.parent = None
 
+
 class RRTStarPlanner:
     def __init__(
         self,
@@ -64,7 +65,9 @@ class RRTStarPlanner:
                 return False
 
         # Check vehicle size constraints at the new node position
-        if not self.is_car_collision_free(node2):
+        if not self.is_car_collision_free(node2) or (
+            self.grid[node2.y][node2.x] != 0 and self.grid[node2.y][node2.x] != 1
+        ):
             return False
         return True
 
@@ -173,4 +176,3 @@ class RRTStarPlanner:
 
         plt.legend()
         plt.show()
-
