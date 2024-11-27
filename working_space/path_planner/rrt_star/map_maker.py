@@ -1,5 +1,8 @@
 import json
 import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.colors import ListedColormap, BoundaryNorm
 
 
 def generate_grid_map(map_file):
@@ -26,8 +29,11 @@ def generate_grid_map(map_file):
         return grid_x, grid_y
 
     # Function to mark an area occupied in the grid map
-    def mark_occupied(grid, pos, size, ori):
-        dx, dy, dz = size
+    def mark_occupied(grid, pos, size, ori, category_value):
+        if isinstance(size, (int, float)):
+            dx = dy = dz = size
+        elif len(size) == 3:
+            dx, dy, dz = size
         x, y, z = pos
 
         # Extract orientation matrix and calculate angle (assuming 2D rotation on xy plane)
@@ -63,20 +69,36 @@ def generate_grid_map(map_file):
             for j in np.arange(min_y, max_y, GRID_RESOLUTION):
                 grid_x, grid_y = world_to_grid(i, j)
                 if 0 <= grid_x < grid_width and 0 <= grid_y < grid_height:
-                    grid[grid_y, grid_x] = 1
+                    grid[grid_y, grid_x] = category_value
 
-    # Mark all objects (buildings, cars, trees) in the grid
-    for obj_dict in [data["building_dict"], data["car_dict"], data["tree_dict"]]:
+    # Mark sidewalk in the grid first
+    for value in data.get("sidewalk_dict", {}).values():
+        mark_occupied(grid_map_combined, value["pos"], value["size"], value["ori"], 1)
+
+    # Mark all other objects (buildings, cars, trees, humans) in the grid
+    for obj_dict, category_value in zip(
+        [
+            data.get("building_dict", {}),
+            data.get("car_dict", {}),
+            data.get("tree_dict", {}),
+            data.get("human_dict", {}),
+        ],
+        [2, 3, 4, 5],
+    ):
         for value in obj_dict.values():
             if "radius" in value:  # For trees
                 x, y, _ = value["pos"]
                 radius = value["radius"]
                 size = [radius * 2, 0, radius * 2]
                 ori = [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]  # No rotation
-                mark_occupied(grid_map_combined, [x, y, 0], size, ori)
-            else:  # For buildings and cars
+                mark_occupied(grid_map_combined, [x, y, 0], size, ori, category_value)
+            else:  # For buildings, cars, and humans
                 mark_occupied(
-                    grid_map_combined, value["pos"], value["size"], value["ori"]
+                    grid_map_combined,
+                    value["pos"],
+                    value["size"],
+                    value["ori"],
+                    category_value,
                 )
 
     return grid_map_combined

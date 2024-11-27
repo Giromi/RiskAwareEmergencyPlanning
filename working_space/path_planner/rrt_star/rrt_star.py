@@ -5,7 +5,7 @@ import math
 import time
 from map_maker import generate_grid_map
 
-TESLA_MIN_RADIUS = 11.70432 # meters
+TESLA_MIN_RADIUS = 11.70432  # meters
 CAR_LENGTH = 5  # meters
 CAR_WIDTH = 2  # meters
 
@@ -24,12 +24,12 @@ class RRTStar:
         grid,
         start,
         goal,
-        velocity=30, # unit [m/s]
+        velocity=30,  # unit [m/s]
         goal_radius=10,
         max_iter=10000,
         min_turn_radius=TESLA_MIN_RADIUS,
     ):
-        alpha =  3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        alpha = 3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
@@ -176,10 +176,12 @@ class RRTStar:
 
 # if __name__ == "__main__":
 #     # here, update map_data path.
-#     grid_map = generate_grid_map("data.json")
+#     grid_map = generate_grid_map(
+#         "/Users/yunsangho/Desktop/capstone2/working_space/controllers/TeslaModel3/data.json"
+#     )
 
 #     start_point = (0, len(grid_map[0]) // 2)
-#     goal_point = (0, 10)
+#     goal_point = (100, len(grid_map[0]) // 2)
 
 #     rrt_star = RRTStar(grid_map, start_point, goal_point, velocity=30)
 #     path = rrt_star.plan()
