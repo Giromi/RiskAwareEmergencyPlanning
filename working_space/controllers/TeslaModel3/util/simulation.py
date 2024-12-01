@@ -61,14 +61,14 @@ def make_situation(driver, dt):
     print(f'Accuration distance : {distance}')
     return tesla_state
 
-def test_simulation(driver, dt):
-    tesla_state = TeslaState(driver, dt)
-
-    tesla_state.update()
-    while driver.step() != -1:
-        tesla_state.update()
-        print(f'Target  speed (km/h): {tesla_state.get_target_speed()}')
-        print(f'current speed 1(km/h): {tesla_state.get_speed() * 3.6}')
-        # print(f'current speed 2(km/h): {tesla_state.get_speed_km_h()}')
-    return tesla_state
+# def test_simulation(driver, dt):
+#     tesla_state = TeslaState(driver, dt)
+#
+#     tesla_state.update()
+#     while driver.step() != -1:
+#         tesla_state.update()
+#         print(f'Target  speed (km/h): {tesla_state.get_target_speed()}')
+#         print(f'current speed 1(km/h): {tesla_state.get_speed() * 3.6}')
+#         # print(f'current speed 2(km/h): {tesla_state.get_speed_km_h()}')
+#     return tesla_state
 

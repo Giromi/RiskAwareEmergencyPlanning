@@ -78,7 +78,7 @@ class History:  # Singleton Pattern
 class TeslaState(IdealState): 
     def __init__(self, driver, dt, def_name='TeslaModel3'):
         self.driver = driver
-        self.car_node = driver.getFromDef(def_name)
+        self.node = driver.getFromDef(def_name)
         super().__init__(dt, x=None, y=None, yaw=None, v=None) #  << self.history
         self.update()
 
@@ -86,42 +86,42 @@ class TeslaState(IdealState):
         pos, ori, speed = self.get_all()
         self.set_state(pos, ori, speed)
 
-    def update(self, accel=None, delta=0): # Different Parameter for blocking Parent's Method
+    def update(self): # Different Parameter for blocking Parent's Method
         # self.history.append(self.get_time(), self)
         self.x, self.y, self.z = self.get_position()
         self.yaw = self.get_yaw()
         self.v = self.get_speed() #self.get_speed_km_h() / 3.6
-        if accel is None:
-            self.set_speed(TARGET_SPEED * 3.6)
-        else: # 잘 안됨. 멈춰버림
-            self.v += accel * self.dt
-            self.set_speed(self.v)  
-        self.set_steering_angle(-delta)
+        # self.set_speed(TARGET_SPEED * 3.6)
+        # self.yaw = self.v / WB * math.tan(delta) * self.dt
+        # else: # 잘 안됨. 멈춰버림
+        #     self.v += accel * self.dt
+        #     self.set_speed(self.v)  
+        # self.set_steering_angle(delta)
 
-    def set_speed(self, speed): # [km/h]
-        self.car_node.setCruisingSpeed(speed)
+    # def set_speed(self, speed): # [km/h]
+    #     self.node.setCruisingSpeed(speed)
 
     def get_position(self):
-        return self.car_node.getPosition()
+        return self.node.getPosition()
 
     def get_orientation(self):
-        return self.car_node.getOrientation()
+        return self.node.getOrientation()
     
     def get_yaw(self):
         angle = webots_orientation_to_yaw(self.get_orientation())
         return angle
 
     def get_pose(self): 
-        return self.car_node.getPose()
+        return self.node.getPose()
 
     def get_time_step(self):
-        return self.car_node.getBasicTimeStep()
+        return self.node.getBasicTimeStep()
 
     def set_steering_angle(self, delta):
         self.driver.setSteeringAngle(delta)
 
     def get_speed(self):
-        velocity = np.array(self.car_node.getVelocity())
+        velocity = np.array(self.node.getVelocity())
         speed = np.linalg.norm(velocity)
         return speed
 
@@ -141,8 +141,8 @@ class TeslaState(IdealState):
         return self.driver.step() != -1 and MAX_TIME > self.get_time()
     
     def get_front_z_position(self):
-        z_back = self.car_node.getPosition()[2]  # 뒷바퀴 중심의 z좌표
-        rotation = self.car_node.getOrientation()  # rotation[2]는 회전 행렬의 마지막 열 [z_x, z_y, z_z]를 나타냄
+        z_back = self.node.getPosition()[2]  # 뒷바퀴 중심의 z좌표
+        rotation = self.node.getOrientation()  # rotation[2]는 회전 행렬의 마지막 열 [z_x, z_y, z_z]를 나타냄
         pitch = math.atan2(rotation[2], math.sqrt(rotation[0]**2 + rotation[1]**2))
         z_front = z_back + WB * math.sin(pitch)  # 앞바퀴 중심의 z좌표
         return z_front

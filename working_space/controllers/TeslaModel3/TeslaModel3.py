@@ -21,7 +21,7 @@ from lib.spline2d_planner import Spline2dPlanner
 """ Util """
 from util.operator import angle_mod, smooth_yaw
 from util.map_maker import generate_grid_map
-from util.simulation import request_to_LLM, make_situation, test_simulation
+from util.simulation import request_to_LLM, make_situation
 from lib.convention import *
 from util.plot import is_1st, plot_init, plot_start_goal, plot_rrt_star_path, \
                          plot_spline2d_path, plot_target_point
@@ -39,8 +39,12 @@ def check_contact_to_ground(driver, tesla_state):
             continue
         break
 
-def webots_sim(driver, dt, tesla_state):
-    driver.step()
+def webots_sim():
+    plot_init()
+    driver = Driver()   # 차량, 건물 및 object의 객체
+    dt = driver.getBasicTimeStep() / 1000
+    tesla_state = make_situation(driver, dt)
+    dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
     tesla_state.update()
     # grid_map = generate_grid_map("data/data.json")
 
@@ -82,13 +86,13 @@ def webots_sim(driver, dt, tesla_state):
         i += 1
         first_iteration = False
 
-def is_1st(label, first_iteration):
-    return label if first_iteration else None
-
 # from get_information import parse_proto, get_value
-def webots_ideal(driver, dt, ideal_state):    # <Main 문>
-    driver.step()
-    dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
+def webots_ideal():    # <Main 문>
+    driver = Driver()   # 차량, 건물 및 object의 객체
+    dt = driver.getBasicTimeStep() / 1000
+    tesla_state = make_situation(driver, dt)
+    ideal_state = IdealState(dt, x=tesla_state.x, y=tesla_state.y, 
+                             yaw=tesla_state.yaw, v=tesla_state.v)
 
     grid_map = np.zeros((500, 500))
     # grid_map = generate_grid_map('data/data.json')
@@ -130,13 +134,7 @@ def webots_ideal(driver, dt, ideal_state):    # <Main 문>
         first_iteration = False
 
 if __name__ == '__main__':
-    # plot_init()
-    driver = Driver()   # 차량, 건물 및 object의 객체
-    dt = driver.getBasicTimeStep() / 1000
-    tesla_state = make_situation(driver, dt)
-    # ideal_state = IdealState(dt, x=tesla_state.x, y=tesla_state.y, 
-    #                          yaw=tesla_state.yaw, v=tesla_state.v)
-    # test_simulation(driver, dt)
-    webots_sim(driver, dt, tesla_state)
+    plot_init()
+    # webots_sim(driver, dt, tesla_state)
     # webots_ideal(driver, dt, ideal_state)
-    # TEST_07()
+    TEST_07()

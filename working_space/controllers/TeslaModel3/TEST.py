@@ -15,14 +15,14 @@ from lib.tesla_state import IdealState, TeslaState, History
 from lib.rrt_star_planner import RRTStarPlanner
 from lib.mpc_tracker import MPCTracker
 from lib.path_handler import PathHanlder
-# from lib.rrt_planner import Node  #TODO
+from lib.convention import *
+from lib.spline2d_planner import Spline2dPlanner
 
 """ Util """
 from util.operator import angle_mod, smooth_yaw
 from util.map_maker import generate_grid_map
 from util.simulation import request_to_LLM
-from lib.convention import *
-from lib.spline2d_planner import Spline2dPlanner
+from util.plot import plot_interval, plot_start_goal
 
 
 ###############################################################################
@@ -223,17 +223,72 @@ def TEST_06(): # Spline Test
     plt.legend()
     plt.show()
 
-
-def TEST_07():
+def TEST_07(): # 그냥 앞으로 가는 테스트
     driver = Driver()
     dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
     tesla_state = TeslaState(driver, dt)
-    tesla_state.set_speed(0)
+    tesla_state.set_speed(MAX_SPEED)  # 초기 속도 설정 [m/s]
+
+    tesla_state.update()
+    INIT_YAW = tesla_state.yaw
+    cx, cy = np.array([25.0]), np.array([-25.0])
+    plot_start_goal([0, 0], [50, -50], True)
     while driver.step() != -1:
-        # tesla_state.update()
-        print(tesla_state.get_yaw())
-        print(tesla_state.get_time())
-        if (tesla_state.x >= 5):
-            break
+        tesla_state.update()
+        print(f'current speed(km/h) : {tesla_state.v * 3.6}')
+        print(f'INIT_YAW           : {INIT_YAW * 180 / np.pi}')
+        print(f'current yaw         : {tesla_state.yaw * 180 / np.pi}')
+        cur_delta = np.deg2rad(0)
+        target_index = 0
+        tesla_state.set_steering_angle(cur_delta)
+        plot_interval(tesla_state, cur_delta, cx, cy, target_index)
 
 
+def TEST_08(): # 앞으로 가는 것도 제어기가 필요하다.
+    def calculate_steering_angle(current_yaw, target_yaw):
+        """
+        현재 방향(yaw)과 목표 방향(target_yaw) 간의 오차를 계산하여 조향각을 반환합니다.
+        """
+        angle_error = target_yaw - current_yaw  # 방향 오차 계산
+        angle_error = (angle_error + np.pi) % (2 * np.pi) - np.pi # -pi ~ pi 사이의 값으로 변환
+        # mapping
+
+        Kp = 0.5  # 조향각 게인
+        delta = Kp *  angle_error # 조향각 계산
+
+        # delta = np.interp(delta, [0, 2 * np.pi], [-MAX_STEER, MAX_STEER]) # <- 이게 아님
+        delta = np.clip(delta, -MAX_STEER, MAX_STEER)
+        return -delta
+
+    
+    TARGET_YAW = np.deg2rad(-40)
+    driver = Driver()
+    dt = driver.getBasicTimeStep() / 1000  # [s] 늘려야할 수도 있음
+    tesla_state = TeslaState(driver, dt)
+    #
+    tesla_state.set_speed(TARGET_SPEED * 3.6)  # 초기 속도 설정 [m/s]
+    while driver.step() != -1:
+        tesla_state.update()
+        # self.set_speed(TARGET_SPEED * 3.6)
+        # 속도 제한
+        print(f'current speed(km/h) : {tesla_state.v * 3.6}')
+        print(f'TARGET_YAW  : {TARGET_YAW }')
+        print(f'MAX_STEER   : {MAX_STEER * 180 / np.pi}')
+        print(f'current yaw : {tesla_state.yaw * 180 / np.pi}')
+        # if np.deg2rad(-10) < tesla_state.yaw < np.deg2rad(10):
+        #     tesla_state.update(np.deg2rad(45))
+        current_yaw = tesla_state.get_yaw()
+        steering_angle = calculate_steering_angle(current_yaw, TARGET_YAW)
+        print(f'steering angle: {calculate_steering_angle(current_yaw, TARGET_YAW) * 180 / np.pi}')
+        tesla_state.set_steering_angle(steering_angle)
+        # if tesla_state.v > MAX_VELOCITY:
+        #
+            # scale_factor = MAX_VELOCITY / tesla_state.v  # 속도 비율 계산
+            # print(f'{scale_factor = }')
+            # velocity = tesla_state.node.getVelocity() # 선형 속도 벡터 [vx, vy, vz]
+            # # 속도 제한 적용
+            # velocity[:3] = [v * scale_factor for v in velocity[:3]]  # 제한된 선형 속도 계산
+            # print(f'{velocity = }')
+            # tesla_state.node.setVelocity(velocity)  # 제한된 속도 설정
+        
+        # 현재 속도 출력

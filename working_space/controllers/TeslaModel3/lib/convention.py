@@ -7,13 +7,12 @@ W, H            = 2, 3
 #
 """ MPC Parameters """
 WB              = 2.875          # [m] wheel base of vehicle
-NX                  = 4                                 # [#] x = x, number(4)
-NU                  = 2                                 # [#] a = [accel, steer](2)
 HORIZON_T           = 15                                # [#] horizon length(10)
-R                   = np.diag([0.01, 0.01])             # [-] input cost matrix([0.01, 0.01])
-Rd                  = np.diag([0.01, 0.1])              # [-] input difference cost matrix([0.01, 1.0])
-Q                   = np.diag([1.0, 1.0, 5.0, 20.0])    # [-] state cost matrix([1.0, 1.0, 0.5, 0.5])
-Qf                  = Q
+NU                  = 1                                 # [#] a = [accel, steer](2)
+R                   = np.diag([0.01])             # [-] input cost matrix([0.01, 0.01])
+Rd                  = np.diag([0.1])              # [-] input difference cost matrix([0.01, 1.0])
+NX                  = 3                                 # [#] x = x, number(4)
+Q                   = np.diag([1.0, 1.0, 20.0])    # [-] state cost matrix([1.0, 1.0, 0.5, 0.5])
 MAX_TIME            = 500.0                             # max simulation time
 MAX_ITER            = 3                                 # [iter] Max iteration
 DU_TH               = 0.1                               # [] iteration fnish param
@@ -21,7 +20,7 @@ N_IND_SEARCH        = 10                                # [th] Search indextic V
 
 GOAL_DIS            = 10.0  #                           # [m] goal distance
 STOP_SPEED          = 10 / 3.6                          # [m/s] stop speed
-TARGET_SPEED        = 72 / 3.6                         # [m/s] target speed
+TARGET_SPEED        = 130 / 3.6                         # [m/s] target speed
 DL                  = 1.0                               # course tick
 N_IND_SEARCH        = 10                                # Search index number
 MAX_ACCEL           = 3.2                               # maximum accel [m/ss]
