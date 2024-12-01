@@ -21,90 +21,122 @@ from lib.spline2d_planner import Spline2dPlanner
 """ Util """
 from util.operator import angle_mod, smooth_yaw
 from util.map_maker import generate_grid_map
-from util.simulation import request_to_LLM, make_situation
+from util.simulation import request_to_LLM, make_situation, test_simulation
 from lib.convention import *
-from util.plot import plot_init
+from util.plot import is_1st, plot_init, plot_start_goal, plot_rrt_star_path, \
+                         plot_spline2d_path, plot_target_point
 
 def check_contact_to_ground(driver, tesla_state):
     old_t = tesla_state.get_time()
     while (driver.step() != -1):
         tesla_state.update()
         if (tesla_state.get_front_z_position() - tesla_state.z <= 0.005):
+            print('Contact to Ground')
             continue
         if (tesla_state.get_time() - old_t < 1.0):
             old_t = tesla_state.get_time()
+            print('Waiting for 1 sec...')
             continue
         break
 
-# from get_information import parse_proto, get_value
-def webots_sim(driver, tesla_state):    # <Main 문>
+def webots_sim(driver, dt, tesla_state):
     driver.step()
     tesla_state.update()
+    # grid_map = generate_grid_map("data/data.json")
 
-    dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
-
-    grid_map = np.zeros((700, 700))
-    # grid_map = generate_grid_map("data/map.json")
-    # grid_map = convert_to_grid_map("data/[Map]_03_height_C_H.txt")
-
+    grid_map = np.zeros((500, 500))
+    first_iteration = True
+    i = 0
     points_collision = request_to_LLM()
-    for cur_collision in points_collision:
+    while i < len(points_collision):
         start = np.array([tesla_state.x, tesla_state.y])
-        goal = np.array([cur_collision[X], cur_collision[Y]])
-        plt.plot(start[X], start[Y], "bo", markersize=10, label="Start")
-        plt.plot(goal[X], goal[Y], "yo", markersize=10, label="LLM(Collision)")
+        goal = np.array([points_collision[i, X], points_collision[i, Y]])
 
         """ RRT* Path Planning """
-        rrt_star = RRTStarPlanner(grid_map, start, goal, tesla_state.v)
-        points_waypoint = rrt_star.plan()
-        plt.plot(points_waypoint[1:-2, X], points_waypoint[1:-2, Y], "ro", markersize=10, label="RRT*(Waypoint)")
-        # points_waypoint = np.vstack((start, np.array(points_collision)))
-        # points_waypoint = np.hstack((points_waypoint, np.zeros((points_waypoint.shape[0], 1))))
-        # plt.plot(points_waypoint[:, X], points_waypoint[:, Y], "ro", markersize=10, label="RRT*(Waypoint)")
+        # rrt_star = RRTStarPlanner(grid_map, start, goal, tesla_state.v)
+        # points_waypoint = rrt_star.plan()
+        # if points_waypoint is None:
+        #     continue
+
+        # """ 디버깅 용도 """
+        middle_point = np.array([(start[X] + points_collision[i, X]) / 2, 
+                                 (start[Y] + points_collision[i, Y]) / 2])
+        points_waypoint = np.vstack([start, middle_point, points_collision[i]])
+        points_waypoint = np.hstack((points_waypoint, np.zeros((points_waypoint.shape[0], 1))))
 
         """ Spline2D Path Planning """
-        spline2d_planner = Spline2dPlanner(points_waypoint, 'linear') # 'linear', 'quadratic' 'cubic'
+        spline2d_planner = Spline2dPlanner(points_waypoint, tesla_state.v * dt, 'linear')
         points_path = spline2d_planner.calculate()
-        plt.plot(points_path[1:, X], points_path[1:, Y], "cx", markersize=5, label="Spline2D(Path)")
+
+        """ Plotting """
+        plot_start_goal(start, goal, first_iteration)
+        plot_rrt_star_path(points_waypoint, first_iteration)
+        plot_spline2d_path(points_path, first_iteration)
+        plot_target_point(start, first_iteration)
 
         """ MPC Tracking """
-        plt.plot(points_path[0, X], points_path[0, Y], "xg", markersize=10, label="Target Point")
         mpc = MPCTracker(points_path, dt)
         mpc.track(tesla_state)
+        # check_contact_to_ground(driver, tesla_state)
 
-        check_contact_to_ground(tsla_state)
+        i += 1
+        first_iteration = False
+
+def is_1st(label, first_iteration):
+    return label if first_iteration else None
 
 # from get_information import parse_proto, get_value
-def webots_ideal(driver, ideal_state):    # <Main 문>
+def webots_ideal(driver, dt, ideal_state):    # <Main 문>
     driver.step()
     dt = driver.getBasicTimeStep() / 1000 # [s] 늘려야할 수도 있음
-    grid_map = np.zeros((700, 700))
+
+    grid_map = np.zeros((500, 500))
+    # grid_map = generate_grid_map('data/data.json')
     points_collision = request_to_LLM()
-    for cur_collision in points_collision:
+
+    i = 0
+    first_iteration = True
+    while i < len(points_collision):
+        cur_collision = points_collision[i]
         """ Connect """
         start = np.array([ideal_state.x, ideal_state.y])
         goal = np.array([cur_collision[X], cur_collision[Y]])
-        plt.plot(start[X], start[Y], "bo", markersize=10, label="Start")
-        plt.plot(goal[X], goal[Y], "yo", markersize=10, label="LLM(Collision)")
 
-        """ RRT* Path Planning """ # NOT YET
-        points_waypoint = np.vstack((start, np.array(points_collision)))
+        """ RRT* Path Planning """
+        rrt_star = RRTStarPlanner(grid_map, start, goal, ideal_state.v)
+        points_waypoint = rrt_star.plan()
+        if points_waypoint is None:
+            continue
+
+        """ 디버깅 용도 """
+        points_waypoint = np.vstack((start, points_collision[i]))
         points_waypoint = np.hstack((points_waypoint, np.zeros((points_waypoint.shape[0], 1))))
-        plt.plot(points_waypoint[:, X], points_waypoint[:, Y], "ro", markersize=10, label="RRT*(Waypoint)")
 
         """ Spline2D Path Planning """
-        spline2d_planner = Spline2dPlanner(points_waypoint, 'linear') # 'linear', 'quadratic' 'cubic'
+        spline2d_planner = Spline2dPlanner(points_waypoint, ideal_state.v * dt, 'linear') # 'linear', 'quadratic' 'cubic'
         points_path = spline2d_planner.calculate()
-        plt.plot(points_path[1:, X], points_path[1:, Y], "cx", markersize=5, label="Dubins(Path)")
+
+        """ Plotting """
+        plot_start_goal(start, goal, first_iteration)
+        plot_rrt_star_path(points_waypoint, first_iteration)
+        plot_spline2d_path(points_path, first_iteration)
+        plot_target_point(start, first_iteration)
 
         """ MPC Tracking """
-        plt.plot(points_path[0, X], points_path[0, Y], "xg", markersize=10, label="Target Point")
         mpc = MPCTracker(points_path, dt)
         mpc.do_simulation(driver, ideal_state)
 
+        i += 1
+        first_iteration = False
+
 if __name__ == '__main__':
-    plot_init()
-    driver, tesla_state, ideal_state = make_situation()
-    webots_sim(driver, tesla_state)
-    # webots_ideal(driver, ideal_state)
+    # plot_init()
+    driver = Driver()   # 차량, 건물 및 object의 객체
+    dt = driver.getBasicTimeStep() / 1000
+    tesla_state = make_situation(driver, dt)
+    # ideal_state = IdealState(dt, x=tesla_state.x, y=tesla_state.y, 
+    #                          yaw=tesla_state.yaw, v=tesla_state.v)
+    # test_simulation(driver, dt)
+    webots_sim(driver, dt, tesla_state)
+    # webots_ideal(driver, dt, ideal_state)
     # TEST_07()

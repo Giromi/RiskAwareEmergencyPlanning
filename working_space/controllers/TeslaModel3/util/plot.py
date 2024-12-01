@@ -3,6 +3,9 @@ import numpy as np
 from lib.convention import *
 import math
 
+def is_1st(label, first_iteration):
+    return label if first_iteration else None
+
 def plot_init():
     ###################################################
     plt.close("all")
@@ -76,10 +79,9 @@ def plot_interval(state, steer, cx, cy, target_index):
         plot_car(state.x, state.y, state.yaw, steer)
     plt.plot(state.x, state.y, "*")
     plt.legend(loc="upper right", fontsize=10)      # 여기있어야 라벨 뜸
-    # plt.xlim(tesla_state.x - OFFSET, tesla_state.x + OFFSET)
-    # plt.ylim(tesla_state.y - OFFSET, tesla_state.y + OFFSET)
+    # plt.xlim(state.x - OFFSET, state.x + OFFSET)
+    # plt.ylim(state.y - OFFSET, state.y + OFFSET)
     plt.pause(0.0001)                               # 이게 없으면 그래프가 멈춤
-    # plt.pause(1.0)                               # 이게 없으면 그래프가 멈춤
 
 def plot_arrow(x, y, yaw, length=1.0, width=0.5, fc="r", ec="k"):
     """
@@ -95,3 +97,21 @@ def plot_arrow(x, y, yaw, length=1.0, width=0.5, fc="r", ec="k"):
         plt.plot(x, y)
 
 
+def plot_start_goal(start, goal, first_iteration):
+    plt.plot(start[X], start[Y], "bo", 
+             markersize=10, label=is_1st("Start", first_iteration))
+    plt.plot(goal[X], goal[Y], "yo", 
+             markersize=10, label=is_1st("LLM(Collision)", first_iteration))
+
+def plot_rrt_star_path(points_waypoint, first_iteration):
+    plt.plot(points_waypoint[1:-1, X], points_waypoint[1:-1, Y],
+             'ro', markersize=10, label=is_1st('RRT*(Waypoint)', first_iteration))
+
+
+def plot_spline2d_path(points_path, first_iteration):
+    plt.plot(points_path[1:, X], points_path[1:, Y],
+             'cx', markersize=5, label=is_1st('Spline2D(Path)', first_iteration))
+
+def plot_target_point(start, first_iteration):
+    plt.plot(start[X], start[Y]
+             , "xg", markersize=10, label=is_1st("Target Point", first_iteration))

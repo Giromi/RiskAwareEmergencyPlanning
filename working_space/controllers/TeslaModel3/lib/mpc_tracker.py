@@ -51,7 +51,7 @@ class MPCTracker:
                 ideal_state.update(cur_accer, cur_delta) 
             ideal_state.add_time(self.dt)
 
-            print(f"ideal_state : {ideal_state.yaw}")
+            print(f"ideal_state : {ideal_state.v * 3.6}")
 
             if self.check_goal(ideal_state, goal, target_index, len(cx)):
                 print("Goal")
@@ -89,7 +89,7 @@ class MPCTracker:
             if odelta is not None:
                 cur_delta, cur_accel = odelta[0], oaccel[0]
                 tesla_state.update(delta=cur_delta) 
-            print(f"Tesla State : {tesla_state.yaw}")
+            print(f"Tesla State : {tesla_state.v * 3.6}")
 
             if self.check_goal(tesla_state, goal, target_index, len(cx)):
                 print("Goal")
@@ -177,7 +177,14 @@ class MPCTracker:
             poa, pod = oa[:], od[:]
             oa, od, ox, oy, oyaw, ov = self.linear_control(x_ref, xbar, x_cur, dref)
 
-            # print(f"Updated oa: {oa}, od: {od}")
+            ################
+            if oa is None or od is None:
+                oa = poa[:]
+                od = pod[:]
+                print("Error: Cannot solve mpc..")
+                break
+            ################
+
 
             du = sum(abs(oa - poa)) + sum(abs(od - pod))  # calc u change value
             if du <= DU_TH:

@@ -30,7 +30,7 @@ class RRTStarPlanner:
         max_iter=10000,
         min_turn_radius=TESLA_MIN_RADIUS,
     ):
-        alpha = 3.6 / 10  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        alpha = 3.6 / 3  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
@@ -65,10 +65,10 @@ class RRTStarPlanner:
                 return False
 
         # Check vehicle size constraints at the new node position
-        if not self.is_car_collision_free(node2) or (
-            self.grid[node2.y][node2.x] != 0 and self.grid[node2.y][node2.x] != 1
-        ):
-            return False
+        # if not self.is_car_collision_free(node2) or (
+        #     self.grid[node2.y][node2.x] != 0 and self.grid[node2.y][node2.x] != 1
+        # ):
+        #     return False
         return True
 
     def is_within_bounds(self, x, y):
@@ -146,8 +146,6 @@ class RRTStarPlanner:
                         return self.get_path()
         end_time = time.time()
         print(f"No path found in {end_time - start_time:.2f} seconds")
-        print(MSG_HEADER, "exit")
-        exit(0)
         return None
 
     def get_path(self):

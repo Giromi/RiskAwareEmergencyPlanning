@@ -4,17 +4,18 @@ from lib.convention import *
 
 
 class Spline2dPlanner:
-    def __init__(self, points_waypoint, kind='cubic'):
+    def __init__(self, points_waypoint, step, kind='cubic'):
         x, y  = points_waypoint[:, X], points_waypoint[:, Y]
         self.points_waypoint = points_waypoint
         self.ds = np.hypot(np.diff(x), np.diff(y))
+        self.step = step
         self.s = self.__calculate_s()
         self.sx = interpolate.interp1d(self.s, x, kind=kind)
         self.sy = interpolate.interp1d(self.s, y, kind=kind)
 
     def calculate(self):
         path = np.empty((0, 3))  # Updated to handle (x, y, yaw)
-        s_array = np.arange(0, self.s[-1], 0.1)
+        s_array = np.arange(0, self.s[-1], self.step)
         i = 0
         print(s_array)
         for cur_s in s_array:
@@ -33,5 +34,3 @@ class Spline2dPlanner:
 
     def __calculate_position(self, cur_s):
         return self.sx(cur_s), self.sy(cur_s)
-
-

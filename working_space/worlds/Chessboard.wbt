@@ -4,6 +4,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "../protos/TeslaModel3.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/Road.proto"
 
 WorldInfo {
   info [
@@ -15,8 +17,9 @@ WorldInfo {
   basicTimeStep 10
 }
 Viewpoint {
-  orientation -0.42315359590594825 0.251194435237009 0.8705414349574784 1.793381990317417
-  position 28.383875594755793 -201.54431016339893 198.80519919482697
+  orientation -0.43758465828031246 0.14904818302068634 0.8867380142837762 2.194699515909065
+  position 155.32227107011562 -277.31830868607875 305.3433645663373
+  follow "vehicle"
 }
 TexturedBackground {
   texture "noon_cloudy_countryside"
@@ -24,14 +27,31 @@ TexturedBackground {
 TexturedBackgroundLight {
   texture "noon_cloudy_countryside"
 }
+Road {
+  translation 0 0 0.04
+  width 45
+  speedLimit 20
+  roadBorderWidth [
+    30
+  ]
+  wayPoints [
+    0 0 0
+    700 0 0
+  ]
+}
 DEF Checkboard Floor {
   translation 750 0 0.01
   name "floor(1)"
   size 1500 70
   tileSize 2 2
+  appearance Parquetry {
+    type "chequered"
+    textureTransform TextureTransform {
+    }
+  }
 }
 DEF TeslaModel3 TeslaModel3 {
-  translation -75 0 0
+  translation 0 0 0
   controller "TeslaModel3"
   supervisor TRUE
 }

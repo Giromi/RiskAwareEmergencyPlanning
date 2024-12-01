@@ -13,27 +13,6 @@ import matplotlib.pyplot as plt
 def dprint(val):
     print(f'{val = }')
 
-# def show_history(collision_point_list, tesla_history):
-#     # start = Waypoint(tesla_history.x_list[0], tesla_history.y_list[0], tesla_history.yaw_list[0])
-#     path = np.vstack([start, collision_point_list])
-#     cx, cy, cyaw = get_my_dubins_course(path)
-#     plt.close("all")
-#     plt.subplots()
-#     plt.plot(cx, cy, "-r", label="Reference Path")
-#     plt.plot(tesla_history.x, tesla_history.y, "-b", label="Tracking Path")
-#     plt.grid(True)
-#     plt.axis("equal")
-#     plt.xlabel("x[m]")
-#     plt.ylabel("y[m]")
-#     plt.legend()
-#
-#     plt.subplots()
-#     plt.plot(tesla_history.t, tesla_history.v, "-r", label="speed")
-#     plt.grid(True)
-#     plt.xlabel("Time [s]")
-#     plt.ylabel("Speed [m/s]")
-#     plt.show()
-#
 
 def webots_sim_dubins(driver, tesla_state):    # <Main 문>
     tesla_state.update()
@@ -51,10 +30,6 @@ def webots_sim_dubins(driver, tesla_state):    # <Main 문>
         points_waypoint = np.vstack((start_point, np.array(points_collision)))
         plt.plot(points_waypoint[1:-2, X], points_waypoint[1:-2, Y], "ro", markersize=10, label="RRT*(Waypoint)")
 
-# RRT 안될 때 쓰는 용도 
-# points_waypoint = np.vstack((start, np.array(points_collision)))
-# points_waypoint = np.hstack((points_waypoint, np.zeros((points_waypoint.shape[0], 1))))
-# plt.plot(points_waypoint[:, X], points_waypoint[:, Y], "ro", markersize=10, label="RRT*(Waypoint)")
         """ Dubins Path Planning """
         path_handler = PathHanlder(points_waypoint, DubinsPlanner)
         # path_handler = PathHanlder(points_waypoint, DubinsPlanner)
@@ -67,34 +42,6 @@ def webots_sim_dubins(driver, tesla_state):    # <Main 문>
 
     mpc = MPCTracker(points_path, dt)
     mpc.do_simulation(tesla_state)
-
-
-def webots_sim_only_from(driver):    # <Main 문>
-    dt = driver.getBasicTimeStep() / 1000 # [s]
-    grid_map = np.zeros((700, 700))
-    tesla_state = TeslaState(driver, dt)
-    tesla_state.update()
-    """ Consturctor """
-    points_collision = request_to_LLM()
-    print(points_collision)
-    for cur_collision in points_collision:
-        start = np.array([tesla_state.x, tesla_state.y])
-        goal = np.array([cur_collision[X], cur_collision[Y]])
-
-        """ RRT* Path Planning """
-        rrt_star = RRTStarPlanner(grid_map, start, goal)
-        points_waypoint = rrt_star.plan()
-
-        """ Dubins Path Planning """
-        path_handler = PathHanlder(points_waypoint, DubinsPlanner)
-        points_path = path_handler.calculate()
-
-        """ MPC Tracking """
-        mpc = MPCTracker(points_path, dt, tesla_state)
-        ######
-        steering_list = mpc.track()
-        ######
-
 
 
 

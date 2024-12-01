@@ -4,7 +4,7 @@ import numpy as np
 from lib.convention import *
 
 class IdealState:
-    def __init__(self, dt, x=0, y=0, yaw=0, v=0):
+    def __init__(self, dt, x=.0, y=.0, yaw=.0, v=.0):
         self.dt = dt
         self.t = 0
         self.x = x
@@ -28,7 +28,7 @@ class IdealState:
         self.x += self.v * math.cos(self.yaw) * self.dt # 0.008
         self.y += self.v * math.sin(self.yaw) * self.dt
         self.yaw = self.yaw + self.v / WB * math.tan(delta) * self.dt
-        self.v += acceletation * self.dt
+        # self.v = self.v#MAX_ACCEL * self.dt
 
     def is_simulation_pending(self, driver):
         return driver.step() != -1 and MAX_TIME > self.get_time()
@@ -90,7 +90,7 @@ class TeslaState(IdealState):
         # self.history.append(self.get_time(), self)
         self.x, self.y, self.z = self.get_position()
         self.yaw = self.get_yaw()
-        self.v = self.get_speed()
+        self.v = self.get_speed() #self.get_speed_km_h() / 3.6
         if accel is None:
             self.set_speed(TARGET_SPEED * 3.6)
         else: # 잘 안됨. 멈춰버림
@@ -127,6 +127,9 @@ class TeslaState(IdealState):
 
     def get_speed_km_h(self): # 뭔가 잘 안맞음
         return self.driver.getCurrentSpeed()
+
+    def get_target_speed(self):
+        return self.driver.getTargetCruisingSpeed()
     
     def set_speed(self, speed):
         return self.driver.setCruisingSpeed(speed)

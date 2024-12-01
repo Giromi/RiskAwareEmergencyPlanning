@@ -52,10 +52,10 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.010091918277523149 0.9998829663234216 -0.011498123401470892 1.2116271564135075
-  position 73.27046771637097 -24.52142275407327 369.93678157376485
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position -20.60310349770702 2.1051678287383493 147.36438530320882
   near 1
-  follow "hotel"
+  follow "TeslaModel3"
   followSmoothness 0
 }
 TexturedBackground {
@@ -85,7 +85,7 @@ DEF GROUND Solid {
   locked TRUE
 }
 DEF TeslaModel3 TeslaModel3 {
-  translation 0 16.46 0
+  translation -63 -1.53 0
   color 1 0 0
   name "TeslaModel3"
   controller "TeslaModel3"
