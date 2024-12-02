@@ -57,7 +57,7 @@ class History:  # Singleton Pattern
         self.x = []
         self.y = []
         self.yaw = []
-        self.v = []
+        # self.v = []
 
     def append(self, t, cur_state):
         self.t.append(t)

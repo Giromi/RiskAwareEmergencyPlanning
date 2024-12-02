@@ -47,7 +47,7 @@ def make_situation(driver, dt):
     tesla_state.update()
     init_x, init_y = tesla_state.x, tesla_state.y
 
-    standard_speed = TARGET_SPEED - 3 # [m/s]
+    standard_speed = 1#TARGET_SPEED - 3 # [m/s]
     tesla_state.set_speed(TARGET_SPEED * 3.6) # [km/h]
     print(f'[Moral Machine] : {standard_speed * 3.6:.2f}[km/h] 속도를 감지하겠습니다.')
     while driver.step() != -1 and tesla_state.v <= standard_speed: # [m/s]
