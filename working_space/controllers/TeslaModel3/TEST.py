@@ -234,21 +234,16 @@ def TEST_07(): # 그냥 앞으로 가는 테스트
     # else:
     #     print('node exists')
 
-    tesla_state.set_speed(MAX_SPEED)  # 초기 속도 설정 [m/s]
+    tesla_state.set_speed(TARGET_SPEED)  # 초기 속도 설정 [m/s]
     tesla_state.update()
     INIT_YAW = tesla_state.yaw
-    cx, cy = np.array([25.0]), np.array([-25.0])
-    plot_start_goal([0, 0], [50, -50], True)
     while driver.step() != -1:
         tesla_state.update()
         print(f'current speed(km/h) : {tesla_state.v * 3.6}')
         print(f'INIT_YAW           : {INIT_YAW * 180 / np.pi}')
         print(f'current yaw         : {tesla_state.yaw * 180 / np.pi}')
         cur_delta = np.deg2rad(0)
-        target_index = 0
         tesla_state.set_steering_angle(cur_delta)
-        plot_interval(tesla_state, cur_delta, cx, cy, target_index)
-
 
 def TEST_08(): # 앞으로 가는 것도 제어기가 필요하다.
     def calculate_steering_angle(current_yaw, target_yaw):
@@ -297,4 +292,16 @@ def TEST_08(): # 앞으로 가는 것도 제어기가 필요하다.
             # print(f'{velocity = }')
             # tesla_state.node.setVelocity(velocity)  # 제한된 속도 설정
         
+
         # 현재 속도 출력
+def TEST_09(): # just 직진
+    driver = Driver()
+    dt = driver.getBasicTimeStep() / 1000
+    tesla_state = TeslaState(driver, dt)
+    while driver.step() != -1:
+        tesla_state.set_speed(TARGET_SPEED * 3.6) # [km/h]
+        tesla_state.set_steering_angle(0.0)
+        tesla_state.update()
+
+
+        
