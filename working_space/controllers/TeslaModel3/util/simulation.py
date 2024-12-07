@@ -30,14 +30,20 @@ wooyeol_01 = np.array([[ 147, -18],
                        [ 143, -39],
                        [ 135, -57]])
 
-one_collision = np.array([ [100.0, 0.0] ])
+one_collision = np.array([ [300.0, 0.0] ])
 
 just_straight = [ np.array([100.0, 5.0]),
                   np.array([200.0, 5.0]) ]
 
+minsu_01 = np.array([ [22.6, 11],
+                      [50.0, -8],
+                      [120.0, -8] ])
+
 def request_to_LLM():
     # return llm_01
-    return one_collision
+    # return collision_02
+    # return one_collision
+    return minsu_01
 
 ###############################################################################
 
@@ -47,7 +53,7 @@ def make_situation(driver, dt):
     tesla_state.update()
     init_x, init_y = tesla_state.x, tesla_state.y
 
-    standard_speed = 1#TARGET_SPEED - 3 # [m/s]
+    standard_speed = TARGET_SPEED - 1 # [m/s]
     tesla_state.set_speed(TARGET_SPEED * 3.6) # [km/h]
     print(f'[Moral Machine] : {standard_speed * 3.6:.2f}[km/h] 속도를 감지하겠습니다.')
     while driver.step() != -1 and tesla_state.v <= standard_speed: # [m/s]

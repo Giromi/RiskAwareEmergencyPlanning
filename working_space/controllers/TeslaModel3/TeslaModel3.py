@@ -134,6 +134,6 @@ def webots_ideal():    # <Main 문>
 
 if __name__ == '__main__':
     plot_init()
-    # webots_sim()
+    webots_sim()
     # webots_ideal(driver, dt, ideal_state)
     # TEST_09()

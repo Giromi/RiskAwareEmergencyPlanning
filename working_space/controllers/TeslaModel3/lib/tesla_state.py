@@ -27,7 +27,7 @@ class IdealState:
 
         self.x += self.v * math.cos(self.yaw) * self.dt # 0.008
         self.y += self.v * math.sin(self.yaw) * self.dt
-        self.yaw = self.yaw + self.v / WB * math.tan(delta) * self.dt
+        self.yaw += self.v * math.tan(delta) / WB * self.dt
         # self.v = self.v#MAX_ACCEL * self.dt
 
     def is_simulation_pending(self, driver):
