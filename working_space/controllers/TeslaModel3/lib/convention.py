@@ -20,7 +20,7 @@ N_IND_SEARCH        = 10                                # [th] Search indextic V
 
 GOAL_DIS            = 10.0  #                           # [m] goal distance
 STOP_SPEED          = 10 / 3.6                          # [m/s] stop speed
-TARGET_SPEED        = 36 / 3.6                         # [m/s] target speed
+TARGET_SPEED        = 72 / 3.6                         # [m/s] target speed
 DL                  = 1.0                               # course tick
 N_IND_SEARCH        = 10                                # Search index number
 MAX_SPEED           = 261.0 / 3.6                       # maximum speed [m/s]  # 261.0 km/h

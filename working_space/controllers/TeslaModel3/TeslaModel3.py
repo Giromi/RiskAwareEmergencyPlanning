@@ -59,11 +59,13 @@ def webots_sim():
         # rrt_star = RRTStarPlanner(grid_map, start, goal, tesla_state.v)
         # points_waypoint = rrt_star.plan()
         # if points_waypoint is None:
+        #     print('No Path, Retry')
         #     continue
 
         # """ 디버깅 용도 """
         middle_point = np.array([(start[X] + points_collision[i, X]) / 2, 
                                  (start[Y] + points_collision[i, Y]) / 2])
+        # 수기로 입력
         points_waypoint = np.vstack([start, middle_point, points_collision[i]])
         points_waypoint = np.hstack((points_waypoint, np.zeros((points_waypoint.shape[0], 1))))
 
