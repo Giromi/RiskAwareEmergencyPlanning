@@ -25,6 +25,7 @@ from util.simulation import request_to_LLM, make_situation
 from lib.convention import *
 from util.plot import is_1st, plot_init, plot_start_goal, plot_rrt_star_path, \
                          plot_spline2d_path, plot_target_point
+from util.webots_json import webots_json
 
 def check_contact_to_ground(driver, tesla_state):
     old_t = tesla_state.get_time()
@@ -149,9 +150,11 @@ def webots_ideal():    # <Main 문>
 
         i += 1
         first_iteration = False
-
 if __name__ == '__main__':
     plot_init()
     webots_sim()
     # webots_ideal(driver, dt, ideal_state)
     # TEST_09()
+
+    # webots_json('data/data_low.json')
+    print('End of Program')

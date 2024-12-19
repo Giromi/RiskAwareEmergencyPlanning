@@ -4,12 +4,13 @@
 from controller import Supervisor   
 import json
 
-def convert_json():
+
+def webots_json(file_name):
     ################################################################
     ##                 Convert dictionary to json                 ##
     ################################################################
     def convert_json(input : dict):         
-        with open("data.json", "w") as f:   # 파일 저장소: main과 같은 위치
+        with open(file_name, "w") as f:   # 파일 저장소: main과 같은 위치
             json.dump(input, f, ensure_ascii=False, indent=4)
 
     # Supervisor 객체 생성 
@@ -18,6 +19,8 @@ def convert_json():
     # 환경에서 사용 가능한 모든 노드의 리스트 가져오기
     root_node = supervisor.getRoot()
     children_field = root_node.getField("children")
+
+    supervisor.step()
 
     building_names = []
     trafficlight_names = []
