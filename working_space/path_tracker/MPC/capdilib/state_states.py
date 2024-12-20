@@ -1,5 +1,6 @@
 import math
 from utils.operation import angle_mod
+from scipy.interpolate import interp1d
 
 # Parameters
 k = 0.1  # look forward gain
@@ -13,6 +14,7 @@ class State:
         self.y = y
         self.yaw = yaw
         self.v = v # [m/s]
+
 
     def update(self, a, cur_input):
         self.x += self.v * math.cos(self.yaw) * self.dt

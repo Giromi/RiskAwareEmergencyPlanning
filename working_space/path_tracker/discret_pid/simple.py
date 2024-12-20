@@ -1,4 +1,5 @@
 
+from scipy.interpolate import interp1d
 import time
 from utils.operation import angle_mod
 import numpy as np
@@ -13,9 +14,8 @@ from capdilib.target_course import TargetCourse
 from utils.plot import plot_arrow
 from capdilib.convention import X, Y, YAW
 
-# Parameters
 show_animation = True
-
+# Parameters
 def calculate_error(state, trajectory, pind):
     target_index = trajectory.search_target_index(state)
 
@@ -141,12 +141,8 @@ def main():
     print(f'taget_path_x : {target_path_x}')
     print(f'taget_path_y : {target_path_y}')
     start = time.time()
-    max_error = 0.0
-    total_error = 0.0
     while END_TIME >= check_time and lastIndex > target_index:
         cur_error, target_index = calculate_error(state, target_course, target_index)
-        max_error = max(abs(cur_error), max_error)  # calc
-        total_error += cur_error ** 2
         print(f'>>> target_index: {target_index}, cur_error: {cur_error}\n')
         # cur_input = controller.P(cur_error)
         # cur_input = controller.PI(cur_error)
@@ -160,12 +156,12 @@ def main():
         check_time += dt
         state_list.append(check_time, state)
 
+        plt.cla()
+        # for stopping simulation with the esc key.
+        plt.gcf().canvas.mpl_connect(
+            'key_release_event',
+            lambda event: [exit(0) if event.key == 'escape' else None])
         if show_animation:  # pragma: no cover
-            plt.cla()
-            # for stopping simulation with the esc key.
-            plt.gcf().canvas.mpl_connect(
-                'key_release_event',
-                lambda event: [exit(0) if event.key == 'escape' else None])
             plot_arrow(state.x, state.y, state.yaw)
             plt.plot(target_path_x, target_path_y, "-r", label="course")
             plt.plot(state_list.x, state_list.y, "-b", label="trajectory")
@@ -181,40 +177,65 @@ def main():
             plt.pause(0.001)
 
     plt.close("all")
-    # Test
-    RSE = (total_error / (len(state_list.x) - 2)) ** 0.5
-    print(f'Max Error: {max_error}')
-    print(f'RSE: {RSE}')
-
     assert lastIndex >= target_index, "Cannot goal"
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+    max_error, rmse, idx_list = find_idx_with_interpolation(state_list, target_path_x, target_path_y)
+
+
+    print(f'Elapsed time: {time.time() - start}')
+    print(f'Max Error   : {max_error}')
+    print(f'RMSE        : {rmse}')
+# Max Error   : 25.893494577934447
+# RMSE        : 7.463148003682012
+
+    fig, ax = plt.subplots(1, 2, figsize=(12, 4))
     if show_animation:  # pragma: no cover
         fig.canvas.mpl_connect(
             'key_release_event',
             lambda event: [exit(0) if event.key == 'escape' else None])
-        ax1.plot(target_path_x, target_path_y, "-r", label="course")        # 경로 표시
-        ax1.plot(state_list.x, state_list.y, "-b", label="trajectory")  # 주행 궤적 표시
-        ax1.legend()
-        ax1.set_xlabel("x [m]")
-        ax1.set_ylabel("y [m]")
-        ax1.axis("equal")
-        ax1.grid(True)
-        ax1.set_title("Vehicle Trajectory")
-        ax1.text(0.5, 0.04, f'RSE : {RSE:.2f}', 
-                             transform=ax1.transAxes, ha='center', va='bottom', fontweight='bold')
-        ax1.text(0.05, 0.93, f'Kp : {K_P}, Ki : {K_I}, Kd : {K_D}', 
-                             transform=ax1.transAxes, ha='left', va='top', fontweight='bold')
+        ax[0].plot(target_path_x, target_path_y, "-r", label="course")        # 경로 표시
+        ax[0].plot(state_list.x, state_list.y, "-b", label="trajectory")  # 주행 궤적 표시
+        ax[0].legend()
+        ax[0].set_xlabel("x [m]")
+        ax[0].set_ylabel("y [m]")
+        ax[0].axis("equal")
+        ax[0].grid(True)
+        ax[0].set_title("Vehicle Trajectory")
+        for i in idx_list:
+            ax[0].axvline(x=state_list.x[i], color='k', alpha=0.7)  # 점선으로 수직선
+        ax[0].text(0.5, 0.04, f'RMSE : {rmse:.2f}', 
+                             transform=ax[0].transAxes, ha='center', va='bottom', fontweight='bold')
+        ax[0].text(0.05, 0.93, f'Kp : {K_P}, Ki : {K_I}, Kd : {K_D}', 
+                             transform=ax[0].transAxes, ha='left', va='top', fontweight='bold')
 
-        ax2.plot(state_list.t, [iv * 3.6 for iv in state_list.v], "-r")  # 속도 변화 표시
-        ax2.set_xlabel("Time [s]")
-        ax2.set_ylabel("Speed [km/h]")
-        ax2.grid(True)
-        ax2.set_title("Speed over Time")
+        ax[1].plot(state_list.t, [iv * 3.6 for iv in state_list.v], "-r")  # 속도 변화 표시
+        ax[1].set_xlabel("Time [s]")
+        ax[1].set_ylabel("Speed [km/h]")
+        ax[1].grid(True)
+        ax[1].set_title("Speed over Time")
 
         plt.tight_layout()
         plt.savefig('result.png')
         plt.show()
+
+
+def find_idx_with_interpolation(state_list, target_path_x, target_path_y):
+    total_error = 0.0
+    idx_list = []
+    interp_func = interp1d(target_path_x, target_path_y, kind='linear', fill_value="extrapolate")
+
+    max_error = 0.0
+    for i, cur_x in enumerate(state_list.x):
+        cur_y_interp = interp_func(cur_x)  # 현재 state_list.x의 위치에서 보간된 target_path_y 값
+        cur_error = state_list.y[i] - cur_y_interp
+        max_error = max(abs(cur_error), max_error)  # calc
+        total_error += cur_error ** 2
+        idx_list.append(i)
+        print(f"Index: {i}, state_list.y: {state_list.y[i]}, cur_y_interp: {cur_y_interp}, error: {abs(cur_error)}")
+
+    rmse = np.sqrt(total_error / len(state_list.x))
+    return max_error, rmse, idx_list
+
 
 if __name__ == '__main__':
     main()

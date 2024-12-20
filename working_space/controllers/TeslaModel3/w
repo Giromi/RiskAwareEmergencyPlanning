@@ -1,0 +1,11 @@
+
+    cost += cvxpy.quad_form(u[:, t], R)
+    cost += cvxpy.quad_form(z_ref[:, t] - z[:, t], Q)
+    cost += cvxpy.quad_form(z_ref[:, HORIZON_T] - z[:, HORIZON_T], Q)
+
+
+
+    constraints += [ z[:, t + 1] == A @ z[:, t] + B @ u[:, t] + C ]
+    constraints += [cvxpy.abs(u[0, t + 1] - u[0, t]) <= MAX_DSTEER * self.dt]
+    constraints += [z[:, 0] == z0]
+    constraints += [cvxpy.abs(u[0, :]) <= MAX_STEER]

@@ -5,6 +5,7 @@ Path tracking simulation with iterative linear model predictive control for spee
 author: Atsushi Sakai (@Atsushi_twi)
 
 """
+from scipy.interpolate import interp1d
 import matplotlib.pyplot as plt
 import cvxpy
 import math
@@ -16,7 +17,23 @@ from utils.plot import plot_arrow
 from capdilib.path_handler import PathHanlder
 from capdilib.dubins_path_planner import DubinsPathPlanner
 from CubicSpline import cubic_spline_planner
-from debug.debug import dprint
+
+def find_idx_with_interpolation(state_list_x, state_list_y, target_path_x, target_path_y):
+    total_error = 0.0
+    idx_list = []
+    interp_func = interp1d(target_path_x, target_path_y, kind='linear', fill_value="extrapolate")
+
+    max_error = 0.0
+    for i, cur_x in enumerate(state_list_x):
+        cur_y_interp = interp_func(cur_x)  # 현재 state_list.x의 위치에서 보간된 target_path_y 값
+        cur_error = state_list_y[i] - cur_y_interp
+        max_error = max(abs(cur_error), max_error)  # calc
+        total_error += cur_error ** 2
+        idx_list.append(i)
+        print(f"Index: {i}, state_list_y: {state_list_y[i]}, cur_y_interp: {cur_y_interp}, error: {abs(cur_error)}")
+
+    rmse = np.sqrt(total_error / len(state_list_x))
+    return max_error, rmse, idx_list
 
 
 
@@ -173,7 +190,7 @@ def update_state(state, a, delta):
     state.x = state.x + state.v * math.cos(state.yaw) * DT
     state.y = state.y + state.v * math.sin(state.yaw) * DT
     state.yaw = state.yaw + state.v / WB * math.tan(delta) * DT
-    state.v = state.v #+ a * DT
+    state.v = state.v + a * DT
 
     if state.v > MAX_SPEED:
         state.v = MAX_SPEED
@@ -352,7 +369,6 @@ def calc_ref_trajectory(state, cx, cy, cyaw, ck, sp, dl, pind):
             xref[2, i] = sp[ncourse - 1]
             xref[3, i] = cyaw[ncourse - 1]
             dref[0, i] = 0.0
-    print("xref : ", xref)
 
     return xref, ind, dref
 
@@ -404,13 +420,13 @@ def do_simulation(path, cx, cy, cyaw, ck, sp, dl, initial_state):
         state.yaw += math.pi * 2.0
 
     time = 0.0
-    x = [state.x]
-    y = [state.y]
-    yaw = [state.yaw]
-    v = [state.v]
-    t = [0.0]
-    d = [0.0]
-    a = [0.0]
+    state_list_x = [state.x]
+    state_list_y = [state.y]
+    state_list_yaw = [state.yaw]
+    state_list_v = [state.v]
+    state_list_t = [0.0]
+    state_list_d = [0.0]
+    state_list_a = [0.0]
     target_ind, _ = calc_nearest_index(state, cx, cy, cyaw, 0)
     print('target_ind :', target_ind)
 
@@ -418,12 +434,10 @@ def do_simulation(path, cx, cy, cyaw, ck, sp, dl, initial_state):
 
     cyaw = smooth_yaw(cyaw)
 
-    max_error = 0.0
-    total_error = 0.0
     while MAX_TIME >= time:
+        print('time :', time)
         xref, target_ind, dref = calc_ref_trajectory(
             state, cx, cy, cyaw, ck, sp, dl, target_ind)
-        print('x_ref :', xref)
 
         x0 = [state.x, state.y, state.v, state.yaw]  # current state
 
@@ -432,9 +446,6 @@ def do_simulation(path, cx, cy, cyaw, ck, sp, dl, initial_state):
 
         dx = state.x - ox[0]
         dy = state.y - oy[0]
-        cur_error = math.hypot(dx, dy)
-        max_error = max(abs(cur_error), max_error)  # calc
-        total_error += cur_error ** 2
 
         di, ai = 0.0, 0.0
         if odelta is not None:
@@ -442,14 +453,15 @@ def do_simulation(path, cx, cy, cyaw, ck, sp, dl, initial_state):
             state = update_state(state, ai, di)
 
         time = time + DT
-
-        x.append(state.x)
-        y.append(state.y)
-        yaw.append(state.yaw)
-        v.append(state.v)
-        t.append(time)
-        d.append(di)
-        a.append(ai)
+        # print(f"oa: {oa}, odeleta: {odelta}")
+        print(f"state: {state.x}, {state.y}, {state.v}, {state.yaw}")
+        state_list_x.append(state.x)
+        state_list_y.append(state.y)
+        state_list_yaw.append(state.yaw)
+        state_list_v.append(state.v)
+        state_list_t.append(time)
+        state_list_d.append(di)
+        state_list_a.append(ai)
 
         if check_goal(state, goal, target_ind, len(cx)):
             print("Goal")
@@ -463,7 +475,7 @@ def do_simulation(path, cx, cy, cyaw, ck, sp, dl, initial_state):
             if ox is not None:
                 plt.plot(ox, oy, "xr", label="MPC")
             plt.plot(cx, cy, "-r", label="course")
-            plt.plot(x, y, "b", label="trajectory")
+            plt.plot(state_list_x, state_list_y, "b", label="trajectory")
             plt.plot(xref[0, :], xref[1, :], "xk", label="xref")
             plt.plot(cx[target_ind], cy[target_ind], "xg", label="target")
             plot_car(state.x, state.y, state.yaw, steer=di)
@@ -475,17 +487,13 @@ def do_simulation(path, cx, cy, cyaw, ck, sp, dl, initial_state):
                 cur_dy = np.sin(cur_yaw)
                 # plt.plot(cur_x, cur_y, "og", label="path")
                 plot_arrow(cur_x, cur_y, cur_yaw, length=20, width=10)
-            offset = 150
-            plt.xlim(state.x - offset, state.x + offset)
-            plt.ylim(state.y - offset, state.y + offset)
-            plt.title("Time[s]:" + str(round(time, 2))
-                      + ", speed[km/h]:" + str(round(state.v * 3.6, 2)))
+            # offset = 150
+            # plt.xlim(state.x - offset, state.x + offset)
+            # plt.ylim(state.y - offset, state.y + offset)
+            plt.title("Time[s]:" + str(round(time, 2)) + ", speed[km/h]:" + str(round(state.v * 3.6, 2)))
             plt.pause(0.0001)
 
-    RSE = (total_error / (len(t) - 2)) ** 0.5
-    print(f'max_error: {max_error}')
-    print(f'RSE: {RSE}')
-    return t, x, y, yaw, v, d, a
+    return state_list_t, state_list_x, state_list_y, state_list_yaw, state_list_v, state_list_d, state_list_a
 
 
 def calc_speed_profile(cx, cy, cyaw, target_speed):
@@ -659,23 +667,25 @@ def main():
     # cx, cy, cyaw, ck = get_my_course(dl)
     cx, cy, cyaw, ck = get_my_dubins_course(path, dl)
 
-    print('cx size :', len(cx))
-    dprint()
-
 
     sp = calc_speed_profile(cx, cy, cyaw, TARGET_SPEED)
 
-    initial_state = State(x=cx[0], y=cy[0], yaw=cyaw[0], v=0.0)
+    initial_state = State(x=cx[0], y=cy[0], yaw=cyaw[0], v=30.0)
 
     t, x, y, yaw, v, d, a = do_simulation(path,
         cx, cy, cyaw, ck, sp, dl, initial_state)
 
+    max_error, rmse, idx_list = find_idx_with_interpolation(x, y, cx, cy)
 
+    print(f'Max Error   : {max_error}')
+    print(f'RMSE        : {rmse}')
     if show_animation:  # pragma: no cover
         plt.close("all")
         plt.subplots()
         plt.plot(cx, cy, "-r", label="Reference Path")
         plt.plot(x, y, "-b", label="Tracking Path")
+        for i in idx_list:
+            plt.axvline(x=x[i], color='k', alpha=0.7)  # 점선으로 수직선
         plt.grid(True)
         plt.axis("equal")
         plt.xlabel("x[m]")
@@ -693,3 +703,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
