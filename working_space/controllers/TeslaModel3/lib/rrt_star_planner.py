@@ -25,25 +25,42 @@ class RRTStarPlanner:
         grid,
         start,
         goal,
-        velocity=30,  # unit [m/s]
+        # velocity=30,  # unit [m/s]
         goal_radius=100,
-        max_iter=10000,
-        min_turn_radius=TESLA_MIN_RADIUS,
+        max_iter=100000,
+        max_turn_angle = np.pi / 6, # 30도
+        scale_factor = 0.08,
+        min_step_size = 50,       # [cm]
+        max_step_size = 100      # [cm]
     ):
-        alpha = 3.6 / 0.08  # 속도에 반비례하여 step size[m] 결정하기 위한 하이퍼 파라미터
+        distance = np.linalg.norm(np.array(goal) - np.array(start))
+        self.step_size = distance * scale_factor
+        self.step_size = np.clip(self.step_size, min_step_size, max_step_size)
+        print('distance', distance)
+        print('self.step_size', self.step_size)
+
+
         self.grid = grid
         self.start = Node(*start)
         self.goal = Node(*goal)
-        self.step_size = velocity * alpha
         self.goal_radius = goal_radius
         self.max_iter = max_iter
-        self.min_turn_radius = min_turn_radius
+        self.max_turn_angle = max_turn_angle
         self.nodes = [self.start]
         self.grid_height, self.grid_width = grid.shape
 
     def get_random_node(self):
-        x = random.randint(0, self.grid_width - 1)
-        y = random.randint(0, self.grid_height - 1)
+        if random.random() < 0.7:  # 50% 확률로 목표 주변에서 노드 생성
+            x = int(np.clip(
+                np.random.normal(self.goal.x, self.goal_radius / 2), 0, self.grid_width - 1
+            ))
+            y = int(np.clip(
+                np.random.normal(self.goal.y, self.goal_radius / 2), 0, self.grid_height - 1
+            ))
+        else:  # 나머지 확률로 무작위 위치에서 생성
+            x = random.randint(0, self.grid_width - 1)
+            y = random.randint(0, self.grid_height - 1)
+
         theta = random.uniform(-math.pi, math.pi)
         return Node(x, y, theta)
 
@@ -94,8 +111,7 @@ class RRTStarPlanner:
         if angle_diff > math.pi:
             angle_diff = 2 * math.pi - angle_diff
 
-        # Check if the turning radius constraint is satisfied
-        if angle_diff > (self.step_size / self.min_turn_radius):
+        if angle_diff > self.max_turn_angle:
             return None
 
         new_x = int(nearest_node.x + self.step_size * math.cos(theta))

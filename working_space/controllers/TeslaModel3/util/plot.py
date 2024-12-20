@@ -9,7 +9,7 @@ def is_1st(label, first_iteration):
 def plot_init():
     ###################################################
     plt.close("all")
-    plt.figure(figsize=(7, 5))
+    plt.figure(figsize=(5, 3))
     plt.title(f'Path Planning and Tracking[km/h]', fontsize=16)
     plt.xlabel("X [m]", fontsize=12)
     plt.ylabel("Y [m]", fontsize=12)

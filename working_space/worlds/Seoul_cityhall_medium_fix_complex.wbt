@@ -6,7 +6,6 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/Road.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/RoadLine.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/traffic/protos/PedestrianCrossing.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/vehicles/protos/tesla/TeslaModel3.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/RandomBuilding.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/CommercialBuilding.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/Building.proto"
@@ -52,10 +51,11 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.010091918277523149 0.9998829663234216 -0.011498123401470892 1.2116271564135075
-  position 73.27046771637097 -24.52142275407327 369.93678157376485
+  orientation -0.5773502386568419 0.5773502690867397 0.5773502998252943 2.0943999074797706
+  position -45.02195363299568 -0.15002557532956118 94.64182111742554
   near 1
-  follow "hotel"
+  follow "vehicle"
+  followType "None"
   followSmoothness 0
 }
 TexturedBackground {
@@ -767,33 +767,15 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(115) SimpleTree {
-      translation 194 22 0
-      name "tree(158)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(116) SimpleTree {
       translation 194 25 0
       name "tree(159)"
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(117) SimpleTree {
-      translation 194 28 0
-      name "tree(160)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(118) SimpleTree {
       translation 194 31 0
       name "tree(161)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(119) SimpleTree {
-      translation 194 34 0
-      name "tree(162)"
       type "hackberry tree"
       radius 1.5
     }
@@ -1103,21 +1085,9 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(163) SimpleTree {
-      translation 226.5 22 0
-      name "tree(165)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(164) SimpleTree {
       translation 226.5 25 0
       name "tree(166)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(165) SimpleTree {
-      translation 226.5 28 0
-      name "tree(167)"
       type "hackberry tree"
       radius 1.5
     }
@@ -1127,21 +1097,9 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(167) SimpleTree {
-      translation 226.5 34 0
-      name "tree(169)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(168) SimpleTree {
       translation 226.5 37 0
       name "tree(170)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(169) SimpleTree {
-      translation 226.5 40 0
-      name "tree(171)"
       type "hackberry tree"
       radius 1.5
     }
@@ -1151,21 +1109,9 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(171) SimpleTree {
-      translation 226.5 46 0
-      name "tree(173)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(172) SimpleTree {
       translation 226.5 49 0
       name "tree(174)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(173) SimpleTree {
-      translation 226.5 52 0
-      name "tree(175)"
       type "hackberry tree"
       radius 1.5
     }
@@ -1175,21 +1121,9 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(175) SimpleTree {
-      translation 226.5 58 0
-      name "tree(177)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(176) SimpleTree {
       translation 226.5 61 0
       name "tree(178)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(177) SimpleTree {
-      translation 226.5 64 0
-      name "tree(179)"
       type "hackberry tree"
       radius 1.5
     }
@@ -1199,21 +1133,9 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(179) SimpleTree {
-      translation 226.5 70 0
-      name "tree(181)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(180) SimpleTree {
       translation 226.5 73 0
       name "tree(182)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(181) SimpleTree {
-      translation 226.5 76 0
-      name "tree(183)"
       type "hackberry tree"
       radius 1.5
     }
@@ -1223,21 +1145,9 @@ DEF GROUND Solid {
       type "hackberry tree"
       radius 1.5
     }
-    DEF tree(183) SimpleTree {
-      translation 226.5 82 0
-      name "tree(185)"
-      type "hackberry tree"
-      radius 1.5
-    }
     DEF tree(184) SimpleTree {
       translation 226.5 85 0
       name "tree(186)"
-      type "hackberry tree"
-      radius 1.5
-    }
-    DEF tree(185) SimpleTree {
-      translation 226.5 88 0
-      name "tree(187)"
       type "hackberry tree"
       radius 1.5
     }
@@ -2348,10 +2258,26 @@ DEF GROUND Solid {
   boundingObject USE GROUND_PLANE
   locked TRUE
 }
-DEF TeslaModel3 TeslaModel3 {
-  translation 0 16.46 0
-  color 1 0 0
-  name "TeslaModel3"
+Road {
+  name "road(26)"
+  startJunction "25"
+  endJunction "24"
+  width 13
+  numberOfLanes 4
+  numberOfForwardLanes 2
+  roadBorderHeight 0.12
+  roadBorderWidth [
+    43
+  ]
+  wayPoints [
+    -25 0 0
+    -70 0 0
+  ]
+  rightBorderBoundingObject TRUE
+  leftBorderBoundingObject TRUE
+}
+DEF TeslaModel3 BmwX5 {
+  translation -46.64 0 0.4
   controller "TeslaModel3"
   supervisor TRUE
 }
@@ -3487,24 +3413,6 @@ Road {
   wayPoints [
     -12.5 6.5 0
     -12.5 90 0
-  ]
-  rightBorderBoundingObject TRUE
-  leftBorderBoundingObject TRUE
-}
-Road {
-  name "road(26)"
-  startJunction "25"
-  endJunction "24"
-  width 13
-  numberOfLanes 4
-  numberOfForwardLanes 2
-  roadBorderHeight 0.12
-  roadBorderWidth [
-    43
-  ]
-  wayPoints [
-    -25 0 0
-    -400 0 0
   ]
   rightBorderBoundingObject TRUE
   leftBorderBoundingObject TRUE
@@ -4934,72 +4842,6 @@ PedestrianCrossing {
   size 13 5
   enableBoundingObject FALSE
 }
-DEF sidewalk_block(1) Floor {
-  translation 248.5 -53.25 0.13
-  name "floor(1)"
-  size 45 21.5
-  tileSize 0.5 1
-}
-DEF sidewalk_block(2) Floor {
-  translation 251 -27.5 0.13
-  name "floor(2)"
-  size 50 20
-  tileSize 0.5 1
-}
-DEF sidewalk_block(3) Floor {
-  translation 338 -40.75 0.13
-  name "floor(3)"
-  size 124 46.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(4) Floor {
-  translation 313 48.75 0.13
-  name "floor(4)"
-  size 174 82.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(5) Floor {
-  translation 165 67.5 0.13
-  name "floor(5)"
-  size 62 45
-  tileSize 1 0.5
-}
-DEF sidewalk_block(6) Floor {
-  translation 113 67.5 0.13
-  name "floor(6)"
-  size 29 45
-  tileSize 1 0.5
-}
-DEF sidewalk_block(7) Floor {
-  translation 72 67.5 0.13
-  name "floor(7)"
-  size 43 45
-  tileSize 1 0.5
-}
-DEF sidewalk_block(8) Floor {
-  translation 165 23.25 0.13
-  name "floor(8)"
-  size 62 33.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(9) Floor {
-  translation 112.75 23.25 0.13
-  name "floor(9)"
-  size 28.5 33.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(10) Floor {
-  translation 72 23.25 0.13
-  name "floor(10)"
-  size 43 33.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(11) Floor {
-  translation 22.75 48.25 0.13
-  name "floor(11)"
-  size 45.5 83.5
-  tileSize 1 0.5
-}
 DEF human_ROBERT(1) Robot {
   translation 12.332293357778502 9.126766209853741 0.18927324588747596
   rotation -0.10882065430068574 6.449307850549088e-05 -0.9940613970164085 0.001192388298631729
@@ -5033,7 +4875,7 @@ DEF human_ROBERT(1) Robot {
 }
 DEF human_ROBERT(2) Robot {
   translation 52.14901118005364 50.532276000526664 0.18925685976642515
-  rotation -0.7153241256371096 0.6987928127910841 -8.545733636188961e-06 3.1415566636031533
+  rotation 1.1941899995368395e-05 2.5161099990241396e-05 -0.9999999996121551 -1.5941753071795866
   children [
     CharacterSkin {
       name "Robert"
@@ -5218,8 +5060,8 @@ DEF human_ROBERT(7) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(8) Robot {
-  translation 196.93605740197216 49.04447500095429 0.1893470635494423
-  rotation -0.16609365690770078 -0.9861099789396326 8.105988200809271e-05 -3.1414282493822463
+  translation 195.001 49.7171 0.28891
+  rotation 8.33607994287554e-05 -8.219689943673123e-05 -0.9999999931473234 -2.807855307179586
   children [
     CharacterSkin {
       name "Robert"
@@ -5249,8 +5091,8 @@ DEF human_ROBERT(8) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(9) Robot {
-  translation 3.7593252163208395 -63.357695024707034 0.1895140996996446
-  rotation -0.46660698191164257 -0.8844647615771485 -9.97977241423656e-05 -3.1412682489517256
+  translation 4.46068 -62.8806 0.189779
+  rotation -0.00021387498218537686 0.0003476299710443135 0.9999999167054441 -0.9709053071795859
   children [
     CharacterSkin {
       name "Robert"
@@ -5310,40 +5152,9 @@ DEF human_ROBERT(10) Robot {
   ]
   supervisor TRUE
 }
-DEF human_ROBERT(11) Robot {
-  translation 192.49349052593735 -59.99471009341366 0.18945703618999699
-  rotation -0.7203701860181285 0.6935897882974394 2.5801552122852984e-05 -3.1413365769283836
-  children [
-    CharacterSkin {
-      name "Robert"
-      model "Robert"
-    }
-  ]
-  name "robert(11)"
-  boundingObject Cylinder {
-    height 0.1
-    radius 0.3
-  }
-  physics Physics {
-    density -1
-    mass 80
-    centerOfMass [
-      0 0 1
-    ]
-  }
-  controller "bvh_animation"
-  controllerArgs [
-    "-d"
-    "Robert"
-    "-f"
-    "../../motions/walk.bvh"
-    "-l"
-  ]
-  supervisor TRUE
-}
 DEF human_ROBERT(12) Robot {
-  translation 228.57860366548638 -23.92793941775283 0.1895455046860396
-  rotation 0.7510669809972635 -0.6602260134402423 -3.510642838855307e-05 3.1412712835011907
+  translation 229.917 -23.7562 0.189155
+  rotation 0.1297249904837642 -0.11378299165322137 0.9849999277433629 1.71429
   children [
     CharacterSkin {
       name "Robert"
@@ -5373,8 +5184,8 @@ DEF human_ROBERT(12) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(13) Robot {
-  translation 228.26410086081611 -60.09762814321879 0.1894331212644954
-  rotation 0.7113146193220801 -0.7028737318251546 -0.00017160671686433098 -3.1415471523440686
+  translation 229.654 -60.0821 0.189154
+  rotation -0.0002412579928553023 3.1988599052678556e-05 -0.9999999703856548 -1.5827353071795862
   children [
     CharacterSkin {
       name "Robert"
@@ -5435,8 +5246,8 @@ DEF human_ROBERT(14) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(15) Robot {
-  translation 186.09283347953206 -77.24548945796654 0.18930167843818935
-  rotation 0.6418926845799251 0.7667944831259361 4.615631532047191e-05 3.1414858750515777
+  translation 186.093 -77.2455 0.439302
+  rotation 6.963059970503462e-05 6.0198599744989954e-05 -0.9999999957638541 -1.7476653071795862
   children [
     CharacterSkin {
       name "Robert"
@@ -5466,8 +5277,8 @@ DEF human_ROBERT(15) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(16) Robot {
-  translation 136.39601898087406 -55.47870690271608 0.18953382007080932
-  rotation 0.8937840905670352 -0.4484974642876228 0.00015484453656953708 -3.141507372961281
+  translation 136.396 -55.4787 0.399534
+  rotation 0.00017324099720313776 4.770999922975337e-05 -0.9999999838556564 -2.211425307179586
   children [
     CharacterSkin {
       name "Robert"
@@ -5559,8 +5370,8 @@ DEF human_ROBERT(18) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(19) Robot {
-  translation -30.258204566541153 -22.99418191953482 0.18938601685622813
-  rotation 0.7517283890864499 -0.6594728269603146 0.0001397943570667781 3.141528072320839
+  translation -30.2582 -22.9942 0.449386
+  rotation 4.89697988411048e-05 0.00021197399498352757 0.9999999763344919 -1.4402353071795861
   children [
     CharacterSkin {
       name "Robert"
@@ -5591,7 +5402,7 @@ DEF human_ROBERT(19) Robot {
 }
 DEF human_ROBERT(20) Robot {
   translation -31.107156173082075 17.246010246907694 0.18940560927506422
-  rotation -0.7635811019162047 -0.6457119167806302 0.00014602711870545943 -3.141592232814801
+  rotation 0.00019124499650263315 2.7958199488718236e-07 0.9999999817126365 -1.7376853071795866
   children [
     CharacterSkin {
       name "Robert"
@@ -5745,7 +5556,7 @@ DEF human_ROBERT(24) Robot {
   supervisor TRUE
 }
 DEF human_ROBERT(25) Robot {
-  translation 77.3853 44.8537 0.13
+  translation 77.3853 45.3237 0.13
   rotation 3.31578e-17 -1.5577e-18 1 -1.5719853071795864
   children [
     CharacterSkin {
@@ -5961,36 +5772,6 @@ DEF human_ROBERT(31) Robot {
   ]
   supervisor TRUE
 }
-DEF sidewalk_block(12) Floor {
-  translation 165 -17 0.13
-  name "floor(12)"
-  size 62 21
-  tileSize 1 0.5
-}
-DEF sidewalk_block(13) Floor {
-  translation 170.5 -45.25 0.13
-  name "floor(13)"
-  size 51 35.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(14) Floor {
-  translation 137 -47.75 0.13
-  name "floor(14)"
-  size 6 30.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(15) Floor {
-  translation 63.5 -34.75 0.13
-  name "floor(15)"
-  size 127 56.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(16) Floor {
-  translation 98 -80 0.13
-  name "floor(16)"
-  size 196 20
-  tileSize 1 0.5
-}
 DEF sidewalk_block(17) Floor {
   translation 98 -160 0.13
   name "floor(17)"
@@ -6000,38 +5781,6 @@ DEF sidewalk_block(17) Floor {
     type "light strip"
     colorOverride 0.5 1 0.3
   }
-}
-DEF sidewalk_block(18) Floor {
-  translation -47.5 48.25 0.13
-  name "floor(18)"
-  size 45 83.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(19) Floor {
-  translation -47.5 -103.25 0.13
-  name "floor(19)"
-  size 45 193.5
-  tileSize 1 0.5
-}
-DEF sidewalk_block(20) Floor {
-  translation 313 -134 0.13
-  name "floor(20)"
-  size 174 130
-  tileSize 0.5 1
-}
-Floor {
-  translation 98 -126 0.14
-  size 196 12
-}
-Floor {
-  translation 190 -166 0.14
-  name "floor(21)"
-  size 12 68
-}
-Floor {
-  translation 6 -166 0.14
-  name "floor(22)"
-  size 12 68
 }
 DEF buliding_hotel Hotel {
   translation -50 -36 0
@@ -6053,7 +5802,7 @@ DEF buliding(1) RandomBuilding {
 DEF buliding(2) RandomBuilding {
   translation 95 -78 -0.000330092
   rotation 0 1 0 4.692820414042842e-06
-  name "building(3)"
+  name "building(2)"
   floorHeight 8
   floorNumber 7
   corners [
@@ -6365,7 +6114,7 @@ DEF building_hollow(2) HollowBuilding {
   name "hollow building(3)"
 }
 DEF human_SANDRA(1) Robot {
-  translation 40.2199 8.55032 0.18981541953686198
+  translation 40.1499 8.55032 0.189815
   rotation -1.112678340474105e-16 8.615119678700685e-17 1 -3.141585307179586
   children [
     CharacterSkin {
@@ -6415,8 +6164,8 @@ DEF human_SANDRA(2) Robot {
   supervisor TRUE
 }
 DEF human_SANDRA(3) Robot {
-  translation 92.03310472486399 51.76560899552121 0.18958124813320787
-  rotation 0.9586023684397215 0.28474811720754406 -9.470224591198087e-05 -3.141275877506302
+  translation 92.1324 51.8294 0.189571
+  rotation -9.879679816925735e-05 0.00016522699693828023 -0.999999981469616 2.56411
   children [
     CharacterSkin {
       name "Sandra"
@@ -6466,7 +6215,7 @@ DEF human_SANDRA(4) Robot {
 }
 DEF human_SANDRA(5) Robot {
   translation 122.51354384819203 7.946819727129209 0.1895517820005983
-  rotation 0.9999213249776308 -0.01254304397681085 0.00012610620662872494 3.1414505667571633
+  rotation -0.00012611099867886557 7.10488992556942e-05 0.9999999895240349 3.11651
   children [
     CharacterSkin {
       name "Sandra"
@@ -6491,7 +6240,7 @@ DEF human_SANDRA(5) Robot {
 }
 DEF human_SANDRA(6) Robot {
   translation 132.2933346494203 64.51154546157012 0.1896239346824381
-  rotation 0.8670976797829114 -0.4981381086588437 0.00019600224959332365 -3.1415707971970654
+  rotation 0.00022603899420746396 1.2605899676957827e-05 -0.9999999743737318 -2.098695307179586
   children [
     CharacterSkin {
       name "Sandra"
@@ -6566,7 +6315,7 @@ DEF human_SANDRA(8) Robot {
 }
 DEF human_SANDRA(9) Robot {
   translation 50.700749457889856 -7.091727187305474 0.18967656262136212
-  rotation 0.3499847241954365 0.936755386071528 -0.00019873557014266424 3.1415345272597865
+  rotation 0.000567844906491304 8.305408632323858e-05 0.9999998353270769 -0.7151053071795861
   children [
     CharacterSkin {
       name "Sandra"
@@ -6591,7 +6340,7 @@ DEF human_SANDRA(9) Robot {
 }
 DEF human_SANDRA(10) Robot {
   translation 123.75068060064555 -72.30277533794339 0.1895094575405929
-  rotation -0.5617336895410928 0.8273181132464764 3.910040666938443e-05 3.1412867915913485
+  rotation -6.96114972514407e-05 0.00027225498925020995 -0.9999999605157295 -1.1929553071795862
   children [
     CharacterSkin {
       name "Sandra"
@@ -6640,7 +6389,7 @@ DEF human_SANDRA(11) Robot {
   supervisor TRUE
 }
 DEF human_SANDRA(12) Robot {
-  translation 187.4900000343914 -10.33864780905173 0.18943333963381614
+  translation 185.58 -10.3386 0.189433
   rotation -0.0001101081398660267 0.00011010773375209413 0.9999999878762423 1.5708000121237555
   children [
     CharacterSkin {
@@ -6666,7 +6415,7 @@ DEF human_SANDRA(12) Robot {
 }
 DEF human_SANDRA(13) Robot {
   translation 266.7076155732895 -21.501623933433564 0.18974477357395536
-  rotation 0.42827418719316784 -0.9036488364732247 3.0407546171481853e-05 3.141395372531883
+  rotation -7.09953979381693e-05 0.00023031099331136538 0.9999999709582494 0.885164
   children [
     CharacterSkin {
       name "Sandra"
@@ -6715,8 +6464,8 @@ DEF human_SANDRA(14) Robot {
   supervisor TRUE
 }
 DEF human_SANDRA(15) Robot {
-  translation 0.21242725581193217 -82.7256751418537 0.18950956656844553
-  rotation 0.41238768471328563 0.9110084453646683 9.985522555884504e-05 -3.14156309638527
+  translation 0.370221 -82.5871 0.18955
+  rotation 0.0002421339927465878 3.582609892678653e-05 -0.9999999700438096 0.850147
   children [
     CharacterSkin {
       name "Sandra"
@@ -6741,7 +6490,7 @@ DEF human_SANDRA(15) Robot {
 }
 DEF human_SANDRA(16) Robot {
   translation 232.42291233576245 -86.91144711052196 0.18969102530024395
-  rotation -0.9202187440907146 0.3914044462643596 0.00014989529003798515 3.1413873191810526
+  rotation 0.00016296199682634395 -0.00011132399783198482 0.9999999805251772 2.33727
   children [
     CharacterSkin {
       name "Sandra"
@@ -6791,7 +6540,7 @@ DEF human_SANDRA(17) Robot {
 }
 DEF human_SANDRA(18) Robot {
   translation 186.8611613633407 -123.0360218328881 0.1897583046511464
-  rotation -0.7441942235167904 -0.66796328787798 -6.108584286524146e-05 3.1414721525698157
+  rotation 8.207839945455611e-05 8.095639946201226e-05 -0.9999999933545989 1.67866
   children [
     CharacterSkin {
       name "Sandra"
@@ -7303,7 +7052,7 @@ DEF human_SOPHIA(6) Robot {
 }
 DEF human_SOPHIA(7) Robot {
   translation 155.74998100218912 8.422409242569092 0.18974646473979284
-  rotation -0.7064206608250247 0.707792224166491 0.00013179145320681891 -3.141316994221859
+  rotation -0.1292370398054021 0.1298640399985201 0.9830733027895731 1.58598
   children [
     CharacterSkin {
       name "Sophia"
@@ -7357,7 +7106,7 @@ DEF human_SOPHIA(8) Robot {
 }
 DEF human_SOPHIA(9) Robot {
   translation 125.34838812060234 -8.988694015821675 0.1894827149121776
-  rotation -0.4299742679407471 0.9028411410404099 -5.434767055044987e-05 3.141508027737735
+  rotation 0.12600793918927627 -0.2642378724802868 -0.9561905385478165 -0.9241753071795866
   children [
     CharacterSkin {
       name "Sophia"
@@ -7465,7 +7214,7 @@ DEF human_SOPHIA(12) Robot {
 }
 DEF human_SOPHIA(13) Robot {
   translation 232.66734987943545 -22.89538757336756 0.18952855811447544
-  rotation 0.6986958412959804 -0.7154188427160347 -2.902674164802692e-05 3.141499788616895
+  rotation 4.154899987240188e-05 6.645099979592716e-05 0.9999999969289726 1.54715
   children [
     CharacterSkin {
       name "Sophia"
@@ -7519,7 +7268,7 @@ DEF human_SOPHIA(14) Robot {
 }
 DEF human_SOPHIA(15) Robot {
   translation 81.32936950930655 -88.43240317216097 0.18958268587921656
-  rotation -0.7225662361668254 -0.6913016876401069 -0.00010496498350864324 3.141364070006945
+  rotation 0.00014526199665034577 0.00015816999635269506 -0.9999999769406022 1.61501
   children [
     CharacterSkin {
       name "Sophia"
@@ -8439,36 +8188,6 @@ DEF human_ANTHONY(17) Robot {
     }
   ]
   name "anthony(16)"
-  boundingObject Cylinder {
-    height 0.1
-    radius 0.2
-  }
-  physics Physics {
-    density -1
-    mass 30
-    centerOfMass [
-      0 0 0
-    ]
-  }
-  controllerArgs [
-    "-d"
-    "Anthony"
-    "-f"
-    "../../motions/run.bvh"
-    "-l"
-  ]
-  supervisor TRUE
-}
-DEF human_ANTHONY(18) Robot {
-  translation -49.98167065972002 -11.999042455597895 0.18980890863273694
-  rotation 0.0001800928272480142 2.6653802593349643e-05 0.9999999834280741 -3.139094367824135
-  children [
-    CharacterSkin {
-      name "Anthony"
-      model "Anthony"
-    }
-  ]
-  name "anthony(17)"
   boundingObject Cylinder {
     height 0.1
     radius 0.2

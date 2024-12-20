@@ -6,7 +6,7 @@ W, H            = 2, 3
 
 #
 """ MPC Parameters """
-WB                  = 2.875          # [m] wheel base of vehicle
+WB                  = 2.975                             # [m] wheel base of vehicle
 HORIZON_T           = 2                               # [#] horizon length(10) 오히려 너무 크면 이상해짐 속도를 모르기때문에
 NU                  = 1                                 # [#] a = [accel, steer](2)
 R                   = np.diag([0.10])             # [-] input cost matrix([0.01, 0.01])

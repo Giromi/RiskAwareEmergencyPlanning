@@ -51,8 +51,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.582494023448673 -0.5785380146938555 -0.5709592614194721 4.173313838980492
-  position -16.38257484823106 1.6378052890980475 98.96682869741113
+  orientation -0.5773501733131622 0.5773501118906166 0.5773505223650138 2.0943243537691902
+  position -18.472160634636886 -0.1502320395594765 99.02070524199505
   near 1
   followSmoothness 0
 }
@@ -2466,13 +2466,13 @@ Road {
   ]
   wayPoints [
     -25 0 0
-    -400 0 0
+    -70 0 0
   ]
   rightBorderBoundingObject TRUE
   leftBorderBoundingObject TRUE
 }
 DEF TeslaModel3 BmwX5 {
-  translation -35.94 0 0.4
+  translation -36.13 0 0.4
   name "vehicle(1)"
   controller "TeslaModel3"
   supervisor TRUE
@@ -2884,79 +2884,6 @@ Solid {
       recognitionColors [
         0.6 0.6 0.6
       ]
-    }
-    DEF LEFT_BORDER Solid {
-      children [
-        Shape {
-          appearance Pavement {
-          }
-          geometry DEF LEFT_BORDER_GEOMETRY IndexedFaceSet {
-            coord Coordinate {
-              point [
-                45.5 6.5 0
-                45.5 6.5 0.12
-                8.5 6.500000000000003 0.12
-                8.5 6.500000000000003 0
-                45.5 14.875 0
-                45.5 14.875 0.12
-                8.5 14.875000000000002 0.12
-                8.5 14.875000000000002 0
-                45.5 23.25 0
-                45.5 23.25 0.12
-                8.5 23.250000000000004 0.12
-                8.5 23.250000000000004 0
-                45.5 31.625 0
-                45.5 31.625 0.12
-                8.5 31.625000000000004 0.12
-                8.5 31.625000000000004 0
-                45.5 40 0
-                45.5 40 0.12
-                8.5 40 0.12
-                8.5 40 0
-              ]
-            }
-            texCoord TextureCoordinate {
-              point [
-                0 37.24
-                0 37.12
-                0 0.12
-                0 0
-                8.375 37.24
-                8.375 37.12
-                8.375 0.12
-                8.375 0
-                16.75 37.24
-                16.75 37.12
-                16.75 0.12
-                16.75 0
-                25.125 37.24
-                25.125 37.12
-                25.125 0.12
-                25.125 0
-                33.5 37.24
-                33.5 37.12
-                33.5 0.12
-                33.5 0
-              ]
-            }
-            coordIndex [
-              0, 4, 5, 1, -1, 1, 5, 6, 2, -1, 2, 6, 7, 3, -1, 4, 8, 9, 5, -1, 5, 9, 10, 6, -1, 6, 10, 11, 7, -1, 8, 12, 13, 9, -1, 9, 13, 14, 10, -1, 10, 14, 15, 11, -1, 12, 16, 17, 13, -1, 13, 17, 18, 14, -1, 14, 18, 19, 15, -1, 0, 1, 2, 3, -1, 19, 18, 17, 16, -1
-            ]
-            texCoordIndex [
-              0, 4, 5, 1, -1, 1, 5, 6, 2, -1, 2, 6, 7, 3, -1, 4, 8, 9, 5, -1, 5, 9, 10, 6, -1, 6, 10, 11, 7, -1, 8, 12, 13, 9, -1, 9, 13, 14, 10, -1, 10, 14, 15, 11, -1, 12, 16, 17, 13, -1, 13, 17, 18, 14, -1, 14, 18, 19, 15, -1, 0, 1, 2, 3, -1, 19, 18, 17, 16, -1
-            ]
-            creaseAngle 0.2
-          }
-          castShadows FALSE
-        }
-      ]
-      name "road left border"
-      model "road border"
-      boundingObject USE LEFT_BORDER_GEOMETRY
-      recognitionColors [
-        0.6 0.6 0.6
-      ]
-      rotationStep 0.261799
     }
   ]
   name "road(32)"
@@ -4228,7 +4155,7 @@ DEF buliding(1) RandomBuilding {
 DEF buliding(2) RandomBuilding {
   translation 95 -78 -0.000330092
   rotation 0 1 0 4.692820414042842e-06
-  name "building(3)"
+  name "building(2)"
   floorHeight 8
   floorNumber 7
   corners [
@@ -4262,7 +4189,7 @@ DEF buliding(3) RandomBuilding {
 DEF building(4) Building {
   translation 153 -25 0
   rotation 0 0 1 -1.5707953071795862
-  name "building(2)"
+  name "building(4)"
   corners [
     10 5
     10 -5
@@ -4274,7 +4201,7 @@ DEF building(4) Building {
 DEF building(5) Building {
   translation 72.2 68.84 0
   rotation 0 0 -1 -1.5707953071795862
-  name "building(2)"
+  name "building(5)"
   corners [
     20 17
     20 -17
@@ -4286,7 +4213,7 @@ DEF building(5) Building {
 DEF building(6) Building {
   translation 112.21 68.84 0
   rotation 0 0 -1 -1.5707953071795862
-  name "building(2)"
+  name "building(6)"
   corners [
     20 12
     20 -12
@@ -4298,7 +4225,7 @@ DEF building(6) Building {
 DEF building(7) Building {
   translation 161.65 68.84 0
   rotation 0 0 -1 -1.5707953071795862
-  name "building(2)"
+  name "building(7)"
   corners [
     20 24
     20 -24
@@ -4309,7 +4236,7 @@ DEF building(7) Building {
 }
 DEF building(8) SimpleBuilding {
   translation 323 60 0
-  name "building(2)"
+  name "building(8)"
   floorNumber 16
   corners [
     20 20
@@ -4320,7 +4247,7 @@ DEF building(8) SimpleBuilding {
 }
 DEF building(9) SimpleBuilding {
   translation 280 60 0
-  name "building(2)"
+  name "building(9)"
   floorNumber 16
   corners [
     20 20
@@ -4331,7 +4258,7 @@ DEF building(9) SimpleBuilding {
 }
 DEF building(10) SimpleBuilding {
   translation 367 60 0
-  name "building(2)"
+  name "building(10)"
   floorNumber 16
   corners [
     20 20
@@ -4342,7 +4269,7 @@ DEF building(10) SimpleBuilding {
 }
 DEF building(11) SimpleBuilding {
   translation 110 -40 0
-  name "building(2)"
+  name "building(11)"
   floorNumber 5
 }
 DEF building_residential(1) ResidentialTower {

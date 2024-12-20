@@ -30,7 +30,7 @@ wooyeol_01 = np.array([[ 147, -18],
                        [ 143, -39],
                        [ 135, -57]])
 
-one_collision = np.array([ [300.0, 0.0] ])
+one_collision = np.array([ [30.0, 0.0] ])
 
 just_straight = [ np.array([100.0, 5.0]),
                   np.array([200.0, 5.0]) ]
@@ -57,9 +57,9 @@ collision_low = np.array([ [50,-20],
 
 def request_to_LLM():
     # return llm_01
-    return collision_02
-    # return one_collision
     # return minsu_01
+    # return one_collision
+    return minsu_01
 
 ###############################################################################
 
@@ -75,7 +75,9 @@ def make_situation(driver, dt):
     while driver.step() != -1 and tesla_state.v <= standard_speed: # [m/s]
         tesla_state.update()
         # print(f'current speed (km/h): {tesla_state.v * 3.6}')
-    print('[Moral Machine] : 이제부터, 핸들은 제껍니다.')
+    print('[Moral Machine : 가속 완료] ')
+    driver.step()
+    # print('[Moral Machine] : 이제부터, 핸들은 제껍니다.')
     distance = np.linalg.norm([tesla_state.x - init_x, tesla_state.y - init_y])
     driver.simulationSetMode(driver.SIMULATION_MODE_PAUSE)
     print(f'Accuration distance : {distance}')
