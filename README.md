@@ -68,7 +68,38 @@ Instead of relying solely on Zero-Shot prompting, representative traffic acciden
 - Zero-Shot vs Few-Shot comparison
 
 ---
+```mermaid
+flowchart TD
 
+A[Webots Simulation]
+B[Environment Information]
+C[LLM-Based Collision Reasoning]
+D[Candidate Collision Goals]
+E[RRT* Path Planning]
+F[Spline2D Path Smoothing]
+G[MPC Trajectory Tracking]
+H[Reached Candidate Goal?]
+I[Final Destination Reached?]
+J[Vehicle Speed ≤ 10 km/h?]
+K[Mission Complete]
+
+A --> B
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
+
+H -- No --> E
+H -- Yes --> I
+
+I -- No --> E
+I -- Yes --> J
+
+J -- No --> G
+J -- Yes --> K
+```
 # 🌳 Path Planning
 
 After selecting the collision point, the planner generates a collision-aware trajectory using **RRT***.
