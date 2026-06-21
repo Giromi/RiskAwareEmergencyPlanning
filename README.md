@@ -3,6 +3,30 @@
 > An AI-assisted autonomous emergency response system that minimizes traffic casualties by integrating **Large Language Models (LLMs), RRT*, Spline2D, and Model Predictive Control (MPC)**.
 
 ---
+### MPC Optimization
+
+The controller minimizes trajectory tracking error while satisfying vehicle dynamics and actuator constraints.
+
+$$
+\begin{alignedat}{3}
+J &= \arg\min_{u}\sum_{k=0}^{N}
+\left(
+\|z_{k,\mathrm{ref}}-z_k\|_Q^2
++\|u_k\|_R^2
++\|u_{k+1}-u_k\|_{R_d}^2
+\right) \\
+\text{subject to}\qquad
+&\|u_{k+1}-u_k\|<du_{\max} \\
+\qquad&
+v_{\min}<v_k<v_{\max} \\
+&
+u_{\min}<u_k<u_{\max} \\
+&
+z_0=z_{0,\mathrm{ob}} \\
+\qquad&
+z_{k+1}=Az_k+Bu+C \\
+\end{alignedat}
+$$
 
 ## 📖 Overview
 
