@@ -1,6 +1,6 @@
-# Risk-Aware Emergency Vehicle Path Planning using Large Language Models, RRT*, Spline2D, and Model Predictive Control
+# Risk-Aware Emergency Vehicle Path Planning using Large Language Models, RRT*, and Model Predictive Control
 
-> An AI-assisted autonomous emergency planning framework that integrates **Large Language Models (LLMs), Risk-Aware Motion Planning, Spline2D, and Model Predictive Control (MPC)** to minimize traffic casualties during Sudden Unintended Acceleration (SUA) scenarios.
+> An AI-assisted autonomous emergency planning framework that integrates **Large Language Models (LLMs), Risk-Aware Motion Planning, and Model Predictive Control (MPC)** to minimize traffic casualties during Sudden Unintended Acceleration (SUA) scenarios.
 
 ---
 
@@ -12,7 +12,16 @@
 
 | Structured prompt engineering for LLM-based collision reasoning | Integration of Risk-Aware RRT*, Spline2D, and MPC | End-to-end validation under Sudden Unintended Acceleration |
 
----
+
+## Project Focus
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Assistive%20Navigation-0A66C2?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Computer%20Vision-2E8B57?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Path%20Planning-FF8C00?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Robot%20Control-6A5ACD?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Human--Robot%20Interaction-DC143C?style=for-the-badge" />
+</p>
 
 ## Table of Contents
 
