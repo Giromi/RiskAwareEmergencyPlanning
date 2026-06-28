@@ -1,39 +1,39 @@
-# 🚑 Risk-Aware Emergency Vehicle Path Planning using LLM, RRT*, Spline2D, and MPC
+# Risk-Aware Emergency Vehicle Path Planning using Large Language Models, RRT*, Spline2D, and Model Predictive Control
 
-> An AI-assisted autonomous emergency planning framework that integrates **Large Language Models (LLMs), RRT*, Spline2D, and Model Predictive Control (MPC)** to minimize traffic casualties during Sudden Unintended Acceleration (SUA) scenarios.
-
-## 📸 Project Highlights
-
-| 🧠 LLM-Based Prompt Engineering | 🌳 Motion Planning & Trajectory Tracking | 🚑 End-to-End Emergency Planning |
-|:-------------------------------:|:----------------------------------------:|:--------------------------------:|
-| <img src="https://github.com/user-attachments/assets/4cdb38a4-8ea7-4e62-b546-0f2862776f44" height="220" /> | <img src="https://github.com/user-attachments/assets/f5638ebe-cb58-4afb-a4b9-c601cb3e20ce" height="220" /> | <img src="https://github.com/user-attachments/assets/54057715-ef0d-4411-ad6a-d5026eb24f6e" height="220" /> |
-| Structured prompt engineering for LLM-based collision reasoning | Integration of Risk-Aware RRT*, Spline2D, and MPC | End-to-end validation under Sudden Unintended Acceleration |
-
-
-## 📑 Table of Contents
-
-- [📖 Project Overview](#overview)
-- [👨‍💻 My Contributions](#contributions)
-- [🎯 Motivation](#motivation)
-- [🏗️ System Architecture](#architecture)
-- [⚙️ Methodology](#methodology)
-  - [🧠 LLM-Based Collision Reasoning](#llm)
-  - [🌳 Path Planning (RRT*)](#rrt)
-  - [📈 Spline2D Trajectory Generation](#spline)
-  - [🚗 Model Predictive Control (MPC)](#mpc)
-- [🧪 Simulation Environment](#simulation)
-- [📊 Experimental Scenarios](#experiments)
-- [📈 Results](#results)
-- [🛠️ Technologies](#technologies)
-- [📂 Repository Structure](#repository)
-- [🚀 Future Work](#future)
-- [📚 Keywords](#keywords)
+> An AI-assisted autonomous emergency planning framework that integrates **Large Language Models (LLMs), Risk-Aware Motion Planning, Spline2D, and Model Predictive Control (MPC)** to minimize traffic casualties during Sudden Unintended Acceleration (SUA) scenarios.
 
 ---
 
-<a id="overview"></a>
+## Project Highlights
 
-# 📖 Project Overview
+| LLM-Based Prompt Engineering | Motion Planning & Trajectory Tracking | End-to-End Emergency Planning |
+|:----------------------------:|:------------------------------------:|:-----------------------------:|
+| <img src="https://github.com/user-attachments/assets/4cdb38a4-8ea7-4e62-b546-0f2862776f44" height="220" /> | <img src="https://github.com/user-attachments/assets/f5638ebe-cb58-4afb-a4b9-c601cb3e20ce" height="220" /> | <img src="https://github.com/user-attachments/assets/54057715-ef0d-4411-ad6a-d5026eb24f6e" height="220" /> |
+| Structured prompt engineering for LLM-based collision reasoning | Integration of Risk-Aware RRT*, Spline2D, and MPC | End-to-end validation under Sudden Unintended Acceleration |
+
+---
+
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [My Contributions](#my-contributions)
+- [Motivation](#motivation)
+- [System Architecture](#system-architecture)
+- [Methodology](#methodology)
+  - [LLM-Based Collision Reasoning](#llm-based-collision-reasoning)
+  - [Motion Planning](#motion-planning)
+  - [Trajectory Generation](#trajectory-generation)
+  - [Model Predictive Control](#model-predictive-control)
+- [Simulation Environment](#simulation-environment)
+- [Experimental Results](#experimental-results)
+- [Software Stack](#software-stack)
+- [Repository Structure](#repository-structure)
+- [Future Work](#future-work)
+- [References](#references)
+
+---
+
+## Project Overview
 
 <p align="center">
   <img src="images/demo.gif" width="900"/>
@@ -41,171 +41,207 @@
 
 This project presents an AI-assisted emergency planning framework for unavoidable traffic collision scenarios.
 
-Instead of simply avoiding obstacles, the proposed framework combines **semantic reasoning from a Large Language Model (LLM)** with **classical motion planning** and **optimal vehicle control** to minimize overall human casualties.
+Instead of focusing solely on obstacle avoidance, the proposed framework investigates how an autonomous system can minimize overall human casualties when a collision becomes unavoidable.
 
-The complete decision-making pipeline consists of:
+The system combines semantic reasoning from a Large Language Model, risk-aware motion planning, trajectory smoothing, and optimal vehicle control.
 
 ```text
-LLM
-   ↓
+Environment Representation
+        ↓
+LLM-Based Collision Reasoning
+        ↓
 Risk-Aware RRT*
-   ↓
-Spline2D
-   ↓
+        ↓
+Spline2D Trajectory Generation
+        ↓
 Model Predictive Control
-   ↓
+        ↓
 Webots Simulation
 ```
 
-The complete framework was validated through urban traffic simulations.
+---
+
+## My Contributions
+
+| Area | Contribution |
+|------|--------------|
+| System Integration | Designed and integrated the complete **LLM → Planner → MPC → Webots** pipeline. |
+| LLM-Based Decision Making | Designed prompt engineering strategies, implemented environment parsing, and connected semantic reasoning to the planning pipeline. |
+| Planning & Control Interface | Designed the Spline2D trajectory generation module and built the interface between motion planning outputs and MPC trajectory tracking. |
+| Software Engineering | Designed modular class structures and reusable interfaces to improve readability, maintainability, and scalability. |
+| Simulation & Validation | Integrated the complete framework into Webots, executed experiments, debugged the system, and recorded demonstration videos. |
 
 ---
 
-<a id="contributions"></a>
+## Motivation
 
-# 👨‍💻 My Contributions
+<p align="center">
+  <img src="images/seoul_cityhall_accident.png" width="900"/>
+</p>
 
-## 🏗️ System Architecture
+Autonomous vehicles may encounter emergency situations where collisions cannot be completely avoided.
 
-- Designed and integrated the complete autonomous planning pipeline connecting **LLM → Motion Planning → MPC → Webots**.
-- Designed the overall software architecture and modular class hierarchy.
-- Built reusable software interfaces to improve readability, maintainability, and scalability.
+Conventional autonomous driving systems primarily focus on collision avoidance. However, once a collision becomes unavoidable, the remaining challenge is no longer whether to collide, but how to minimize overall human casualties while maintaining dynamically feasible vehicle behavior.
 
----
-
-## 🧠 LLM-Based Decision Making
-
-- Designed Few-Shot prompt engineering strategies for collision reasoning.
-- Implemented map parsing modules for structured environment representation.
-- Built the interface connecting LLM outputs to the downstream planning pipeline.
+This project investigates whether Large Language Models can support emergency decision-making by selecting safer collision targets, followed by motion planning and optimal control.
 
 ---
 
-## 🛣️ Planning & Control Integration
+## System Architecture
 
-- Designed and implemented the Spline2D trajectory generation module.
-- Built the interface between motion planning and MPC trajectory tracking.
-- Generated smooth reference trajectories suitable for real-time vehicle control.
+The proposed framework integrates semantic reasoning, motion planning, trajectory generation, and vehicle control into a unified emergency planning pipeline.
 
----
-
-## 🧪 Simulation & Validation
-
-- Integrated the complete framework into Webots.
-- Executed end-to-end simulation experiments under multiple traffic scenarios.
-- Recorded demonstration videos.
-- Performed debugging and system-level validation.
-
----
-
-<a id="motivation"></a>
-
-# 🎯 Motivation
-
-Autonomous vehicles inevitably encounter situations where collisions cannot be completely avoided.
-
-Instead of simply avoiding obstacles, autonomous systems should determine collision strategies that minimize overall human casualties.
-
-This project investigates how **Large Language Models** can assist emergency decision-making while maintaining dynamically feasible trajectories through motion planning and optimal control.
-
----
-
-<a id="architecture"></a>
-
-# 🏗️ System Architecture
+The LLM determines the collision-minimizing target, while the planning and control modules convert that decision into a dynamically feasible vehicle trajectory.
 
 ```mermaid
-flowchart TD
+flowchart LR
 
-A[🚨 Emergency Detected]
-B[🗺 Environment Information]
-C[📊 Grid Map Generation]
-D[🧠 LLM Decision Module]
-E[🎯 Collision Point Selection]
-F[🌳 Risk-Aware RRT*]
-G[📈 Spline2D]
-H[🚗 MPC]
-I[🤖 Webots]
-J[📊 Evaluation]
-
-A --> B
-B --> C
-C --> D
-D --> E
-E --> F
-F --> G
-G --> H
-H --> I
-I --> J
+A["Environment"] --> B["LLM Decision"]
+B --> C["Collision Goal"]
+C --> D["Risk-Aware RRT*"]
+D --> E["Spline2D"]
+E --> F["Model Predictive Control"]
+F --> G["Webots Simulation"]
 ```
 
 ---
 
-<a id="methodology"></a>
+## Methodology
 
-# ⚙️ Methodology
+The proposed framework consists of four sequential modules:
 
-<a id="llm"></a>
+1. LLM-Based Collision Reasoning  
+2. Motion Planning  
+3. Trajectory Generation  
+4. Model Predictive Control  
 
-## 🧠 LLM-Based Collision Reasoning
-
-The proposed framework employs **Few-Shot Prompting** to improve emergency collision reasoning.
-
-### Features
-
-- Grid-map representation
-- Few-Shot Prompt Engineering
-- Collision point prediction
-- Casualty-aware reasoning
-- Zero-Shot vs Few-Shot comparison
+Each module transforms high-level emergency reasoning into executable vehicle behavior.
 
 ---
 
-<a id="rrt"></a>
+### LLM-Based Collision Reasoning
 
-## 🌳 Path Planning (RRT*)
+The LLM performs high-level semantic reasoning to determine collision strategies that minimize overall casualties.
 
-After selecting the collision point, the planner generates a collision-aware trajectory using **RRT***.
+Rather than directly producing control commands, the LLM selects a collision goal based on structured environment information.
 
-### Features
+```text
+Environment Data
+        ↓
+Prompt Construction
+        ↓
+LLM Reasoning
+        ↓
+Collision Goal
+```
 
-- Collision-aware waypoint generation
-- Global path planning
-- Risk-aware trajectory generation
-- Obstacle avoidance
+#### Environment Representation
+
+The Webots simulation environment is converted into structured data that can be interpreted by the LLM.
+
+The parser extracts semantic objects such as vehicles, pedestrians, roads, sidewalks, buildings, and obstacles.
+
+<p align="center">
+  <img src="images/llm/environment_representation.png" width="900"/>
+</p>
+
+#### Prompt Engineering
+
+The prompt is designed to separate the driving scenario, environmental constraints, vehicle state, and expected output format.
+
+This structure improves reasoning consistency and reduces ambiguity.
+
+<p align="center">
+  <img src="images/llm/prompt_engineering.png" width="900"/>
+</p>
+
+#### Prompt Verification
+
+Before collision reasoning, the generated environment description is verified to reduce parsing errors and hallucinations.
+
+<p align="center">
+  <img src="images/llm/prompt_verification.png" width="900"/>
+</p>
+
+#### Collision Goal Generation
+
+The LLM generates a collision-minimizing target, which is passed to the motion planning module.
+
+<p align="center">
+  <img src="images/llm/collision_goal.png" width="900"/>
+</p>
 
 ---
 
-<a id="spline"></a>
+### Motion Planning
 
-## 📈 Spline2D Trajectory Generation
+After the LLM selects a collision goal, the planner generates a feasible trajectory from the current vehicle state to the target.
 
-The generated waypoints are interpolated using **Spline2D**, producing smooth and dynamically feasible trajectories for vehicle control.
+```text
+Collision Goal
+        ↓
+Occupancy Grid
+        ↓
+Risk-Aware RRT*
+        ↓
+Waypoints
+```
 
-### Features
+#### Occupancy Grid
 
-- Smooth trajectory generation
-- Continuous curvature
-- Stable reference path generation
-- MPC-compatible trajectories
+The environment is converted into an occupancy grid for collision checking and path planning.
+
+<p align="center">
+  <img src="images/planning/occupancy_grid.png" width="900"/>
+</p>
+
+#### Risk-Aware RRT*
+
+A risk-aware RRT* planner generates a collision-aware path while considering obstacles and pedestrian locations.
+
+<p align="center">
+  <img src="images/planning/rrt_star.gif" width="900"/>
+</p>
+
+#### Pedestrian-Aware Gaussian Bias Sampling
+
+The planner applies Gaussian bias sampling to reduce path generation near pedestrians.
+
+This encourages safer trajectories while preserving planning efficiency.
+
+<p align="center">
+  <img src="images/planning/gaussian_bias.png" width="900"/>
+</p>
 
 ---
 
-<a id="mpc"></a>
+### Trajectory Generation
 
-## 🚗 Model Predictive Control (MPC)
+The discrete waypoints generated by RRT* are interpolated using Spline2D.
 
-The generated trajectory is tracked using **Model Predictive Control (MPC)**.
+This produces a smooth reference trajectory suitable for vehicle control.
 
-### Optimization Objectives
+```text
+RRT* Waypoints
+        ↓
+Spline2D
+        ↓
+Smooth Reference Trajectory
+```
 
-- Position tracking error
-- Steering effort
-- Steering rate
-- Vehicle dynamics constraints
-- Velocity constraints
+<p align="center">
+  <img src="images/planning/spline2d.png" width="900"/>
+</p>
 
-### Optimization Problem
+---
+
+### Model Predictive Control
+
+The generated trajectory is tracked using Model Predictive Control.
+
+MPC optimizes steering commands over a prediction horizon while satisfying vehicle dynamics and actuator constraints.
+
+#### Optimization Objective
 
 ```math
 \begin{aligned}
@@ -219,316 +255,143 @@ J=\arg\min_u
 \end{aligned}
 ```
 
----
+where
 
-<a id="simulation"></a>
+| Symbol | Description |
+|--------|-------------|
+| $z_k$ | Vehicle state at time step $k$ |
+| $z_{k,\mathrm{ref}}$ | Reference trajectory state |
+| $u_k$ | Control input |
+| $Q$ | Tracking error weight |
+| $R$ | Control effort weight |
+| $R_d$ | Control smoothness weight |
 
-# 🧪 Simulation Environment
+The controller minimizes tracking error, control effort, and steering variation to generate smooth and dynamically feasible vehicle behavior.
 
-The proposed framework was validated using **Webots**.
-
-Simulation environment includes:
-
-- Urban road scenarios
-- Emergency navigation
-- Dynamic traffic
-- Collision-aware trajectory execution
-
----
-
-<a id="experiments"></a>
-
-# 📊 Experimental Scenarios
-
-Experiments were conducted on multiple emergency traffic scenarios, including the **Seoul City Hall intersection**.
-
-The proposed framework generated significantly safer collision strategies compared with conventional planning methods.
+<p align="center">
+  <img src="images/mpc/tracking.gif" width="900"/>
+</p>
 
 ---
 
-<a id="results"></a>
+## Simulation Environment
 
-# 📈 Results
+The proposed framework was validated using Webots, an open-source robotics simulator suitable for autonomous vehicle research.
 
-| Scenario | Actual Casualties | Proposed Framework |
-|-----------|------------------:|-------------------:|
-| Seoul City Hall Intersection | 16 | 3 |
+### Why Webots?
 
-### Performance
+- Realistic vehicle dynamics simulation
+- Fast urban environment modeling
+- Native Python controller support
+- Efficient debugging and iteration
+- Robotics-oriented simulation workflow
 
-- ✅ LLM-based collision reasoning
-- ✅ Few-Shot prompting
-- ✅ Risk-aware path planning
-- ✅ RRT*
-- ✅ Spline2D smoothing
-- ✅ MPC trajectory tracking
-- ✅ End-to-end Webots validation
+<p align="center">
+  <img src="images/simulation/webots_demo.gif" width="900"/>
+</p>
 
 ---
 
-<a id="technologies"></a>
+## Experimental Results
 
-# 🛠️ Technologies
+The proposed framework was evaluated under multiple emergency driving scenarios with different traffic densities.
+
+Each experiment begins with a Sudden Unintended Acceleration event and evaluates whether the system can reduce casualties while maintaining dynamically feasible vehicle behavior.
+
+---
+
+### Scenario 1 — Low Traffic Density
+
+> [!NOTE]
+> **Scenario Demonstration**
+>
+> This scenario evaluates the framework in a sparse traffic environment.
+
+<p align="center">
+  <img src="images/results/scenario1.gif" width="900"/>
+</p>
+
+**Result**
+
+- Generated a collision-aware trajectory
+- Avoided dense pedestrian regions
+- Maintained stable trajectory tracking
+- Reduced expected casualties
+
+---
+
+### Scenario 2 — Medium Traffic Density
+
+> [!NOTE]
+> **Scenario Demonstration**
+>
+> This scenario evaluates the full emergency planning pipeline under medium traffic density.
+
+<p align="center">
+  <img src="images/results/scenario2.gif" width="900"/>
+</p>
+
+**Result**
+
+- Selected an alternative collision target
+- Generated a dynamically feasible trajectory
+- Reduced pedestrian casualties compared with conventional planning
+- Demonstrated stable MPC tracking
+
+---
+
+### Scenario 3 — High Traffic Density
+
+> [!NOTE]
+> **Scenario Demonstration**
+>
+> This scenario evaluates the framework under highly constrained emergency conditions.
+
+<p align="center">
+  <img src="images/results/scenario3.gif" width="900"/>
+</p>
+
+**Result**
+
+- Maintained stable vehicle control
+- Generated collision-minimizing steering decisions
+- Demonstrated robust planning under dense traffic conditions
+
+---
+
+### Overall Performance
+
+| Scenario | Traffic Density | Conventional Planning | Proposed Framework |
+|----------|-----------------|----------------------:|-------------------:|
+| Scenario 1 | Low | Higher casualties | Reduced casualties |
+| Scenario 2 | Medium | Higher casualties | Reduced casualties |
+| Scenario 3 | High | Higher casualties | Reduced casualties |
+
+### Key Outcomes
+
+- LLM-based emergency decision making
+- Structured prompt engineering
+- Risk-aware path planning
+- Spline2D trajectory generation
+- MPC trajectory tracking
+- End-to-end Webots validation
+
+---
+
+## Software Stack
 
 | Category | Technologies |
-|-----------|--------------|
-| AI | Large Language Models (LLM), Few-Shot Prompting |
-| Planning | RRT*, Spline2D |
-| Control | Model Predictive Control (MPC) |
+|----------|--------------|
+| AI | Large Language Models, Prompt Engineering |
+| Planning | RRT*, Gaussian Bias Sampling, Spline2D |
+| Control | Model Predictive Control |
 | Simulation | Webots |
 | Programming | Python |
 | Libraries | NumPy, Matplotlib |
 
 ---
 
-<a id="repository"></a>
-
-# 📂 Repository Structure
-
-```text
-EmergencyPlanning/
-│
-├── llm/
-├── planner/
-├── controller/
-├── simulation/
-├── experiments/
-├── results/
-└── docs/
-```
-
----
-
-<a id="future"></a>
-
-# 🚀 Future Work
-
-- Vision-Language Model (VLM) integration
-- Camera and LiDAR perception
-- Dynamic obstacle prediction
-- ROS2 deployment
-- CARLA implementation
-- Multi-agent emergency planning
-- Real vehicle validation
-
----
-
-<a id="keywords"></a>
-
-# 📚 Keywords
-
-`Autonomous Driving` · `Emergency Planning` · `Large Language Models` · `Few-Shot Learning` · `Motion Planning` · `RRT*` · `Spline2D` · `Model Predictive Control` · `Webots` · `Robotics`
-
-# 🚑 Risk-Aware Emergency Vehicle Path Planning using LLM, RRT*, and MPC
-
-> An AI-assisted autonomous emergency response system that minimizes traffic casualties by integrating **Large Language Models (LLMs), RRT*, Spline2D, and Model Predictive Control (MPC)**.
-
----
-### MPC Optimization
-
-The controller minimizes trajectory tracking error while satisfying vehicle dynamics and actuator constraints.
-
-$$
-\begin{alignedat}{3}
-J &= \arg\min_{u}\sum_{k=0}^{N}
-\left(
-\|z_{k,\mathrm{ref}}-z_k\|_Q^2
-+\|u_k\|_R^2
-+\|u_{k+1}-u_k\|_{R_d}^2
-\right) \\
-\text{subject to}\qquad
-&\|u_{k+1}-u_k\|<du_{\max} \\
-\qquad&
-v_{\min}<v_k<v_{\max} \\
-&
-u_{\min}<u_k<u_{\max} \\
-&
-z_0=z_{0,\mathrm{ob}} \\
-\qquad&
-z_{k+1}=Az_k+Bu+C \\
-\end{alignedat}
-$$
-
-## 📖 Overview
-
-This project presents an AI-assisted emergency vehicle planning framework for unavoidable traffic collision scenarios.
-
-Unlike conventional autonomous driving systems that focus solely on obstacle avoidance, the proposed framework aims to **minimize human casualties** by combining semantic reasoning from a Large Language Model (LLM) with classical motion planning and optimal vehicle control.
-
-The system first analyzes a traffic scene, predicts the safest collision point through LLM reasoning, generates an optimal path using RRT*, smooths the trajectory with Spline2D, and finally tracks the path using Model Predictive Control (MPC). The complete framework was validated through Webots simulations in urban traffic environments.
-
----
-
-## 🎯 Motivation
-
-Autonomous vehicles inevitably encounter situations where collisions cannot be completely avoided.
-
-Instead of simply avoiding obstacles, autonomous systems should determine the collision strategy that minimizes overall human casualties.
-
-This project investigates how Large Language Models can assist emergency decision-making while maintaining dynamically feasible trajectories for autonomous vehicles.
-
----
-
-## 🏗 System Architecture
-
-```mermaid
-flowchart TD
-
-A[🚨 Emergency Detected]
-B[🗺 Environment Information]
-C[📊 Grid Map Generation]
-D[🧠 LLM Decision Module]
-E[🎯 Collision Point Selection]
-F[🌳 RRT* Path Planning]
-G[📈 Spline2D Path Smoothing]
-H[🚗 MPC Controller]
-I[🤖 Webots Vehicle]
-J[📊 Simulation Evaluation]
-
-A --> B
-B --> C
-C --> D
-D --> E
-E --> F
-F --> G
-G --> H
-H --> I
-I --> J
-```
-
----
-
-# 🧠 LLM-Based Collision Reasoning
-
-The proposed framework employs **Few-Shot Prompting** to improve collision reasoning capability.
-
-Instead of relying solely on Zero-Shot prompting, representative traffic accident examples are provided to the LLM, allowing it to infer safer collision points under emergency situations.
-
-### Features
-
-- Grid-map representation
-- Few-Shot Prompt Engineering
-- Collision point prediction
-- Casualty-aware reasoning
-- Zero-Shot vs Few-Shot comparison
-
----
-```mermaid
-flowchart TD
-
-A[Webots Simulation]
-B[Environment Information]
-C[LLM-Based Collision Reasoning]
-D[Candidate Collision Goals]
-E[RRT* Path Planning]
-F[Spline2D Path Smoothing]
-G[MPC Trajectory Tracking]
-H[Reached Candidate Goal?]
-I[Final Destination Reached?]
-J[Vehicle Speed ≤ 10 km/h?]
-K[Mission Complete]
-
-A --> B
-B --> C
-C --> D
-D --> E
-E --> F
-F --> G
-G --> H
-
-H -- No --> E
-H -- Yes --> I
-
-I -- No --> E
-I -- Yes --> J
-
-J -- No --> G
-J -- Yes --> K
-```
-# 🌳 Path Planning
-
-After selecting the collision point, the planner generates a collision-aware trajectory using **RRT***.
-
-The generated waypoints are then refined through **Spline2D interpolation**, producing a smooth and dynamically feasible trajectory.
-
-### Features
-
-- Collision-aware waypoint generation
-- RRT* global planning
-- Spline2D trajectory smoothing
-- Curvature optimization
-
----
-
-# 🚗 Model Predictive Control (MPC)
-
-The generated trajectory is tracked using **Model Predictive Control (MPC)**.
-
-The controller optimizes steering commands while satisfying vehicle dynamics and steering constraints.
-
-### Optimization Objectives
-
-- Position tracking error
-- Steering effort
-- Steering rate
-- Vehicle dynamics constraints
-- Velocity constraints
-
----
-
-# 🖥 Simulation Environment
-
-The proposed framework was validated using **Webots**.
-
-Simulation environment includes:
-
-- Urban road scenarios
-- Dynamic traffic environments
-- Emergency vehicle navigation
-- Collision-aware trajectory execution
-
----
-
-# 🧪 Experimental Scenario
-
-Experiments were conducted on multiple urban traffic scenarios, including the **Seoul City Hall intersection**.
-
-The proposed framework generated significantly safer collision strategies compared with conventional planning methods.
-
----
-
-# 📊 Results
-
-| Scenario | Actual Casualties | Proposed Framework |
-|-----------|------------------:|-------------------:|
-| Seoul City Hall Intersection | 16 | 3 |
-
-### Performance
-
-- ✅ LLM-based collision reasoning
-- ✅ Few-Shot prompting
-- ✅ Collision-aware planning
-- ✅ RRT* path planning
-- ✅ Spline2D smoothing
-- ✅ MPC trajectory tracking
-- ✅ Webots validation
-
----
-
-# 🛠 Technologies
-
-| Category | Technologies |
-|-----------|--------------|
-| AI | Large Language Models (LLM), Few-Shot Prompting |
-| Planning | RRT*, Spline2D |
-| Control | Model Predictive Control (MPC) |
-| Simulation | Webots |
-| Programming | Python |
-| Libraries | NumPy, Matplotlib |
-
----
-
-# 📂 Repository Structure
+## Repository Structure
 
 ```text
 EmergencyPlanning/
@@ -553,41 +416,35 @@ EmergencyPlanning/
 │   └── maps/
 │
 ├── experiments/
-│
 ├── results/
-│
 └── docs/
 ```
 
 ---
 
-# 👨‍💻 My Contributions
+## Future Work
 
-- Designed the overall AI-assisted emergency planning framework.
-- Developed the LLM-based collision reasoning pipeline using Few-Shot prompting.
-- Implemented grid-map generation and prompt construction.
-- Integrated RRT* for collision-aware path planning.
-- Applied Spline2D interpolation for trajectory smoothing.
-- Designed and tuned the MPC controller for vehicle trajectory tracking.
-- Built the complete simulation pipeline in Webots.
-- Evaluated the framework through multiple urban crash scenarios.
-
----
-
-# 🚀 Future Work
-
-- Vision-Language Model (VLM) integration
-- Camera and LiDAR perception
+- Vision-Language Model integration
+- Camera-based scene understanding
+- LiDAR perception
 - Dynamic obstacle prediction
 - ROS2 deployment
-- CARLA implementation
-- Multi-agent emergency planning
+- CARLA simulation
 - Real vehicle validation
 
 ---
 
-# 📚 Keywords
+## References
 
-`Autonomous Driving` `Emergency Planning` `Large Language Models` `Few-Shot Learning` `Motion Planning` `RRT*` `Spline2D` `Model Predictive Control` `Webots` `Robotics`
+### Project Materials
 
+- Project Report PDF
+- Presentation Slides PDF
+- Demonstration Videos
 
+### Related Topics
+
+- Sampling-based motion planning
+- Model Predictive Control
+- Prompt engineering for Large Language Models
+- Autonomous emergency planning
