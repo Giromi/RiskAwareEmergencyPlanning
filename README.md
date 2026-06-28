@@ -1,16 +1,10 @@
 # Risk-Aware Emergency Vehicle Path Planning using Large Language Models, RRT*, and Model Predictive Control
 
-> An AI-assisted autonomous emergency planning framework that integrates **Large Language Models (LLMs), Risk-Aware Motion Planning, and Model Predictive Control (MPC)** to minimize traffic casualties during Sudden Unintended Acceleration (SUA) scenarios.
-
----
-
-## Highlights
+The proposed framework integrates **LLM-based collision reasoning**, **Risk-Aware RRT***, **Spline2D trajectory generation**, and **Model Predictive Control (MPC)** into a unified autonomous emergency planning system for **Sudden Unintended Acceleration (SUA)** scenarios.
 
 | LLM-Based Prompt Engineering | Motion Planning & Trajectory Tracking | End-to-End Emergency Planning |
 |:----------------------------:|:------------------------------------:|:-----------------------------:|
-| <img src="https://github.com/user-attachments/assets/4cdb38a4-8ea7-4e62-b546-0f2862776f44" height="220" /> | <img src="https://github.com/user-attachments/assets/f5638ebe-cb58-4afb-a4b9-c601cb3e20ce" height="220" /> | <img src="https://github.com/user-attachments/assets/54057715-ef0d-4411-ad6a-d5026eb24f6e" height="220" /> |
-
-The proposed framework integrates **LLM-based collision reasoning**, **Risk-Aware RRT***, **Spline2D trajectory generation**, and **Model Predictive Control (MPC)** into a unified autonomous emergency planning framework for Sudden Unintended Acceleration scenarios.
+| <img src="https://github.com/user-attachments/assets/4cdb38a4-8ea7-4e62-b546-0f2862776f44" height="220"/> | <img src="https://github.com/user-attachments/assets/f5638ebe-cb58-4afb-a4b9-c601cb3e20ce" height="220"/> | <img src="https://github.com/user-attachments/assets/54057715-ef0d-4411-ad6a-d5026eb24f6e" height="220"/> |
 
 ## Project Focus
 
