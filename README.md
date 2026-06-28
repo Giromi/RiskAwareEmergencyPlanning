@@ -9,6 +9,7 @@
 | LLM-Based Prompt Engineering | Motion Planning & Trajectory Tracking | End-to-End Emergency Planning |
 |:----------------------------:|:------------------------------------:|:-----------------------------:|
 | <img src="https://github.com/user-attachments/assets/4cdb38a4-8ea7-4e62-b546-0f2862776f44" height="220" /> | <img src="https://github.com/user-attachments/assets/f5638ebe-cb58-4afb-a4b9-c601cb3e20ce" height="220" /> | <img src="https://github.com/user-attachments/assets/54057715-ef0d-4411-ad6a-d5026eb24f6e" height="220" /> |
+
 | Structured prompt engineering for LLM-based collision reasoning | Integration of Risk-Aware RRT*, Spline2D, and MPC | End-to-end validation under Sudden Unintended Acceleration |
 
 ---
