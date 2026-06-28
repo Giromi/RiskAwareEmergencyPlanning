@@ -17,10 +17,10 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Autonomous%20Driving-0A66C2?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Large%20Language%20Models-2E8B57?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Motion%20Planning-FF8C00?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Model%20Predictive%20Control-6A5ACD?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Embodied%20AI-DC143C?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Emergency%20Planning-2E8B57?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Large%20Language%20Models-FF8C00?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Motion%20Planning-6A5ACD?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Optimal%20Control-DC143C?style=for-the-badge" />
 </p>
 
 ## Table of Contents
