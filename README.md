@@ -4,7 +4,7 @@
 
 ---
 
-## Project Highlights
+## Highlights
 
 | LLM-Based Prompt Engineering | Motion Planning & Trajectory Tracking | End-to-End Emergency Planning |
 |:----------------------------:|:------------------------------------:|:-----------------------------:|
