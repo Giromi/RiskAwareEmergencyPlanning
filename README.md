@@ -2,6 +2,8 @@
 
 The proposed framework integrates **LLM-based collision reasoning**, **Risk-Aware RRT***, **Spline2D trajectory generation**, and **Model Predictive Control (MPC)** into a unified autonomous emergency planning system for **Sudden Unintended Acceleration (SUA)** scenarios.
 
+> Capstone Design 2 · Chung-Ang University · Fall 2024 · team project (4 members)
+
 | LLM-Based Prompt Engineering | Motion Planning & Trajectory Tracking | End-to-End Emergency Planning |
 |:----------------------------:|:------------------------------------:|:-----------------------------:|
 | <img src="https://github.com/user-attachments/assets/4cdb38a4-8ea7-4e62-b546-0f2862776f44" height="220"/> | <img src="https://github.com/user-attachments/assets/f5638ebe-cb58-4afb-a4b9-c601cb3e20ce" height="220"/> | <img src="https://github.com/user-attachments/assets/54057715-ef0d-4411-ad6a-d5026eb24f6e" height="220"/> |
@@ -79,8 +81,10 @@ Webots Simulation
 ## Motivation
 
 <p align="center">
-  <img src="images/seoul_cityhall_accident.png" width="900"/>
+  <img src="images/simulation/seoul_cityhall_map.png" width="900"/>
 </p>
+
+The simulation map recreates the area around Seoul City Hall Station, where a sudden-acceleration crash in July 2024 killed 9 people and injured 7.
 
 Autonomous vehicles may encounter emergency situations where collisions cannot be completely avoided.
 
@@ -106,6 +110,10 @@ D --> E["Spline2D"]
 E --> F["Model Predictive Control"]
 F --> G["Webots Simulation"]
 ```
+
+<p align="center">
+  <img src="images/overview/system_flowchart.png" width="500"/>
+</p>
 
 ---
 
@@ -154,9 +162,9 @@ The prompt is designed to separate the driving scenario, environmental constrain
 
 This structure improves reasoning consistency and reduces ambiguity.
 
-<p align="center">
-  <img src="images/llm/prompt_engineering.png" width="900"/>
-</p>
+- Prompts are written in English, with the scenario, constraints, and initial conditions clearly separated.
+- Priming examples guide the model to propose a concrete deceleration strategy at each waypoint.
+- Few-shot examples are used to keep the output format consistent.
 
 #### Prompt Verification
 
@@ -172,6 +180,10 @@ The LLM generates a collision-minimizing target, which is passed to the motion p
 
 <p align="center">
   <img src="images/llm/collision_goal.png" width="900"/>
+</p>
+
+<p align="center">
+  <img src="images/llm/collision_strategy_table.png" width="700"/>
 </p>
 
 ---
@@ -203,7 +215,7 @@ The environment is converted into an occupancy grid for collision checking and p
 A risk-aware RRT* planner generates a collision-aware path while considering obstacles and pedestrian locations.
 
 <p align="center">
-  <img src="images/planning/rrt_star.gif" width="900"/>
+  <img src="images/planning/rrt_vs_rrt_star.png" width="900"/>
 </p>
 
 #### Pedestrian-Aware Gaussian Bias Sampling
@@ -213,7 +225,7 @@ The planner applies Gaussian bias sampling to reduce path generation near pedest
 This encourages safer trajectories while preserving planning efficiency.
 
 <p align="center">
-  <img src="images/planning/gaussian_bias.png" width="900"/>
+  <img src="images/planning/gaussian_bias.gif" width="900"/>
 </p>
 
 ---
@@ -233,7 +245,7 @@ Smooth Reference Trajectory
 ```
 
 <p align="center">
-  <img src="images/planning/spline2d.png" width="900"/>
+  <img src="images/planning/spline2d_tracking.gif" width="900"/>
 </p>
 
 ---
@@ -280,9 +292,16 @@ where
 
 The controller minimizes tracking error, control effort, and steering variation to generate smooth and dynamically feasible vehicle behavior.
 
-<p align="center">
-  <img src="images/mpc/tracking.gif" width="900"/>
-</p>
+#### PID vs. MPC Tracking
+
+| Discrete PID | MPC |
+|:---:|:---:|
+| <img src="images/mpc/pid_tracking.gif" width="420"/> | <img src="images/mpc/mpc_tracking.gif" width="420"/> |
+
+| Metric | Discrete PID | MPC |
+|--------|-------------:|----:|
+| Max error [m] | 25.89 | **3.59** |
+| RMSE [m] | 7.46 | **1.62** |
 
 ---
 
@@ -302,6 +321,10 @@ The proposed framework was validated using Webots, an open-source robotics simul
   <img src="images/simulation/webots_demo.gif" width="900"/>
 </p>
 
+<p align="center">
+  <img src="images/simulation/webots_city_view.png" width="900"/>
+</p>
+
 ---
 
 ## Experimental Results
@@ -312,72 +335,47 @@ Each experiment begins with a Sudden Unintended Acceleration event and evaluates
 
 ---
 
+Three maps were built with different traffic densities.
+
+| Map | Pedestrians | Vehicles |
+|-----|------------:|---------:|
+| Low | 23 | 63 |
+| Medium | 124 | 148 |
+| High | 243 | 267 |
+
 ### Scenario 1 — Low Traffic Density
 
-> [!NOTE]
-> **Scenario Demonstration**
->
-> This scenario evaluates the framework in a sparse traffic environment.
+This map is the closest to the real Seoul City Hall Station crash.
 
-<p align="center">
-  <img src="images/results/scenario1.gif" width="900"/>
-</p>
+| Webots | Planning & Tracking |
+|:---:|:---:|
+| <img src="images/results/scenario1_low.gif" width="440"/> | <img src="images/results/scenario1_low_plot.gif" width="400"/> |
 
-**Result**
-
-- Generated a collision-aware trajectory
-- Avoided dense pedestrian regions
-- Maintained stable trajectory tracking
-- Reduced expected casualties
+**Result:** 3 casualties in simulation (the real crash: 16 casualties).
 
 ---
 
 ### Scenario 2 — Medium Traffic Density
 
-> [!NOTE]
-> **Scenario Demonstration**
->
-> This scenario evaluates the full emergency planning pipeline under medium traffic density.
+| Webots | Planning & Tracking |
+|:---:|:---:|
+| <img src="images/results/scenario2_mid.gif" width="440"/> | <img src="images/results/scenario2_mid_plot.gif" width="400"/> |
 
-<p align="center">
-  <img src="images/results/scenario2.gif" width="900"/>
-</p>
-
-**Result**
-
-- Selected an alternative collision target
-- Generated a dynamically feasible trajectory
-- Reduced pedestrian casualties compared with conventional planning
-- Demonstrated stable MPC tracking
+**Result:** 3 casualties in simulation.
 
 ---
 
 ### Scenario 3 — High Traffic Density
 
-> [!NOTE]
-> **Scenario Demonstration**
->
-> This scenario evaluates the framework under highly constrained emergency conditions.
-
-<p align="center">
-  <img src="images/results/scenario3.gif" width="900"/>
-</p>
-
-**Result**
-
-- Maintained stable vehicle control
-- Generated collision-minimizing steering decisions
-- Demonstrated robust planning under dense traffic conditions
+Not completed: the simulation became too heavy to run on this map.
 
 ---
 
-### Overall Performance
+### Discussion
 
-| Scenario | Traffic Density | Conventional Planning | Proposed Framework |
-|----------|-----------------|----------------------:|-------------------:|
-| Scenario 1 | Low | Higher casualties | Reduced casualties |
-| Scenario 2 | Medium | Higher casualties | Reduced casualties |
-| Scenario 3 | High | Higher casualties | Reduced casualties |
+- Larger maps make each experiment much slower.
+- RRT* is random, so the path (and the result) can change between runs.
+- Combining RRT* with Dubins paths could give smoother paths.
 
 ### Key Outcomes
 
@@ -406,30 +404,18 @@ Each experiment begins with a Sudden Unintended Acceleration event and evaluates
 ## Repository Structure
 
 ```text
-EmergencyPlanning/
-│
-├── llm/
-│   ├── prompts/
-│   ├── reasoning/
-│   └── collision_prediction/
-│
-├── planner/
-│   ├── rrt_star/
-│   ├── spline2d/
-│   └── waypoint_generation/
-│
-├── controller/
-│   ├── mpc/
-│   └── vehicle_model/
-│
-├── simulation/
-│   ├── webots/
-│   ├── scenarios/
-│   └── maps/
-│
-├── experiments/
-├── results/
-└── docs/
+RiskAwareEmergencyPlanning/
+├── working_space/        # main Webots project
+│   ├── controllers/      # vehicle controller (LLM → planner → MPC)
+│   ├── path_planner/     # RRT*, Gaussian bias sampling, Spline2D
+│   ├── path_tracker/     # PID and MPC trackers
+│   ├── opacity_map/      # occupancy grid map
+│   ├── protos/           # Webots models
+│   └── worlds/           # Seoul City Hall maps (low / medium / high)
+├── openai_auto/          # LLM prompt automation
+├── animation/            # figure and animation scripts
+├── untitled folder/      # early Webots prototype
+└── images/               # README figures
 ```
 
 ---
@@ -450,9 +436,7 @@ EmergencyPlanning/
 
 ### Project Materials
 
-- Project Report PDF
-- Presentation Slides PDF
-- Demonstration Videos
+- Capstone Design 2 final presentation (Chung-Ang University, December 2024)
 
 ### Related Topics
 
